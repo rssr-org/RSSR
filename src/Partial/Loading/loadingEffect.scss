@@ -1,0 +1,50 @@
+@keyframes loading-animate {
+    0% {
+        opacity : 0.2;
+    }
+    50% {
+        opacity : 1;
+    }
+    100% {
+        opacity : 0.2;
+    }
+}
+
+
+%loading {
+    animation-duration                : 1s;
+    animation-fill-mode               : both;
+    animation-iteration-count         : infinite;
+    animation-name                    : loading-animate;
+    -webkit-animation-timing-function : ease-out;
+    animation-timing-function         : ease-out;
+    pointer-events                    : none; //disable when is a anchor
+
+    a {
+        pointer-events : none; //disable all inside anchor
+    }
+}
+
+
+.loading-animate {
+    @extend %loading;
+
+    .hide-in-loading {
+        display : none !important;
+    }
+
+    // loading text effect pattern
+    &.loading-text-effect, .loading-text-effect {
+        color          : #e5e5e5 !important;
+        font-size      : 45px !important;
+        font-weight    : bold !important;
+        letter-spacing : -6px !important;
+        line-height    : 24px;
+        word-spacing   : 5px !important;
+    }
+}
+
+
+.reload-animate {
+    @extend %loading;
+}

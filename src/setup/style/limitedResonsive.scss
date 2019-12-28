@@ -1,0 +1,33 @@
+@import "var";
+
+// used to limit width
+// in .row , .countainer & .col..
+%common-style {
+    flex         : 0 0 100%;
+    margin-left  : 0 !important;
+    margin-right : 0 !important;
+    width        : 100%;
+    //
+    @media (min-width : 1500px) {
+        $size        : 1500px - 20px; //17px size of scrollbar and 3px to ensure in other browser
+        flex         : 0 0 $size;
+        margin-left  : auto !important;
+        margin-right : auto !important;
+        width        : $size;
+    }
+}
+
+
+.limited-col {
+    padding-left  : 15px;
+    padding-right : 15px;
+    @extend %common-style;
+}
+
+
+.limited-row {
+    display   : flex;
+    flex-wrap : wrap;
+    @extend %common-style;
+}
+

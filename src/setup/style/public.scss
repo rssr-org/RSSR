@@ -1,0 +1,32 @@
+@import "var";
+
+body {
+    //background-color : #0b1f43;
+}
+
+#webpack-hot-middleware-clientOverlay {
+    direction : ltr !important;
+}
+
+
+//
+// --------------- Responsive Section ----------------
+//
+
+@include media-breakpoint-down(sm) {
+    .modal-dialog {
+        margin    : 0 !important;
+        max-width : 100% !important;
+        padding   : 0 !important;
+    }
+
+    .modal-content {
+        border-radius : 0 !important;
+        height        : auto !important;
+        min-height    : 100% !important;
+    }
+    .modal-header {
+        border-top-left-radius  : 0 !important;
+        border-top-right-radius : 0 !important;;
+    }
+}
