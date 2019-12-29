@@ -1,5 +1,5 @@
 import {setLocalUserAsGuest} from "./setLocalUserAsGuest";
-import {cookie} from "../../../setup/utility/cookie";
+import {cookie} from "rssr-cookie";
 
 
 /**

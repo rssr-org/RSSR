@@ -1,6 +1,6 @@
 import {setLocalUserAsGuest} from "./setLocalUserAsGuest";
 import {authentication} from "./authentication";
-import {cookie} from "../../../setup/utility/cookie";
+import {cookie} from "rssr-cookie";
 
 export const firstSetup = function () {
     const token = cookie.get('localUserToken');

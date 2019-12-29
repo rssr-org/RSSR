@@ -1,5 +1,5 @@
 import {getStore, setStore} from "trim-redux";
-import {clientQueryString} from "./clientQueryString";
+import {queryStringParams} from "rssr-query-string";
 import {matchPath} from "react-router-dom";
 import {browserHistory} from "../browserHistory";
 import {routeMap} from "../routeMap";
@@ -15,7 +15,7 @@ export const skeletonClientProvider = function () {
     // calculate fetch params
     const ftechParams = {
         match: {},
-        query: clientQueryString()
+        query: queryStringParams()
     };
 
     routeMap.find(route => {
