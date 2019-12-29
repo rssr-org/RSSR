@@ -1,6 +1,6 @@
 import React, {Fragment} from 'react';
-import {Helmet} from "react-helmet";
-import Link from "react-router-dom/es/Link";
+import {Helmet} from "react-helmet-async";
+import {Link} from "react-router-dom";
 import {api} from "../../setup/api";
 import {route} from "../../setup/route";
 import {fetcher} from "../../Partial/fetcher/fetcher";

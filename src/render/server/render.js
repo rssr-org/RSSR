@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOMServer from "react-dom/server";
 import {StaticRouter} from "react-router-dom";
 import als from "async-local-storage";
-import {Helmet} from "react-helmet";
+import {Helmet, HelmetProvider} from 'react-helmet-async';
 import {Provider} from "react-redux";
 import {createStore, defaultState} from "../../setup/store";
 import App from "../../App/App";
@@ -18,6 +18,7 @@ import Error from "../Template/Error";
 export const render = function (error, req, res) {
     let view;
     const context = {};
+    const helmetContext = {};
 
     if (!error) {
         const fetch = als.get('fetch');
@@ -29,23 +30,28 @@ export const render = function (error, req, res) {
         view = (
             <Provider store={store}>
                 <StaticRouter location={req.url} context={context}>
-                    <App/>
+                    <HelmetProvider context={helmetContext}>
+                        <App/>
+                    </HelmetProvider>
                 </StaticRouter>
             </Provider>
         );
     } else {
         errorLogger('SERVER >', error, false, req);
-        view = <Error error={error}/>
+        view = (
+            <HelmetProvider context={helmetContext}>
+                <Error error={error}/>
+            </HelmetProvider>
+        )
     }
 
     const renderedView = ReactDOMServer.renderToString(view);
-    const helmet = Helmet.renderStatic();
 
     if (!context.url) {
         const status = !error ? (als.get('status') || 500) : 500;
 
         // make HTML response
-        let response = <Index renderedView={renderedView} helmet={helmet} error={error}/>;
+        let response = <Index renderedView={renderedView} helmet={helmetContext.helmet} error={error}/>;
         response = ReactDOMServer.renderToString(response);
         response = '<!DOCTYPE html>' + response;
 

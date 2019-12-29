@@ -1,7 +1,8 @@
 import React from 'react';
+import reactDom from "react-dom";
 import {Provider} from "trim-redux";
 import {Router} from "react-router-dom";
-import reactDom from "react-dom";
+import {HelmetProvider} from 'react-helmet-async';
 import {clientCreateStore} from "../setup/store";
 import {browserHistory} from "../setup/browserHistory";
 import localStorageSetup from "../setup/localStorage";
@@ -30,7 +31,9 @@ if (!window.RSSR_PROCCESS_ERROR) {
     const app = (
         <Provider store={store}>
             <Router history={browserHistory}>
-                <App/>
+                <HelmetProvider>
+                    <App/>
+                </HelmetProvider>
             </Router>
         </Provider>
     );
