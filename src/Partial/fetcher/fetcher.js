@@ -19,9 +19,12 @@ import {clientFetcher} from "./clientFetcher";
  * TheComponent: React Component
  * returns {Fecher}:  Fetcher Component
  */
-export const fetcher = (TheComponent) => {
+export const fetcher = (TheComponent, fetchFn, reduxState) => {
     let Fecher;
-    
+
+    TheComponent.redux = reduxState ? reduxState : TheComponent.name.toLowerCase();
+    TheComponent.fetch = fetchFn
+
     if (IS_SERVER)
         Fecher = serverFetcher(TheComponent);
     else

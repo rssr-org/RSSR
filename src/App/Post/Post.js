@@ -42,12 +42,11 @@ function Post(props) {
 };
 
 
-Post.redux = 'post';
-Post.fetch = ({match, req}) => {
+const fetch = ({match, req}) => {
     return fetching({
         url: api.post(match.params.postId),
         headers: tokenToHeaders({}, undefined, req)
     });
 }
 
-export default fetcher(Post);
+export default fetcher(Post, fetch);

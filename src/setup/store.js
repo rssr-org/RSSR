@@ -14,9 +14,9 @@ import {IS_BROWSER} from "./constant";
 export const defaultState = {
     localUser: {updated: false, token: null, detail: null},
     post: null,
-    home: {isLoading: true},
+    homepage: {isLoading: true},
     skeleton: {
-        title: 'Occor when Error fetch skeleton!'
+        title: 'Occor in fetch skeleton Error!'
     }
 }
 
