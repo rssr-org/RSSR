@@ -35,16 +35,6 @@ let composeEnhancer = compose;
 //
 if (JSON.parse(process.env.RSSR_REDUX_DEV_TOOLS) && IS_BROWSER)
     composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__()
-// composeEnhancer = window.__REDUX_DEVTOOLS_EXTENSION_COMPOSE__ || compose;
-
-
-
-
-
-/**
- * redux thunk
- */
-// composeEnhancer = composeEnhancer(applyMiddleware(thunk));
 
 
 
