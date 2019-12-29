@@ -12,7 +12,7 @@ export const tokenToHeaders = function (headers = {}, token, req) {
     }
 
     if (!token) {
-        console.warn('tokenToHeaders: you need token but user is invalid! if is required check user validation before call axios.');
+        console.log('🚩 tokenToHeaders > user is invalid. IF authentication is required check user validation before call API and tokenToHeaders() ELSE ignore this message.');
         return headers;
     }
 
