@@ -11,7 +11,7 @@ import {fetching} from "../../setup/utility/fetching";
 
 
 function Home(props) {
-    const {home} = props;
+    const {homepage} = props;
 
     return (
         <Namespace namespace="home">
@@ -34,7 +34,7 @@ function Home(props) {
 
                 <div className="row">
                     {
-                        (home.isLoading) ?
+                        (homepage.isLoading) ?
                             (
                                 <div className="col-24 text-center">
                                     <img src="/asset/img/loading.gif" alt="loading"/>
@@ -43,7 +43,7 @@ function Home(props) {
                             )
                             :
                             (
-                                home.map((item) => (
+                                homepage.map((item) => (
                                     <div className="col-md-8 my-2 px-3 animated fadeIn" key={item.id}>
                                         <Link to={route.post(item.id)} className="card">
                                             <div className="card-body">
@@ -59,11 +59,10 @@ function Home(props) {
                 </div>
             </div>
         </Namespace>
-    );
-};
+    )
+}
 
 
-Home.redux = 'home';
-Home.fetch = () => fetching({url: api.posts})
+const fetch = () => fetching({url: api.posts})
 
-export default fetcher(Home);
+export default fetcher(Home, fetch,'homepage');
