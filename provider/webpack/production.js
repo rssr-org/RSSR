@@ -3,11 +3,11 @@ require('../setup/evnLoader'); // load .env files and define environment varibal
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const StatsPlugin = require('stats-webpack-plugin');
-const UglifyJsPlugin = require('uglifyjs-webpack-plugin');
-const CleanWebpackPlugin = require('clean-webpack-plugin');
+const TerserPlugin = require('terser-webpack-plugin');
+const {CleanWebpackPlugin} = require('clean-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const {CLIENT_NAME, DIST_PATH, SCSS_PATH, CLIENT_PATH, SERVER_PATH, SERVER_NAME, SASS_NAMESPACE_LOADER, IGNORE_CSS_IN_SERVER} = require('../setup/constant');
+const {CLIENT_NAME, DIST_PATH, SCSS_PATH, CLIENT_PATH, SERVER_PATH, SERVER_NAME, SASS_NAMESPACE_LOADER, IGNORE_CSS_IN_SERVER, DIST_CLEAN} = require('../setup/constant');
 
 
 module.exports = [
@@ -52,9 +52,11 @@ module.exports = [
                         {
                             loader: 'sass-loader',
                             options: {
-                                // sourceMap: true,
-                                outputStyle: 'compressed',
-                                includePaths: [SCSS_PATH]
+                                sassOptions: {
+                                    // sourceMap: true,
+                                    outputStyle: 'compressed',
+                                    includePaths: [SCSS_PATH]
+                                }
                             }
                         },
                         {
@@ -83,32 +85,20 @@ module.exports = [
                 filename: 'styles.css'
             }),
             new Dotenv({systemvars: true}),
-            new CleanWebpackPlugin(["dist"], {
-                root: process.cwd(),
-                verbose: true,
-                dry: false
-            }),
+            // new CleanWebpackPlugin({
+            //     verbose: true,
+            //     dry: false,
+            //     cleanAfterEveryBuildPatterns: DIST_CLEAN
+            // }),
             new webpack.optimize.OccurrenceOrderPlugin(),
             new webpack.IgnorePlugin(/async-local-storage/)
         ],
         optimization: {
+            minimize: true,
             minimizer: [
-                new UglifyJsPlugin({
-                    uglifyOptions: {
-                        compress: {
-                            drop_console: true,
-                            drop_debugger: true
-                        },
-                        output: {
-                            comments: false,
-                            beautify: false
-                        },
-                    },
-                    cache: true,
-                    parallel: true,
-                    sourceMap: true // set to true if you want JS source maps
-                }),
-                new OptimizeCssAssetsPlugin({})
+                new TerserPlugin({
+                    sourceMap: true,
+                })
             ]
         }
     },

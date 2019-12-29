@@ -9,6 +9,7 @@ module.exports = {
 
     DIST_ROUTE: '/dist',
     DIST_PATH: path.resolve(process.cwd(), './dist'),
+    DIST_CLEAN: path.join(process.cwd(), 'dist/**/*'),
 
     PUBLIC_PATH: path.resolve(process.cwd(), './public'),
 
