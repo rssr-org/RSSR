@@ -18,6 +18,11 @@ import {clientFetcher} from "./clientFetcher";
  *
  * TheComponent: React Component
  * returns {Fecher}:  Fetcher Component
+ *
+ * @param TheComponent : React component <Required>
+ * @param fetchFn : fetch function <Required>
+ * @param reduxState : name of redux state <custom>: default is name of TheComponent
+ * @returns {Fecher}
  */
 export const fetcher = (TheComponent, fetchFn, reduxState) => {
     let Fecher;
