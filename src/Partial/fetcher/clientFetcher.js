@@ -1,7 +1,7 @@
 import React, {Component} from 'react';
 import {connect, setStore} from "trim-redux";
 import {defaultState} from "../../setup/store";
-import {clientQueryString} from "../../setup/utility/clientQueryString";
+import {queryStringParams} from "rssr-query-string";
 import {isErrorData} from "../../setup/utility/isErrorData";
 import {responseValidation} from "../../setup/utility/responseValidation";
 import {convertErrorToResponse} from "../../setup/utility/convertErrorToResponse";
@@ -57,7 +57,7 @@ export const clientFetcher = function (TheComponent) {
         setParams() {
             this.ftechParams = {
                 match: this.props.match,
-                query: clientQueryString()
+                query: queryStringParams()
             }
 
             return true;
