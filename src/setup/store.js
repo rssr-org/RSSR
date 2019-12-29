@@ -16,7 +16,7 @@ export const defaultState = {
     post: null,
     home: {isLoading: true},
     skeleton: {
-        title: 'Occor when Error fetch skeleton!'
+        title: 'Occor in fetch skeleton Error!'
     }
 }
 
