@@ -1,5 +1,5 @@
 import React, {Fragment, useEffect} from 'react';
-import {Helmet} from "react-helmet";
+import {Helmet} from "react-helmet-async";
 import {ToastContainer} from 'react-toastify';
 import Router from "../Partial/Router/Router";
 import Menu from "../Component/Menu/Menu";
@@ -37,6 +37,6 @@ function App() {
 App.skeleton = function () {
     return axios({url: api.skeleton})
 }
-App.skeleton.cache = 6; //reset cache in each 6 hour
+App.skeleton.cache = 2000; //reset cache in each 2000 miliseconds
 
 export default App;
