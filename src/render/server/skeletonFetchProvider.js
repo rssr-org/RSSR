@@ -13,7 +13,7 @@ export const skeletonFetchProvider = async function (req) {
 
     // cache is disabled
     if (typeof skeletonFetch.cache !== "number" || skeletonFetch.cache <= 0) {
-        debugLog('skeleton WITH OUT CACHE. skeleton.cache is not number and more than ziro')
+        debugLog('cache property is not number or more than ziro miliseconds. (set App.skeleton.cache)')
         await skeletonGetDataFromApi(req);
         return true;
     }
@@ -25,11 +25,11 @@ export const skeletonFetchProvider = async function (req) {
     if (data !== undefined) {
         const notExpired = (global['SKELETON-CACHE-EXP'] - Date.now()) > 0;
         if (notExpired) {
-            debugLog('READ skeleton data from CACHE')
+            debugLog('READ from CACHE')
             pushDataToUpdatedState.success(data)
             return true;
         } else {
-            debugLog('skeleton cache EXPIRED')
+            debugLog('cache EXPIRED')
             delete global['SKELETON-CACHED-DATA']
         }
     }
@@ -38,9 +38,9 @@ export const skeletonFetchProvider = async function (req) {
         skeletonGetDataFromApi(req)
         // caching data
             .then(function (data) {
-                debugLog('CACHING skeleton data')
+                debugLog('CACHING data')
                 global['SKELETON-CACHED-DATA'] = data
-                global['SKELETON-CACHE-EXP'] = Date.now() + skeletonFetch.cache * 60 * 60 * 1000;
+                global['SKELETON-CACHE-EXP'] = Date.now() + skeletonFetch.cache;
             })
 }
 
@@ -54,7 +54,7 @@ export const skeletonFetchProvider = async function (req) {
  */
 function skeletonGetDataFromApi(req) {
     const skeletonFetch = als.get('skeletonFetch')
-    debugLog('fetch skeleton data from API')
+    debugLog('fetching from API')
 
     //::1:: pass to skeleton fetch as params
     const ftechParams = {
@@ -68,7 +68,7 @@ function skeletonGetDataFromApi(req) {
             .then(function (response) {
                 responseValidation(response)
                 pushDataToUpdatedState.success(response.data)
-                debugLog('fetch skeleton data SUCCESSFULLY')
+                debugLog('data fetched SUCCESSFULLY')
                 resolve(response.data);
             })
             .catch(function (err) {

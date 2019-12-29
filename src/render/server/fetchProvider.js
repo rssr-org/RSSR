@@ -10,11 +10,11 @@ export const fetchProvider = async function (req) {
 
     // when component has not fetch() then fetch is undefined and fetchType is 'WITH_OUT_FETCH'
     if (!fetch) {
-        debugLog('this route HAS NOT FETCH property', req)
+        debugLog('with out FETCH', req)
         return true
     }
 
-    debugLog('fetch data from API', req)
+    debugLog('fetching data', req)
 
     // pass to fetch() as params ::1::
     const ftechParams = {
@@ -28,7 +28,7 @@ export const fetchProvider = async function (req) {
     await
         fetch(ftechParams)
             .then(function (response) {
-                debugLog('fetch data SUCCESSFULLY', req)
+                debugLog('fetched SUCCESSFULLY', req)
                 fetchResponsePreparing(response)
             })
             .catch(function (error) {
