@@ -1,7 +1,7 @@
 // load .env files and define environment varibale before all actions
-require('../setup/evnLoader');
+require('../setup/evnLoader')
 // define global.FILE_VERSION for dist file version. see render/Index.js template. ::5::
-require('../setup/fileVersion');
+require('../setup/fileVersion')
 
 const open = require('open')
 const cookieParser = require('cookie-parser')
@@ -19,28 +19,28 @@ const {DIST_ROUTE, PUBLIC_PATH} = require('../setup/constant')
 
 
 // express app
-const app = express();
+const app = express()
 
 // cookie
 app.use(cookieParser())
 
 // create webpack compiler
-const compiler = webpack(config);
+const compiler = webpack(config)
 
 // make bundled project source files accessable from memory
 app.use(webpackDevMiddleware(compiler, {
     serverSideRender: true,
     publicPath: DIST_ROUTE
-}));
+}))
 
 // static files
-app.use(express.static(PUBLIC_PATH));
+app.use(express.static(PUBLIC_PATH))
 
 // recompile webpack when file changes
-app.use(webpackHotMiddleware(compiler.compilers.find(compiler => compiler.name === 'client')));
+app.use(webpackHotMiddleware(compiler.compilers.find(compiler => compiler.name === 'client')))
 
 // hot update Webpack bundles on the server
-app.use(webpackHotServerMiddleware(compiler));
+app.use(webpackHotServerMiddleware(compiler))
 
 
 
@@ -62,4 +62,4 @@ app.listen(PORT, error => {
                 console.log(`development server running at http://localhost:${process.env.PORT}`);
             })
     }
-});
+})
