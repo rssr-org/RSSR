@@ -17,7 +17,7 @@ import Error from "../Template/Error";
  */
 export const render = function (error, req, res) {
     let view;
-    const context = {};
+    const routerContext = {};
     const helmetContext = {};
 
     if (!error) {
@@ -29,7 +29,7 @@ export const render = function (error, req, res) {
 
         view = (
             <Provider store={store}>
-                <StaticRouter location={req.url} context={context}>
+                <StaticRouter location={req.url} context={routerContext}>
                     <HelmetProvider context={helmetContext}>
                         <App/>
                     </HelmetProvider>
@@ -47,7 +47,7 @@ export const render = function (error, req, res) {
 
     const renderedView = ReactDOMServer.renderToString(view);
 
-    if (!context.url) {
+    if (!routerContext.url) {
         const status = !error ? (als.get('status') || 500) : 500;
 
         // make HTML response
@@ -58,6 +58,6 @@ export const render = function (error, req, res) {
         res.status(status).send(response);
     } else {
         // when <Redirect> rendered
-        res.redirect(301, context.url);
+        res.redirect(301, routerContext.url);
     }
 }
