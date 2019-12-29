@@ -2,7 +2,7 @@ import React from 'react';
 import ReactDOMServer from "react-dom/server";
 import {StaticRouter} from "react-router-dom";
 import als from "async-local-storage";
-import {Helmet, HelmetProvider} from 'react-helmet-async';
+import {HelmetProvider} from 'react-helmet-async';
 import {Provider} from "react-redux";
 import {createStore, defaultState} from "../../setup/store";
 import App from "../../App/App";
@@ -21,6 +21,7 @@ export const render = function (error, req, res) {
     const helmetContext = {};
 
     if (!error) {
+        // normal views
         const fetch = als.get('fetch');
         const updatedState = als.get('updatedState');
         const dataExist = !!fetch && Object.getOwnPropertyNames(updatedState).length;
@@ -37,6 +38,7 @@ export const render = function (error, req, res) {
             </Provider>
         );
     } else {
+        // when occer error during fetch and proccess
         errorLogger('SERVER >', error, false, req);
         view = (
             <HelmetProvider context={helmetContext}>
@@ -45,9 +47,11 @@ export const render = function (error, req, res) {
         )
     }
 
+    // render view to HTML
     const renderedView = ReactDOMServer.renderToString(view);
 
     if (!routerContext.url) {
+        // get final response status code
         const status = !error ? (als.get('status') || 500) : 500;
 
         // make HTML response

@@ -1,3 +1,9 @@
+<div align="center">
+  <a href="https://github.com/rssr-org/RSSR">
+    <img width="200" src="https://raw.githubusercontent.com/rssr-org/RSSR/master/public/asset/img/rssr-logo.png">
+  </a>
+</div>
+
 # RSSR 
 ✈ welcome to RSSR
 

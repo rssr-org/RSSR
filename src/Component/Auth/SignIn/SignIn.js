@@ -1,13 +1,12 @@
 import React, {useState} from 'react';
 import ForgetPasswordForm from "./ForgetPasswordForm";
 import SignInForm from "./SignInForm";
-import {isSet} from "../../../setup/utility/checkSet";
 
 const SignIn = props => {
     const [showSignInForm, setShowSignInForm] = useState(true);
 
     function closeModal() {
-        if (isSet(props.notify))
+        if (props.notify !== undefined)
             props.notify.$modal.modal('hide');
     }
 

@@ -2,7 +2,6 @@ require('../setup/evnLoader'); // load .env files and define environment varibal
 
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
-const StatsPlugin = require('stats-webpack-plugin');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
@@ -87,7 +86,18 @@ module.exports = [
             minimize: true,
             minimizer: [
                 new TerserPlugin({
-                    sourceMap: true,
+                    terserOptions: {
+                        output: {
+                            comments: false,
+                        }
+                    },
+                    extractComments: {
+                        banner: false
+                    },
+                    extractComments: false,
+                }),
+                new OptimizeCssAssetsPlugin({
+                    cssProcessorOptions: {discardComments: {removeAll: true}}
                 })
             ]
         }
@@ -122,17 +132,6 @@ module.exports = [
                     use: IGNORE_CSS_IN_SERVER
                 }
             ]
-        },
-        plugins: [
-            new OptimizeCssAssetsPlugin({
-                cssProcessorOptions: {discardComments: {removeAll: true}}
-            }),
-            new StatsPlugin('stats.json', {
-                chunkModules: true,
-                modules: true,
-                chunks: true,
-                exclude: [/node_modules[\\\/]react/],
-            })
-        ]
+        }
     }
 ];

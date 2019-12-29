@@ -1,6 +1,7 @@
 {
   "prefix": "ns-",
   "namespace": [
+    "menu",
     "home",
     "page"
   ]
