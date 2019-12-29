@@ -1,6 +1,5 @@
 import {compose, createStore as createStoreProvider} from 'trim-redux';
 import {IS_BROWSER} from "./constant";
-import {isSet} from "./utility/checkSet";
 
 
 
@@ -74,7 +73,7 @@ export const createStore = (state = {...defaultState}) => createStoreProvider(st
 export const clientCreateStore = function () {
     let states;
 
-    if (isSet(window.RSSR_UPDATED_REDUX_STATES)) {
+    if (window.RSSR_UPDATED_REDUX_STATES !== undefined) {
         states = {
             ...defaultState,
             ...window.RSSR_UPDATED_REDUX_STATES

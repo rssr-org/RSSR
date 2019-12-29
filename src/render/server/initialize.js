@@ -1,7 +1,6 @@
 import als from "async-local-storage";
 import {matchPath} from "react-router-dom";
 import {routeMap} from "../../setup/routeMap";
-import {isNotSet, isSet} from "../../setup/utility/checkSet";
 import App from "../../App/App";
 
 
@@ -45,7 +44,7 @@ export const initialize = function (req) {
     });
 
     // can not match to any route map item
-    if (isNotSet(matchedRouteMapItem))
+    if (matchedRouteMapItem === undefined)
         throw new Error('⛔ can not match to any route map item! define "*" path for not matched routes to can handle e-404, page not found errors.');
 
 
@@ -105,7 +104,7 @@ export const initialize = function (req) {
     *   ERROR (defined in failedRequest() - occur an error in proccess)
     *          only -> status is 500
     */
-    const status = isSet(matchedRouteMapItem.status) ? matchedRouteMapItem.status : 200;
+    const status = matchedRouteMapItem.status !== undefined ? matchedRouteMapItem.status : 200;
 
     if (typeof status !== 'number')
         throw new Error('⛔ status of routeMap is NOT number. status must be number like 404. status is ' + status);

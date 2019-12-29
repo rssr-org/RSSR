@@ -5,7 +5,6 @@ import {toast} from "react-toastify";
 import {regexp} from "../../setup/constant";
 import axios from "axios";
 import {api} from "../../setup/api";
-import {isSet} from "../../setup/utility/checkSet";
 import {signingIn} from "./__action/signingIn";
 import Form from "../../Partial/Form/Form";
 
@@ -24,7 +23,7 @@ function SignUp(props) {
 
 
     function closeModal() {
-        if (isSet(props.notify))
+        if (props.notify !== undefined)
             props.notify.$modal.modal('hide');
     }
 
