@@ -1,4 +1,4 @@
-import {dataType} from "./dataType";
+import {dataType} from "rssr-data-type";
 
 /**
  * check data type is error or not ::3::

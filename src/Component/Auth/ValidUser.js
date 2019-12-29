@@ -1,6 +1,6 @@
 import {connect} from "trim-redux";
 import {isValidUser} from "../../setup/utility/isValidUser";
-import {dataType} from "../../setup/utility/dataType";
+import {dataType} from "rssr-data-type";
 
 // updated with not null token
 const ValidUser = props => {

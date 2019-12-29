@@ -1,5 +1,5 @@
 import {authentication} from "./authentication";
-import {cookie} from "../../../setup/utility/cookie";
+import {cookie} from "rssr-cookie";
 
 // refetch user details
 export const updateUserDetail = () => {

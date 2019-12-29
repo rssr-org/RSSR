@@ -1,4 +1,4 @@
-import {storage} from "./utility/storage";
+import {storage} from "rssr-storage";
 
 
 
