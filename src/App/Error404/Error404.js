@@ -1,7 +1,7 @@
 import React from 'react';
+import {connect} from "trim-redux";
 import {Helmet} from "react-helmet-async";
 import {browserHistory} from "../../setup/browserHistory";
-import {connect} from "trim-redux";
 
 function Error404(props) {
     return (

@@ -1,35 +1,35 @@
 import PropTypes from 'prop-types';
-import config from "../../../namespace";
+const defaultConfig = require("./config.default");
 
-let list = {};
 
-function rebuildList() {
-    list = {}
-
-    config.namespace.forEach(function (item, index) {
-        list[item] = config.prefix + item[0] + index
-    })
+let config;
+try {
+    config = require("~/namespace.json");
+} catch (e) {
+    try {
+        config = require("~/package.json").namespace;
+    } catch (e) {
+        config = {}
+    }
 }
+config = {
+    ...defaultConfig,
+    ...config
+}
+
 
 const Namespace = ({namespace, children}) => {
     const copy = {
         children: {...children},
         childrenProps: {...children.props}
     }
-
-    if (list[namespace] === undefined)
-        rebuildList();
-
-    copy.childrenProps.id = list[namespace];
-    copy.childrenProps["data-namespace"] = namespace;
-
+    copy.childrenProps[config.name] = namespace;
     copy.children.props = copy.childrenProps;
-
     return copy.children;
 }
 
 Namespace.propTypes = {
-    namespace: PropTypes.oneOf(config.namespace).isRequired
+    namespace: PropTypes.string.isRequired
 }
 
 export default Namespace;
