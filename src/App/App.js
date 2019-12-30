@@ -1,4 +1,5 @@
 import React, {Fragment, useEffect} from 'react';
+import axios from "axios";
 import {Helmet} from "react-helmet-async";
 import {ToastContainer} from 'react-toastify';
 import Router from "../Partial/Router/Router";
@@ -7,9 +8,8 @@ import {skeletonClientProvider} from "../setup/utility/skeletonClientProvider";
 import {firstSetup} from "../Component/Auth/__action/firstSetup";
 import SignInModal from "../Component/Auth/SignInModal";
 import SignUpModal from "../Component/Auth/SignUpModal";
-import axios from "axios";
-import {api} from "../setup/api";
 import OverLoading from "../Component/OverLoading/OverLoading";
+import {api} from "../setup/api";
 
 
 function App() {

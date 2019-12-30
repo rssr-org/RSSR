@@ -3,8 +3,8 @@ import {Helmet} from "react-helmet-async";
 import {Link} from "react-router-dom";
 import {api} from "../../setup/api";
 import {route} from "../../setup/route";
-import {fetcher} from "../../Partial/fetcher/fetcher";
 import {LOADING_CLASS} from "../../setup/constant";
+import {fetcher} from "../../Partial/fetcher/fetcher";
 import {fetching} from "../../setup/utility/fetching";
 import {tokenToHeaders} from "../../setup/utility/tokenToHeaders";
 

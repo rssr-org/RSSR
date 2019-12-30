@@ -6,8 +6,8 @@ import {route} from "../../setup/route";
 import {fetcher} from "../../Partial/fetcher/fetcher";
 import Breackpoint from "../../Partial/Breakpoint/Breakpoint";
 import Namespace from "../../Partial/Namespace/Namespace";
-import "./home.scss";
 import {fetching} from "../../setup/utility/fetching";
+import "./home.scss";
 
 
 function Home(props) {
