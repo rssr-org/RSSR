@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const {CLIENT_NAME, DIST_PATH, SCSS_PATH, CLIENT_PATH, SERVER_PATH, SERVER_NAME, SASS_NAMESPACE_LOADER, IGNORE_CSS_IN_SERVER} = require('../setup/constant');
+const {CLIENT_NAME, DIST_PATH, SCSS_PATH, CLIENT_PATH, SERVER_PATH, SERVER_NAME, IGNORE_CSS_IN_SERVER} = require('../setup/constant');
 
 
 module.exports = [
@@ -54,7 +54,7 @@ module.exports = [
                             }
                         },
                         {
-                            loader: SASS_NAMESPACE_LOADER
+                            loader: 'rssr-namespace/loader.js'
                         }
                     ]
                 },

@@ -10,9 +10,8 @@ import {tokenToHeaders} from "../../setup/utility/tokenToHeaders";
 
 
 function Post(props) {
-    const
-        postId = Number(props.match.params.postId),
-        {post} = props;
+    const postId = Number(props.match.params.postId)
+    const {post} = props
 
     return (
         <div className="container">
@@ -49,4 +48,4 @@ const fetch = ({match, req}) => {
     });
 }
 
-export default fetcher(Post, fetch);
+export default fetcher(Post, fetch,'post');
