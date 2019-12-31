@@ -1,8 +1,20 @@
 import als from "async-local-storage";
 import {responseValidation} from "../../setup/utility/responseValidation";
+import {errorLogger} from "../../setup/utility/errorLogger";
 
 
 export const skeletonFetchProvider = async function (req) {
+    try {
+        await skeletonFetch(req);
+    } catch (err) {
+        errorLogger('SKELETON >', err, false, req);
+    }
+}
+
+
+
+
+const skeletonFetch = async function (req) {
     const skeletonFetch = als.get('skeletonFetch')
 
     // App component does not skeleton() property
@@ -19,6 +31,7 @@ export const skeletonFetchProvider = async function (req) {
     }
 
     // delete global['SKELETON-CACHED-DATA'];
+
     const data = global['SKELETON-CACHED-DATA'];
 
     // when cache data exist
