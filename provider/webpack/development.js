@@ -56,7 +56,7 @@ module.exports = [
                             }
                         },
                         {
-                            loader: SASS_NAMESPACE_LOADER
+                            loader: 'rssr-namespace/loader.js'
                         }
                     ]
                 },

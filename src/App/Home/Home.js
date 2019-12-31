@@ -5,7 +5,7 @@ import {api} from "../../setup/api";
 import {route} from "../../setup/route";
 import {fetcher} from "../../Partial/fetcher/fetcher";
 import Breackpoint from "../../Partial/Breakpoint/Breakpoint";
-import Namespace from "../../Partial/Namespace/Namespace";
+import Namespace from "rssr-namespace";
 import {fetching} from "../../setup/utility/fetching";
 import "./home.scss";
 
@@ -65,4 +65,4 @@ function Home(props) {
 
 const fetch = () => fetching({url: api.posts})
 
-export default fetcher(Home, fetch,'homepage');
+export default fetcher(Home, fetch, 'homepage');
