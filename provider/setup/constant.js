@@ -14,7 +14,5 @@ module.exports = {
 
     SCSS_PATH: path.resolve(process.cwd(), './src/setup/style'),
 
-    SASS_NAMESPACE_LOADER: path.resolve('src/Partial/Namespace/namespace-loader.js'),
-
     IGNORE_CSS_IN_SERVER: path.resolve('provider/webpack/loader/ignoreCssInServer.js'),
 }
