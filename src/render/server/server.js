@@ -3,7 +3,6 @@ import {render} from "./render";
 import {fetchProvider} from "./fetchProvider";
 import {initialize} from "./initialize";
 import {skeletonFetchProvider} from "./skeletonFetchProvider";
-import {errorLogger} from "../../setup/utility/errorLogger";
 import "../../setup/axiosConfig";
 
 
@@ -23,11 +22,7 @@ export default function serverRenderer() {
             initialize(req);
 
             // handle skeleton data (App.skeleton)
-            try {
-                await skeletonFetchProvider(req);
-            } catch (err) {
-                errorLogger('SKELETON >', err, false, req);
-            }
+            await skeletonFetchProvider(req);
 
             // call fetch() of component and get data
             fetchProvider(req)

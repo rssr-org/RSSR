@@ -19,7 +19,7 @@ function App() {
 
         // refetch skeleton on client when server fetch skeleton error
         skeletonClientProvider()
-    }, []);
+    }, [])
 
     return (
         <Fragment>
@@ -31,8 +31,8 @@ function App() {
             <SignUpModal/>
             <ToastContainer rtl={true}/>
         </Fragment>
-    );
-};
+    )
+}
 
 App.skeleton = function () {
     return axios({url: api.skeleton})
