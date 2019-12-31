@@ -5,7 +5,7 @@ import {signingOut} from "../Auth/__action/signingOut";
 import ValidUser from "../Auth/ValidUser";
 import InvalidUser from "../Auth/InvalidUser";
 import LoadingUser from "../Auth/LoadingUser";
-import Namespace from "../../Partial/Namespace/Namespace";
+import Namespace from "rssr-namespace";
 import "./menu.scss"
 
 
