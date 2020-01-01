@@ -3,10 +3,10 @@
   "version": "0.2.0",
   "private": true,
   "scripts": {
-    "dev": "NODE_ENV=development node --max_old_space_size=8000 ./provider/server/development.js",
-    "build": "NODE_ENV=production webpack --config ./provider/webpack/production.js --debug --progress --display-error-details --profile --colors",
-    "start": "NODE_ENV=production node ./provider/server/production.js",
-    "start-pm2": "NODE_ENV=production pm2 start ./provider/server/production.js --name RSSR",
+    "dev": "cross-env NODE_ENV=development node --max_old_space_size=8000 ./provider/server/development.js",
+    "build": "cross-envNODE_ENV=production webpack --config ./provider/webpack/production.js --debug --progress --display-error-details --profile --colors",
+    "start": "cross-env NODE_ENV=production node ./provider/server/production.js",
+    "start-pm2": "cross-env NODE_ENV=production pm2 start ./provider/server/production.js --name RSSR",
     "up": "pm2 delete RSSR & npm run start-pm2",
     "lint": "eslint src",
     "test": "echo 'do test'"
@@ -32,6 +32,7 @@
     "babel-eslint": "^10.0.3",
     "babel-loader": "^8.0.6",
     "bootstrap": "^4.3.1",
+    "cross-env": "^6.0.3",
     "css-hot-loader": "^1.4.4",
     "css-loader": "^3.4.0",
     "dotenv-webpack": "^1.7.0",
