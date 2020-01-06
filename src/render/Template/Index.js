@@ -3,8 +3,7 @@ import serialize from "serialize-javascript";
 import als from "async-local-storage";
 
 
-function Index (props) {
-    const {renderedView, helmet, error} = props
+function Index ({renderedView, helmet, error}) {
     const htmlAttrs = helmet.htmlAttributes.toComponent()
     const bodyAttrs = helmet.bodyAttributes.toComponent()
     const schema = als.get('schema')
