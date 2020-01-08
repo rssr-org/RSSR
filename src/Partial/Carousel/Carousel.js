@@ -1,16 +1,15 @@
 import React, {Component, createRef} from 'react';
 import PropTypes from 'prop-types';
-import {IS_BROWSER} from "../../setup/constant";
 import "flickity/dist/flickity.min.css";
 import "flickity-fade/flickity-fade.css";
 
+const IS_BROWSER = typeof window !== 'undefined'
 const Flickity = IS_BROWSER ? require('flickity') : undefined;
 if (IS_BROWSER)
     require('flickity-fade')
 
 
-
-class Slider extends Component {
+class Carousel extends Component {
 
     constructor(props) {
         super(props);
@@ -45,7 +44,7 @@ class Slider extends Component {
     shouldComponentUpdate(nextProps, nextState) {
         // ignore update when parent component update but slider list does not changes
         const listNotChange = !!this.props.list && !!nextProps.list && (JSON.stringify(this.props.list) === JSON.stringify(nextProps.list))
-        const disableNotChanged = this.props.isDisable  === nextProps.isDisable
+        const disableNotChanged = this.props.isDisable === nextProps.isDisable
         if (listNotChange && disableNotChanged)
             return false;
 
@@ -88,11 +87,11 @@ class Slider extends Component {
     }
 }
 
-Slider.propTypes = {
+Carousel.propTypes = {
     options: PropTypes.object,
     elementType: PropTypes.string,
     list: PropTypes.array,
     isDisable: PropTypes.bool
 };
 
-export default Slider;
+export default Carousel;
