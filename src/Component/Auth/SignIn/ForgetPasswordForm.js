@@ -6,7 +6,7 @@ import {api} from "../../../setup/api";
 import {route} from "../../../setup/route";
 import {toast} from "react-toastify";
 import Form from "rssr-form";
-import Loading from "../../../Partial/Loading/Loading";
+import Loading from "rssr-loading";
 
 
 function ForgetPasswordForm(props) {

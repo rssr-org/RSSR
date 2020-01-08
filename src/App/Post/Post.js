@@ -6,7 +6,7 @@ import {route} from "../../setup/route";
 import {fetcher} from "../../Partial/fetcher/fetcher";
 import {fetching} from "../../setup/utility/fetching";
 import {tokenToHeaders} from "../../setup/utility/tokenToHeaders";
-import Loading from "../../Partial/Loading/Loading";
+import Loading from "rssr-loading";
 
 
 function Post(props) {
