@@ -9,7 +9,7 @@ import Namespace from "rssr-namespace";
 import {fetching} from "../../setup/utility/fetching";
 import "./home.scss";
 import SmartDirection from "rssr-smart-direction";
-import Carousel from "../../Partial/Carousel/Carousel";
+import Carousel from "rssr-carousel";
 
 
 function Home(props) {
