@@ -66,6 +66,7 @@
     "rssr-loading": "0.0.2",
     "rssr-namespace": "^1.0.0",
     "rssr-query-string": "^0.1.0",
+    "rssr-smart-direction": "0.0.1",
     "rssr-storage": "^0.1.0",
     "sass-loader": "^8.0.0",
     "terser-webpack-plugin": "^2.3.1",

@@ -8,10 +8,12 @@ import Breackpoint from "rssr-breackpoint";
 import Namespace from "rssr-namespace";
 import {fetching} from "../../setup/utility/fetching";
 import "./home.scss";
+import SmartDirection from "rssr-smart-direction";
 
 
 function Home(props) {
     const {homepage} = props;
+    const sampleTextForSmartDirection = ['this is sample LTR text for test smart direction', 'نمونه متن راست چین برای ازمایش چینش هوشمند']
 
     return (
         <Namespace namespace="home">
@@ -31,6 +33,16 @@ function Home(props) {
                         )
                     }
                 </Breackpoint>
+
+                <div>
+                    {
+                        sampleTextForSmartDirection.map((txt, index) => (
+                            <SmartDirection text={txt} key={index}>
+                                <div className="alert alert-success">{txt}</div>
+                            </SmartDirection>
+                        ))
+                    }
+                </div>
 
                 <div className="row">
                     {
