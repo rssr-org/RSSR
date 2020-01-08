@@ -3,10 +3,10 @@ import {Helmet} from "react-helmet-async";
 import {Link} from "react-router-dom";
 import {api} from "../../setup/api";
 import {route} from "../../setup/route";
-import {LOADING_CLASS} from "../../setup/constant";
 import {fetcher} from "../../Partial/fetcher/fetcher";
 import {fetching} from "../../setup/utility/fetching";
 import {tokenToHeaders} from "../../setup/utility/tokenToHeaders";
+import Loading from "../../Partial/Loading/Loading";
 
 
 function Post(props) {
@@ -26,9 +26,11 @@ function Post(props) {
                         )
                         :
                         (
-                            <div className={`w-100 text-center ${LOADING_CLASS}`}>
-                                در حال بار گذاری مطلب
-                            </div>
+                            <Loading isLoading={true}>
+                                <div className="w-100 text-center">
+                                    در حال بار گذاری مطلب
+                                </div>
+                            </Loading>
                         )
                 }
             </div>
@@ -48,4 +50,4 @@ const fetch = ({match, req}) => {
     });
 }
 
-export default fetcher(Post, fetch,'post');
+export default fetcher(Post, fetch, 'post');

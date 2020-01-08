@@ -1,11 +1,12 @@
 import React, {useState} from 'react';
 import {connect} from "trim-redux";
-import {LOADING_CLASS, regexp} from "../../../setup/constant";
+import {regexp} from "../../../setup/constant";
 import axios from "axios";
 import {api} from "../../../setup/api";
 import {route} from "../../../setup/route";
 import {toast} from "react-toastify";
 import Form from "rssr-form";
+import Loading from "../../../Partial/Loading/Loading";
 
 
 function ForgetPasswordForm(props) {
@@ -79,11 +80,11 @@ function ForgetPasswordForm(props) {
                        required/>
                 <div className="invalid-feedback">آدرس ایمیل وارد شده معتبر نیست!</div>
             </div>
-            <button className={`btn btn-block btn-primary ${(isLoading || !localUser.updated) ? LOADING_CLASS : ''} `}
-                    disabled={isLoading || !localUser.updated}
-                    type="submit">
-                بازیابی
-            </button>
+            <Loading isLoading={isLoading || !localUser.updated}>
+                <button className="btn btn-block btn-primary" disabled={isLoading || !localUser.updated} type="submit">
+                    بازیابی
+                </button>
+            </Loading>
         </Form>
     )
 }

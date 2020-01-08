@@ -1,5 +1,5 @@
 import PropTypes from 'prop-types';
-import "./loadingEffect.scss";
+import "./loadingEffect.css";
 
 
 function setupLoading(theProps, children, classes) {
