@@ -6,7 +6,7 @@ import {regexp} from "../../setup/constant";
 import axios from "axios";
 import {api} from "../../setup/api";
 import {signingIn} from "./__action/signingIn";
-import Form from "../../Partial/Form/Form";
+import Form from "rssr-form";
 
 
 

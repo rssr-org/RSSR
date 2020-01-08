@@ -5,7 +5,7 @@ import axios from "axios";
 import {api} from "../../../setup/api";
 import {route} from "../../../setup/route";
 import {toast} from "react-toastify";
-import Form from "../../../Partial/Form/Form";
+import Form from "rssr-form";
 
 
 function ForgetPasswordForm(props) {

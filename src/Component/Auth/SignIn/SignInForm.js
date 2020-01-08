@@ -6,7 +6,7 @@ import {signingIn} from "../__action/signingIn";
 import {LOADING_CLASS, regexp} from "../../../setup/constant";
 import {random} from "../../../setup/utility/random";
 import {connect} from "trim-redux";
-import Form from "../../../Partial/Form/Form";
+import Form from "rssr-form";
 
 function SignInForm(props) {
 
