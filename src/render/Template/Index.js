@@ -29,7 +29,7 @@ function Index ({renderedView, helmet, error}) {
             {helmet.title.toComponent()}
             {helmet.meta.toComponent()}
             {helmet.link.toComponent()}
-            <link rel="shortcut icon" href="/fav.ico" type="image/icon"/>
+            <link rel="shortcut icon" href="/app-icon.png" type="image/png"/>
             <link rel="stylesheet" href={`/dist/styles.css${global.FILE_VERSION /*::5::*/}`}/>
         </head>
         <body className="rtl" {...bodyAttrs}>
