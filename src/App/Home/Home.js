@@ -28,7 +28,8 @@ function Home(props) {
 
     const carouselOptions = {
         rightToLeft: true,
-        cellAlign: 'right'
+        cellAlign: 'right',
+        groupCells: true
     }
 
     return (
