@@ -1,5 +1,21 @@
 @namespace "home";
 
+.slider-wrap {
+    margin-bottom : 50px;
+
+    .item {
+        $size : 300px;
+        //
+        max-width : $size;
+        margin    : 0 15px;
+
+        img {
+            max-width  : $size;
+            max-height : 100%;
+        }
+    }
+}
+
 .card {
     color : #404040;
 

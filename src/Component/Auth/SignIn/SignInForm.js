@@ -3,10 +3,11 @@ import {toast} from "react-toastify";
 import axios from "axios";
 import {api} from "../../../setup/api";
 import {signingIn} from "../__action/signingIn";
-import {LOADING_CLASS, regexp} from "../../../setup/constant";
+import {regexp} from "../../../setup/constant";
 import {random} from "../../../setup/utility/random";
 import {connect} from "trim-redux";
-import Form from "../../../Partial/Form/Form";
+import Form from "rssr-form";
+import Loading from "rssr-loading";
 
 function SignInForm(props) {
 
@@ -91,12 +92,11 @@ function SignInForm(props) {
                     <i className="icon-angle-right"></i>
                 </a>
             </div>
-
-            <button className={`btn btn-block btn-primary mt-3  ${(isLoading || !localUser.updated) ? LOADING_CLASS : ''} `}
-                    disabled={isLoading || !localUser.updated}
-                    type="submit">
-                ورود
-            </button>
+            <Loading isLoading={isLoading || !localUser.updated}>
+                <button className="btn btn-block btn-primary mt-3" disabled={isLoading || !localUser.updated} type="submit">
+                    ورود
+                </button>
+            </Loading>
         </Form>
     );
 }

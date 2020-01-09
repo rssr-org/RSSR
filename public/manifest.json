@@ -4,9 +4,9 @@
   "description": "react server sider rendering",
   "icons": [
     {
-      "src": "fav.ico",
+      "src": "app-icon.png",
       "sizes": "256x256 128x128 64x64 32x32 24x24 16x16",
-      "type": "image/x-icon"
+      "type": "image/png"
     }
   ],
   "dir": "rtl",

@@ -8,10 +8,29 @@ import Breackpoint from "rssr-breackpoint";
 import Namespace from "rssr-namespace";
 import {fetching} from "../../setup/utility/fetching";
 import "./home.scss";
+import SmartDirection from "rssr-smart-direction";
+import Carousel from "rssr-carousel";
 
 
 function Home(props) {
     const {homepage} = props;
+    const sampleTextForSmartDirection = ['this is sample LTR text for test smart direction', 'نمونه متن راست چین برای ازمایش چینش هوشمند']
+    const sampleCarousel = [
+        '/asset/img/rssr-logo.png',
+        '/asset/img/rssr-logo.png',
+        '/asset/img/rssr-logo.png',
+        '/asset/img/rssr-logo.png',
+        '/asset/img/rssr-logo.png',
+        '/asset/img/rssr-logo.png',
+        '/asset/img/rssr-logo.png',
+        '/asset/img/rssr-logo.png'
+    ]
+
+    const carouselOptions = {
+        rightToLeft: true,
+        cellAlign: 'right',
+        groupCells: true
+    }
 
     return (
         <Namespace namespace="home">
@@ -24,6 +43,17 @@ function Home(props) {
                         برای خلق بهترین‌ها باید بیشتر تلاش کرد، چیزی که ساده به دست بیاد، می‌تونه خیلی ساده هم از دست بره.
                     </p>
                 </div>
+
+                <Carousel className="slider-wrap" options={carouselOptions}>
+                    {
+                        sampleCarousel.map((img, index) => (
+                            <div className="item" key={index}>
+                                <img src={img} alt="RSSR LOGO"/>
+                            </div>
+                        ))
+                    }
+                </Carousel>
+
                 <Breackpoint from="md">
                     {
                         () => (
@@ -31,6 +61,16 @@ function Home(props) {
                         )
                     }
                 </Breackpoint>
+
+                <div>
+                    {
+                        sampleTextForSmartDirection.map((txt, index) => (
+                            <SmartDirection text={txt} key={index}>
+                                <div className="alert alert-success">{txt}</div>
+                            </SmartDirection>
+                        ))
+                    }
+                </div>
 
                 <div className="row">
                     {

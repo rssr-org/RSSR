@@ -44,16 +44,6 @@ export const API_DOMAIN = IS_BROWSER ? process.env.API_HOST_IN_CLIENT : process.
 
 
 
-
-/**
- * use to flash in loading items
- */
-export const LOADING_CLASS = 'animated flash infinite d-2s';
-
-
-
-
-
 /**
  * regex pattern
  * use for validation form
