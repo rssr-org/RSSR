@@ -7,7 +7,7 @@ import App from "../../App/App";
 
 export const skeletonClientProvider = function () {
     // when server fetch data successfully
-    if (getStore('skeletonError') !== true){
+    if (getStore('skeletonErroredInServer') !== true){
         debugLog(false)
         return;
     }

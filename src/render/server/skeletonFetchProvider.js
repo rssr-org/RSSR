@@ -30,11 +30,10 @@ const skeletonFetch = async function (req) {
         return true;
     }
 
-    // delete global['SKELETON-CACHED-DATA'];
-
+    // *** reset in develop *** delete global['SKELETON-CACHED-DATA'];
     const data = global['SKELETON-CACHED-DATA'];
 
-    // when cache data exist
+    // read data from cache if not expired
     if (data !== undefined) {
         const notExpired = (global['SKELETON-CACHE-EXP'] - Date.now()) > 0;
         if (notExpired) {
@@ -98,7 +97,7 @@ function skeletonGetDataFromApi(req) {
 
 
 /**
- * set value of 'skeleton' OR 'skeletonError' in 'updatedState'
+ * set value of 'skeleton' OR 'skeletonErroredInServer' in 'updatedState'
  */
 const pushDataToUpdatedState = {
     success: function (data) {
@@ -108,7 +107,7 @@ const pushDataToUpdatedState = {
     },
     error: function () {
         const updatedState = als.get('updatedState')
-        updatedState['skeletonError'] = true
+        updatedState['skeletonErroredInServer'] = true
         als.set('updatedState', updatedState, true)
     }
 }
