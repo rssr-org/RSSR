@@ -3,12 +3,13 @@ import {queryStringParams} from "rssr-query-string";
 import {matchPath} from "react-router-dom";
 import {browserHistory} from "../../setup/browserHistory";
 import {routeMap} from "../../setup/routeMap";
+import {debugLog} from "./debugLog";
 
 
 export const skeletonClientProvider = function (skeletonFetch) {
     // when server fetch data successfully
-    if (getStore('skeletonErroredInServer') !== true){
-        debugLog(false)
+    if (getStore('skeletonErroredInServer') !== true) {
+        debugLog('WENT_WELL')
         return;
     }
 
@@ -31,12 +32,10 @@ export const skeletonClientProvider = function (skeletonFetch) {
     skeletonFetch(ftechParams)
         .then(function (response) {
             setStore('skeleton', response.data)
-            debugLog(true)
+            debugLog('FETCHED_IN_CLIENT')
         })
-}
-
-
-function debugLog(inClient) {
-    if (JSON.parse(process.env.RSSR_SKELETON_DEBUG))
-        console.info((inClient ? '🙎‍♂️' : '🌎') + ' fetch skeleton in ' + (inClient ? 'client' : 'server'));
+        .catch(function (err) {
+            console.error(err)
+            debugLog('CLIENT_ERRORED')
+        })
 }

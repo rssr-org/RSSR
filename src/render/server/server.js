@@ -2,7 +2,7 @@ import als from "async-local-storage";
 import {render} from "./render";
 import {fetchProvider} from "./fetchProvider";
 import {initialize} from "./initialize";
-import {skeletonFetchProvider} from "./skeletonFetchProvider";
+import {skeletonServerProvider} from "../../Partial/skeleton/skeletonServerProvider";
 import "../../setup/axiosConfig";
 
 
@@ -22,7 +22,7 @@ export default function serverRenderer() {
             initialize(req);
 
             // handle skeleton data (App.skeleton)
-            await skeletonFetchProvider(req);
+            await skeletonServerProvider(req);
 
             // call fetch() of component and get data
             fetchProvider(req)

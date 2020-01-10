@@ -2,12 +2,19 @@ import als from "async-local-storage";
 import {responseValidation} from "../../setup/utility/responseValidation";
 import {errorLogger} from "../../setup/utility/errorLogger";
 import App from "../../App/App";
+import {debugLog} from "./debugLog";
 
+// locking the fetch to prevent parallel requests.
+let fetchLock = false;
 
 /**
  * call skeleton fetch and handle errors
  */
-export const skeletonFetchProvider = async function (req) {
+export const skeletonServerProvider = async function (req) {
+    // skeleton is disable
+    if (!App.skeleton)
+        return true;
+
     try {
         await skeletonFetch(req);
     } catch (err) {
@@ -24,19 +31,6 @@ export const skeletonFetchProvider = async function (req) {
 const skeletonFetch = async function (req) {
     const skeleton = App.skeleton
 
-    // App component does not skeleton() property
-    if (!skeleton) {
-        debugLog('WITH OUT SKELETON. App Component has not skeleton property')
-        return true;
-    }
-
-    // cache is disabled
-    if (typeof skeleton.cache !== "number" || skeleton.cache <= 0) {
-        debugLog('cache property is not number or more than ziro miliseconds. (set App.skeleton.cache)')
-        await skeletonGetDataFromApi(req);
-        return true;
-    }
-
     // *** reset in develop *** delete global['SKELETON-CACHED-DATA'];
     const data = global['SKELETON-CACHED-DATA'];
 
@@ -44,23 +38,24 @@ const skeletonFetch = async function (req) {
     if (data !== undefined) {
         const notExpired = (global['SKELETON-CACHE-EXP'] - Date.now()) > 0;
         if (notExpired) {
-            debugLog('READ from CACHE')
+            debugLog('READ_FROM_CACHE')
             pushDataToUpdatedState.success(data)
             return true;
         } else {
-            debugLog('cache EXPIRED')
+            debugLog('CACHE_EXPIRED')
             delete global['SKELETON-CACHED-DATA']
         }
     }
 
-    await
-        skeletonGetDataFromApi(req)
-        // caching data
+    if (!fetchLock) {
+        fetchLock = true;
+        await skeletonGetDataFromApi(req)
             .then(function (data) {
-                debugLog('CACHING data')
+                debugLog('CACHING_DATA')
                 global['SKELETON-CACHED-DATA'] = data
                 global['SKELETON-CACHE-EXP'] = Date.now() + skeleton.cache;
             })
+    }
 }
 
 
@@ -73,7 +68,7 @@ const skeletonFetch = async function (req) {
  */
 function skeletonGetDataFromApi(req) {
     const skeleton = App.skeleton
-    debugLog('fetching from API')
+    debugLog('FETCHING_API')
 
     //::1:: pass to skeleton fetch as params
     const ftechParams = {
@@ -87,14 +82,17 @@ function skeletonGetDataFromApi(req) {
             .then(function (response) {
                 responseValidation(response)
                 pushDataToUpdatedState.success(response.data)
-                debugLog('data fetched SUCCESSFULLY')
+                debugLog('SUCCESSFULLY_FETCH')
                 resolve(response.data);
             })
             .catch(function (err) {
-                debugLog('ERROR in fetch skeleton')
+                debugLog('SERVER_ERRORED')
                 // push error to updatedState
                 pushDataToUpdatedState.error()
                 reject(err);
+            })
+            .finally(function () {
+                fetchLock = false;
             })
     })
 }
@@ -117,16 +115,4 @@ const pushDataToUpdatedState = {
         updatedState['skeletonErroredInServer'] = true
         als.set('updatedState', updatedState, true)
     }
-}
-
-
-
-
-
-// active switch for debuging logs
-const debug = JSON.parse(process.env.RSSR_SKELETON_DEBUG);
-
-function debugLog(msg) {
-    if (debug)
-        console.info('SKELETON > ' + msg)
 }

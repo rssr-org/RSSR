@@ -10,7 +10,6 @@ import SignUpModal from "../Component/Auth/SignUpModal";
 import OverLoading from "../Component/OverLoading/OverLoading";
 import {api} from "../setup/api";
 import {skeleton} from "../Partial/skeleton/skeleton";
-import {IS_BROWSER} from "../setup/constant";
 
 
 function App() {
@@ -33,7 +32,7 @@ function App() {
 }
 
 const skeletonFetch = function () {
-    return axios({url: IS_BROWSER ? api.skeleton : '*'})
+    return axios({url: api.skeleton})
 }
 
-export default skeleton(App, skeletonFetch, 2000);
+export default skeleton(App, skeletonFetch, 8000);
