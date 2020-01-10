@@ -6,7 +6,7 @@ import {routeMap} from "../../setup/routeMap";
 import {debugLog} from "./debugLog";
 
 
-export const skeletonClientProvider = function (skeletonFetch) {
+export const skeletonClientProvider = function (fetchFn) {
     // when server fetch data successfully
     if (getStore('skeletonErroredInServer') !== true) {
         debugLog('WENT_WELL')
@@ -29,7 +29,7 @@ export const skeletonClientProvider = function (skeletonFetch) {
         return match;
     });
 
-    skeletonFetch(ftechParams)
+    fetchFn(ftechParams)
         .then(function (response) {
             setStore('skeleton', response.data)
             debugLog('FETCHED_IN_CLIENT')

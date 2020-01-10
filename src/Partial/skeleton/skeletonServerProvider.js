@@ -4,8 +4,12 @@ import {errorLogger} from "../../setup/utility/errorLogger";
 import App from "../../App/App";
 import {debugLog} from "./debugLog";
 
+
+
 // locking the fetch to prevent parallel requests.
 let fetchLock = false;
+
+
 
 /**
  * call skeleton fetch and handle errors

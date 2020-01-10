@@ -21,7 +21,7 @@ export default function serverRenderer() {
             // define basic parameters
             initialize(req);
 
-            // handle skeleton data (App.skeleton)
+            // handle skeleton data
             await skeletonServerProvider(req);
 
             // call fetch() of component and get data
