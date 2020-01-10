@@ -4,7 +4,9 @@ import {errorLogger} from "../../setup/utility/errorLogger";
 import App from "../../App/App";
 
 
-
+/**
+ * call skeleton fetch and handle errors
+ */
 export const skeletonFetchProvider = async function (req) {
     try {
         await skeletonFetch(req);
@@ -14,6 +16,11 @@ export const skeletonFetchProvider = async function (req) {
 }
 
 
+
+
+/**
+ * try to read data from cache or get data from API and update cache
+ */
 const skeletonFetch = async function (req) {
     const skeleton = App.skeleton
 
