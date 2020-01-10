@@ -1,6 +1,8 @@
 import als from "async-local-storage";
 import {responseValidation} from "../../setup/utility/responseValidation";
 import {errorLogger} from "../../setup/utility/errorLogger";
+import App from "../../App/App";
+
 
 
 export const skeletonFetchProvider = async function (req) {
@@ -12,19 +14,17 @@ export const skeletonFetchProvider = async function (req) {
 }
 
 
-
-
 const skeletonFetch = async function (req) {
-    const skeletonFetch = als.get('skeletonFetch')
+    const skeleton = App.skeleton
 
     // App component does not skeleton() property
-    if (!skeletonFetch) {
+    if (!skeleton) {
         debugLog('WITH OUT SKELETON. App Component has not skeleton property')
         return true;
     }
 
     // cache is disabled
-    if (typeof skeletonFetch.cache !== "number" || skeletonFetch.cache <= 0) {
+    if (typeof skeleton.cache !== "number" || skeleton.cache <= 0) {
         debugLog('cache property is not number or more than ziro miliseconds. (set App.skeleton.cache)')
         await skeletonGetDataFromApi(req);
         return true;
@@ -52,7 +52,7 @@ const skeletonFetch = async function (req) {
             .then(function (data) {
                 debugLog('CACHING data')
                 global['SKELETON-CACHED-DATA'] = data
-                global['SKELETON-CACHE-EXP'] = Date.now() + skeletonFetch.cache;
+                global['SKELETON-CACHE-EXP'] = Date.now() + skeleton.cache;
             })
 }
 
@@ -65,7 +65,7 @@ const skeletonFetch = async function (req) {
  *  2) push data to updatedState (redux)
  */
 function skeletonGetDataFromApi(req) {
-    const skeletonFetch = als.get('skeletonFetch')
+    const skeleton = App.skeleton
     debugLog('fetching from API')
 
     //::1:: pass to skeleton fetch as params
@@ -76,7 +76,7 @@ function skeletonGetDataFromApi(req) {
     }
 
     return new Promise(function (resolve, reject) {
-        skeletonFetch(ftechParams)
+        skeleton(ftechParams)
             .then(function (response) {
                 responseValidation(response)
                 pushDataToUpdatedState.success(response.data)

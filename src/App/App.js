@@ -4,21 +4,19 @@ import {Helmet} from "react-helmet-async";
 import {ToastContainer} from 'react-toastify';
 import Router from "../Partial/Router/Router";
 import Menu from "../Component/Menu/Menu";
-import {skeletonClientProvider} from "../setup/utility/skeletonClientProvider";
 import {firstSetup} from "../Component/Auth/__action/firstSetup";
 import SignInModal from "../Component/Auth/SignInModal";
 import SignUpModal from "../Component/Auth/SignUpModal";
 import OverLoading from "../Component/OverLoading/OverLoading";
 import {api} from "../setup/api";
+import {skeleton} from "../Partial/skeleton/skeleton";
+import {IS_BROWSER} from "../setup/constant";
 
 
 function App() {
     useEffect(() => {
         // user Authentication, get cart, set theme and more.
         firstSetup();
-
-        // refetch skeleton on client when server fetch skeleton error
-        skeletonClientProvider()
     }, [])
 
     return (
@@ -34,9 +32,8 @@ function App() {
     )
 }
 
-App.skeleton = function () {
-    return axios({url: api.skeleton})
+const skeletonFetch = function () {
+    return axios({url: IS_BROWSER ? api.skeleton : '*'})
 }
-App.skeleton.cache = 2000; //reset cache in each 2000 miliseconds
 
-export default App;
+export default skeleton(App, skeletonFetch, 2000);

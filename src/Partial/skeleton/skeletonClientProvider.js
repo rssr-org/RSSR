@@ -1,11 +1,11 @@
 import {getStore, setStore} from "trim-redux";
 import {queryStringParams} from "rssr-query-string";
 import {matchPath} from "react-router-dom";
-import {browserHistory} from "../browserHistory";
-import {routeMap} from "../routeMap";
-import App from "../../App/App";
+import {browserHistory} from "../../setup/browserHistory";
+import {routeMap} from "../../setup/routeMap";
 
-export const skeletonClientProvider = function () {
+
+export const skeletonClientProvider = function (skeletonFetch) {
     // when server fetch data successfully
     if (getStore('skeletonErroredInServer') !== true){
         debugLog(false)
@@ -28,7 +28,7 @@ export const skeletonClientProvider = function () {
         return match;
     });
 
-    App.skeleton(ftechParams)
+    skeletonFetch(ftechParams)
         .then(function (response) {
             setStore('skeleton', response.data)
             debugLog(true)
