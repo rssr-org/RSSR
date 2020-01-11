@@ -1,14 +1,15 @@
 import {getStore, setStore} from "trim-redux";
 import {queryStringParams} from "rssr-query-string";
 import {matchPath} from "react-router-dom";
-import {browserHistory} from "../browserHistory";
-import {routeMap} from "../routeMap";
-import App from "../../App/App";
+import {browserHistory} from "../../setup/browserHistory";
+import {routeMap} from "../../setup/routeMap";
+import {debugLog} from "./debugLog";
 
-export const skeletonClientProvider = function () {
+
+export const skeletonClientProvider = function (fetchFn) {
     // when server fetch data successfully
-    if (getStore('skeletonError') !== true){
-        debugLog(false)
+    if (getStore('skeletonErroredInServer') !== true) {
+        debugLog('WENT_WELL')
         return;
     }
 
@@ -28,15 +29,13 @@ export const skeletonClientProvider = function () {
         return match;
     });
 
-    App.skeleton(ftechParams)
+    fetchFn(ftechParams)
         .then(function (response) {
             setStore('skeleton', response.data)
-            debugLog(true)
+            debugLog('FETCHED_IN_CLIENT')
         })
-}
-
-
-function debugLog(inClient) {
-    if (JSON.parse(process.env.RSSR_SKELETON_DEBUG))
-        console.info((inClient ? '🙎‍♂️' : '🌎') + ' fetch skeleton in ' + (inClient ? 'client' : 'server'));
+        .catch(function (err) {
+            console.error(err)
+            debugLog('CLIENT_ERRORED')
+        })
 }

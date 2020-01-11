@@ -6,6 +6,7 @@ import {route} from "../../setup/route";
 import {regexp} from "../../setup/constant";
 import {browserHistory} from "../../setup/browserHistory";
 import Form from "rssr-form";
+import Loading from "rssr-loading";
 
 
 
@@ -105,7 +106,9 @@ function ResetPassword(props) {
                             :
                             (
                                 viewMod === 'loading' ?
-                                    <strong className="animated flash">اعتبار سنجی. لطفا صبر کنید...</strong>
+                                    <Loading isLoading={true}>
+                                        <strong>اعتبار سنجی. لطفا صبر کنید...</strong>
+                                    </Loading>
                                     :
                                     <strong>توکن معتبر نیست!</strong>
                             )

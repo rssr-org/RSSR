@@ -1,7 +1,6 @@
 import als from "async-local-storage";
 import {matchPath} from "react-router-dom";
 import {routeMap} from "../../setup/routeMap";
-import App from "../../App/App";
 
 
 
@@ -12,15 +11,6 @@ export const initialize = function (req) {
     // to pass data to the client for syncing reduxes and merge with defaultState
     // of redux to creare store on the server
     als.set('updatedState', {}, true);
-
-
-
-
-    /** skeleton **/
-    // fetch fn of skeleton data (public and basic data) in all route of app
-    // this data store in redux skeleton satate
-    if (App.skeleton)
-        als.set('skeletonFetch', App.skeleton, true);
 
 
 
