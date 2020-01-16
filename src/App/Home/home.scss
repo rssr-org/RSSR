@@ -4,15 +4,15 @@
     margin-bottom : 50px;
 
     .item {
-        $size     : 300px;
+        $size  : 300px;
         //
-        max-width : $size;
-        margin    : 0 15px;
-        height    : 112px;
+        height : 112px;
+        margin : 0 15px;
+        width  : $size;
 
         img {
-            max-width  : $size;
             max-height : 100%;
+            max-width  : $size;
         }
     }
 }
