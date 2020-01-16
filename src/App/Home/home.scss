@@ -4,10 +4,11 @@
     margin-bottom : 50px;
 
     .item {
-        $size : 300px;
+        $size     : 300px;
         //
         max-width : $size;
         margin    : 0 15px;
+        height    : 112px;
 
         img {
             max-width  : $size;
