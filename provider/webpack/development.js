@@ -1,7 +1,7 @@
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {CLIENT_NAME, DIST_ROUTE, SCSS_PATH, CLIENT_PATH, SERVER_PATH, SERVER_NAME, IGNORE_CSS_IN_SERVER} = require('../setup/constant');
+const {CLIENT_NAME, DIST_ROUTE, SCSS_PATH, CLIENT_ROUTE, SERVER_ROUTE, SERVER_NAME, IGNORE_CSS_IN_SERVER} = require('../setup/constant');
 
 
 //?quiet=true
@@ -12,7 +12,7 @@ module.exports = [
         mode: 'development',
         target: 'web',
         devtool: 'source-map',
-        entry: ['webpack-hot-middleware/client?name=client&reload=true', CLIENT_PATH],
+        entry: ['webpack-hot-middleware/client?name=client&reload=true', CLIENT_ROUTE],
         output: {
             filename: CLIENT_NAME,
             publicPath: DIST_ROUTE,
@@ -92,7 +92,7 @@ module.exports = [
         mode: 'development',
         target: 'node',
         devtool: 'source-map',
-        entry: ['webpack-hot-middleware/client?name=server&reload=true', SERVER_PATH],
+        entry: ['webpack-hot-middleware/client?name=server&reload=true', SERVER_ROUTE],
         output: {
             filename: SERVER_NAME,
             libraryTarget: 'commonjs2',

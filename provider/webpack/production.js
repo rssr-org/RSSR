@@ -5,7 +5,7 @@ const Dotenv = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const {CLIENT_NAME, DIST_PATH, SCSS_PATH, CLIENT_PATH, SERVER_PATH, SERVER_NAME, IGNORE_CSS_IN_SERVER} = require('../setup/constant');
+const {CLIENT_NAME, DIST_PATH, SCSS_PATH, CLIENT_ROUTE, SERVER_ROUTE, SERVER_NAME, IGNORE_CSS_IN_SERVER} = require('../setup/constant');
 
 
 module.exports = [
@@ -15,7 +15,7 @@ module.exports = [
         mode: 'production',
         target: 'web',
         performance: {hints: false},
-        entry: CLIENT_PATH,
+        entry: CLIENT_ROUTE,
         output: {
             path: DIST_PATH,
             filename: CLIENT_NAME,
@@ -109,7 +109,7 @@ module.exports = [
         mode: 'production',
         target: 'node',
         performance: {hints: false},
-        entry: SERVER_PATH,
+        entry: SERVER_ROUTE,
         output: {
             path: DIST_PATH,
             filename: SERVER_NAME,

@@ -3,14 +3,12 @@ require('../setup/evnLoader')
 // define global.FILE_VERSION for dist file version. see render/Index.js template. ::5::
 require('../setup/fileVersion')
 
-const path = require('path')
+const {DIST_PATH, DIST_ROUTE, PUBLIC_PATH, SERVER_DIST_PATH} = require('../setup/constant')
 const cookieParser = require('cookie-parser')
 const seoOptimization = require('../setup/seoOptimization')
 const rateLimit = require('../setup/rateLimit')
 const express = require('express')
-const serverRendererPath = path.resolve(process.cwd(), './dist/server.js')
-const serverRenderer = require(serverRendererPath).default
-const {DIST_PATH, DIST_ROUTE, PUBLIC_PATH} = require('../setup/constant')
+const serverRenderer = require(SERVER_DIST_PATH).default
 
 
 

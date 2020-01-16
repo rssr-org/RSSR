@@ -1,18 +1,29 @@
 const path = require('path');
 
-module.exports = {
-    CLIENT_NAME: 'client.js',
-    CLIENT_PATH: './src/render/client.js',
+const C = {};
 
-    SERVER_NAME: 'server.js',
-    SERVER_PATH: './src/render/server/server.js',
+// dist
+C.DIST_NAME = 'dist';
+C.DIST_ROUTE = '/' + C.DIST_NAME;
+C.DIST_PATH = path.resolve(process.cwd(), '.' + C.DIST_ROUTE);
 
-    DIST_ROUTE: '/dist',
-    DIST_PATH: path.resolve(process.cwd(), './dist'),
+// client
+C.CLIENT_NAME = 'client.js';
+C.CLIENT_ROUTE = './src/render/' + C.CLIENT_NAME;
 
-    PUBLIC_PATH: path.resolve(process.cwd(), './public'),
+// server
+C.SERVER_NAME = 'server.js';
+C.SERVER_ROUTE = './src/render/server/' + C.SERVER_NAME;
+C.SERVER_DIST_PATH = path.resolve(C.DIST_PATH, C.SERVER_NAME);
 
-    SCSS_PATH: path.resolve(process.cwd(), './src/setup/style'),
+// public
+C.PUBLIC_NAME = 'public';
+C.PUBLIC_PATH = path.resolve(process.cwd(), './' + C.PUBLIC_NAME);
 
-    IGNORE_CSS_IN_SERVER: path.resolve('provider/webpack/loader/ignoreCssInServer.js'),
-}
+// style
+C.SCSS_PATH = path.resolve(process.cwd(), './src/setup/style');
+
+// loader
+C.IGNORE_CSS_IN_SERVER = path.resolve('provider/webpack/loader/ignoreCssInServer.js');
+
+module.exports = C
