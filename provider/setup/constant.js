@@ -12,7 +12,5 @@ module.exports = {
 
     PUBLIC_PATH: path.resolve(process.cwd(), './public'),
 
-    SCSS_PATH: path.resolve(process.cwd(), './src/setup/style'),
-
-    IGNORE_CSS_IN_SERVER: path.resolve('provider/webpack/loader/ignoreCssInServer.js'),
+    SCSS_PATH: path.resolve(process.cwd(), './src/setup/style')
 }
