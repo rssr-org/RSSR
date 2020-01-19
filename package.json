@@ -1,7 +1,6 @@
 {
   "name": "RSSR",
   "version": "0.2.0",
-  "private": true,
   "scripts": {
     "dev": "NODE_ENV=development node --max_old_space_size=8000 ./provider/server/development.js",
     "build": "NODE_ENV=production webpack --config ./provider/webpack/production.js --debug --progress --display-error-details --profile --colors",
