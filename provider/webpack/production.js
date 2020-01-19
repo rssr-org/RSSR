@@ -5,7 +5,8 @@ const Dotenv = require('dotenv-webpack');
 const TerserPlugin = require('terser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const OptimizeCssAssetsPlugin = require('optimize-css-assets-webpack-plugin');
-const {CLIENT_NAME, DIST_PATH, SCSS_PATH, CLIENT_ROUTE, SERVER_ROUTE, SERVER_NAME, IGNORE_CSS_IN_SERVER} = require('../setup/constant');
+const {CLIENT_NAME, DIST_PATH, SCSS_PATH, CLIENT_ROUTE, SERVER_ROUTE, SERVER_NAME} = require('../setup/constant');
+
 
 
 module.exports = [
@@ -129,7 +130,7 @@ module.exports = [
                 },
                 {
                     test: /\.(css|scss)$/,
-                    use: IGNORE_CSS_IN_SERVER
+                    use: 'ignore-loader'
                 }
             ]
         }

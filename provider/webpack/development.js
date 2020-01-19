@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {CLIENT_NAME, DIST_ROUTE, SCSS_PATH, CLIENT_ROUTE, SERVER_ROUTE, SERVER_NAME, IGNORE_CSS_IN_SERVER} = require('../setup/constant');
+const {CLIENT_NAME, DIST_ROUTE, SCSS_PATH, CLIENT_ROUTE, SERVER_ROUTE, SERVER_NAME} = require('../setup/constant');
+
 
 
 //?quiet=true
@@ -110,7 +111,7 @@ module.exports = [
                 },
                 {
                     test: /\.(css|scss)$/,
-                    use: IGNORE_CSS_IN_SERVER
+                    use: 'ignore-loader'
                 }
             ],
         },
