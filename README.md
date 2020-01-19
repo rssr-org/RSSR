@@ -5,7 +5,9 @@
 </div>
 
 # RSSR 
-✈ welcome to RSSR
+✈ welcome to RSSR. 
+
+🚩 NOTICE: RSSR is stable but need some changes to be released publicly. you can fork and review and star it but until the final release DONT USE it for your enterprise projects!
 
 ### what is RSSR?
 RSSR is a SSR boilerplate for React js. RSSR contian token base Authentication structure.
