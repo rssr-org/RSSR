@@ -12,7 +12,7 @@ const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware')
 const devServerIsReady = require('../setup/devServerIsReady')
-const {DIST_ROUTE, PUBLIC_PATH} = require('../setup/constant')
+const {DIST_ROUTE, CLIENT_NAME} = require('../setup/constant')
 
 
 
@@ -29,12 +29,12 @@ const compiler = webpack(config)
 
 // make bundled project source files accessable from memory
 app.use(webpackDevMiddleware(compiler, {
-    serverSideRender: true,
-    publicPath: DIST_ROUTE
+    publicPath: DIST_ROUTE,
+    serverSideRender: true
 }))
 
 // static files
-app.use(express.static(PUBLIC_PATH))
+app.use(express.static(CLIENT_NAME))
 
 // recompile webpack when file changes
 app.use(webpackHotMiddleware(compiler.compilers.find(compiler => compiler.name === 'client')))

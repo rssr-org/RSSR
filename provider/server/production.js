@@ -3,7 +3,7 @@ require('../setup/evnLoader')
 // define global.FILE_VERSION for dist file version. see render/Index.js template. ::5::
 require('../setup/fileVersion')
 
-const {DIST_PATH, DIST_ROUTE, PUBLIC_PATH, SERVER_DIST_PATH} = require('../setup/constant')
+const {DIST_PATH, DIST_ROUTE, PUBLIC_NAME, SERVER_DIST_PATH} = require('../setup/constant')
 const cookieParser = require('cookie-parser')
 const seoOptimization = require('../setup/seoOptimization')
 const rateLimit = require('../setup/rateLimit')
@@ -24,7 +24,7 @@ app.use(cookieParser())
 app.use(DIST_ROUTE, express.static(DIST_PATH))
 
 // load static files
-app.use(express.static(PUBLIC_PATH))
+app.use(express.static(PUBLIC_NAME))
 
 // Redirect from www to non-www and remove slash at the end of URL
 seoOptimization(app)

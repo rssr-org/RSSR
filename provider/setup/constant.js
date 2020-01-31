@@ -18,7 +18,6 @@ C.SERVER_DIST_PATH = path.resolve(C.DIST_PATH, C.SERVER_NAME);
 
 // public
 C.PUBLIC_NAME = 'public';
-C.PUBLIC_PATH = path.resolve(process.cwd(), './' + C.PUBLIC_NAME);
 
 // style
 C.SCSS_PATH = path.resolve(process.cwd(), './src/setup/style');
