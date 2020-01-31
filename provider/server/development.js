@@ -5,13 +5,13 @@ require('../setup/fileVersion')
 
 const open = require('open')
 const cookieParser = require('cookie-parser')
+const serverIsReady = require('rssr-server-is-ready')
 const express = require('express')
 const webpack = require('webpack')
 const config = require('../webpack/development')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware')
-const devServerIsReady = require('rssr-server-is-ready')
 const {DIST_ROUTE, PUBLIC_NAME} = require('../setup/constant')
 
 
@@ -54,7 +54,7 @@ app.listen(PORT, error => {
         return console.error('Error in server.development.js: ', error);
     } else {
         // wait to project built and app ready
-        devServerIsReady(PORT)
+        serverIsReady(PORT)
             .then(function () {
                 // open project in browser
                 open(`http://localhost:${PORT}`);
