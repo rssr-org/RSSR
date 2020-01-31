@@ -1,4 +1,4 @@
-require('../setup/evnLoader'); // load .env files and define environment varibale before all actions
+require('rssr-env-loader'); // load .env files and define environment varibale before all actions
 
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');

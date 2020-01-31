@@ -18,6 +18,7 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
     "open": "^7.0.0",
+    "rssr-env-loader": "0.0.1",
     "rssr-seo-optimization": "0.0.1",
     "serialize-javascript": "^2.1.2"
   },
