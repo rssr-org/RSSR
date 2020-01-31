@@ -18,7 +18,7 @@
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
     "open": "^7.0.0",
-    "rssr-carousel": "0.0.1",
+    "rssr-seo-optimization": "0.0.1",
     "serialize-javascript": "^2.1.2"
   },
   "devDependencies": {
@@ -50,7 +50,7 @@
     "ignore-loader": "^0.1.2",
     "jquery": "^3.4.1",
     "mini-css-extract-plugin": "^0.9.0",
-    "node-sass": "^4.13.0",
+    "node-sass": "^4.13.1",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "popper.js": "^1.16.0",
     "prop-types": "^15.7.2",
@@ -62,6 +62,7 @@
     "react-toastify": "^5.5.0",
     "react-tooltip": "^3.11.2",
     "rssr-breackpoint": "^0.1.0",
+    "rssr-carousel": "0.0.1",
     "rssr-cookie": "^0.1.0",
     "rssr-data-type": "^0.1.0",
     "rssr-form": "^1.1.0",

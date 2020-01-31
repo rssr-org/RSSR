@@ -5,7 +5,7 @@ require('../setup/fileVersion')
 
 const {DIST_PATH, DIST_ROUTE, PUBLIC_NAME, SERVER_DIST_PATH} = require('../setup/constant')
 const cookieParser = require('cookie-parser')
-const seoOptimization = require('../setup/seoOptimization')
+const seoOptimization = require('rssr-seo-optimization')
 const rateLimit = require('../setup/rateLimit')
 const express = require('express')
 const serverRenderer = require(SERVER_DIST_PATH).default
