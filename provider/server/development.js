@@ -24,6 +24,9 @@ const app = express()
 // cookie
 app.use(cookieParser())
 
+// static files
+app.use(express.static(PUBLIC_NAME))
+
 // create webpack compiler
 const compiler = webpack(config)
 
@@ -32,9 +35,6 @@ app.use(webpackDevMiddleware(compiler, {
     publicPath: DIST_ROUTE,
     serverSideRender: true
 }))
-
-// static files
-app.use(express.static(PUBLIC_NAME))
 
 // recompile webpack when file changes
 app.use(webpackHotMiddleware(compiler.compilers.find(compiler => compiler.name === 'client')))
