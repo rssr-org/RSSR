@@ -11,8 +11,8 @@ const config = require('../webpack/development')
 const webpackDevMiddleware = require('webpack-dev-middleware')
 const webpackHotMiddleware = require('webpack-hot-middleware')
 const webpackHotServerMiddleware = require('webpack-hot-server-middleware')
-const devServerIsReady = require('../setup/devServerIsReady')
-const {DIST_ROUTE, CLIENT_NAME} = require('../setup/constant')
+const devServerIsReady = require('rssr-server-is-ready')
+const {DIST_ROUTE, PUBLIC_NAME} = require('../setup/constant')
 
 
 
@@ -34,7 +34,7 @@ app.use(webpackDevMiddleware(compiler, {
 }))
 
 // static files
-app.use(express.static(CLIENT_NAME))
+app.use(express.static(PUBLIC_NAME))
 
 // recompile webpack when file changes
 app.use(webpackHotMiddleware(compiler.compilers.find(compiler => compiler.name === 'client')))
