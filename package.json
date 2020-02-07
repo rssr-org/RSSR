@@ -17,7 +17,6 @@
     "dotenv": "^8.2.0",
     "express": "^4.17.1",
     "express-rate-limit": "^5.0.0",
-    "open": "^7.0.0",
     "rssr-env-loader": "0.0.1",
     "rssr-seo-optimization": "0.0.1",
     "serialize-javascript": "^2.1.2"
@@ -52,6 +51,7 @@
     "jquery": "^3.4.1",
     "mini-css-extract-plugin": "^0.9.0",
     "node-sass": "^4.13.1",
+    "open-browser-webpack-plugin": "0.0.5",
     "optimize-css-assets-webpack-plugin": "^5.0.3",
     "popper.js": "^1.16.0",
     "prop-types": "^15.7.2",
@@ -70,7 +70,6 @@
     "rssr-loading": "0.0.2",
     "rssr-namespace": "^1.0.0",
     "rssr-query-string": "^0.1.0",
-    "rssr-server-is-ready": "0.0.1",
     "rssr-smart-direction": "0.0.1",
     "rssr-smart-link": "0.0.1",
     "rssr-storage": "^0.1.0",

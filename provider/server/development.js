@@ -3,9 +3,7 @@ require('rssr-env-loader')
 // define global.FILE_VERSION for dist file version. see render/Index.js template. ::5::
 require('../setup/fileVersion')
 
-const open = require('open')
 const cookieParser = require('cookie-parser')
-const serverIsReady = require('rssr-server-is-ready')
 const express = require('express')
 const webpack = require('webpack')
 const config = require('../webpack/development')
@@ -53,13 +51,6 @@ app.listen(PORT, error => {
     if (error) {
         return console.error('Error in server.development.js: ', error);
     } else {
-        // wait to project built and app ready
-        serverIsReady(PORT)
-            .then(function () {
-                // open project in browser
-                open(`http://localhost:${PORT}`);
-
-                console.log(`development server running at http://localhost:${process.env.PORT}`);
-            })
+        console.log(`development server running at http://localhost:${process.env.PORT}`);
     }
 })

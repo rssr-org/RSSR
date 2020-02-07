@@ -1,7 +1,8 @@
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
+const OpenBrowserPlugin = require('open-browser-webpack-plugin');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
-const {CLIENT_NAME, DIST_ROUTE, SCSS_PATH, CLIENT_ROUTE, SERVER_ROUTE, SERVER_NAME} = require('../setup/constant');
+const {CLIENT_NAME, DIST_ROUTE, SCSS_PATH, CLIENT_ROUTE, SERVER_ROUTE, SERVER_NAME, OPEN_BROWSER_URL} = require('../setup/constant');
 
 
 
@@ -81,6 +82,7 @@ module.exports = [
             new MiniCssExtractPlugin({
                 filename: 'styles.css'
             }),
+            new OpenBrowserPlugin({url: OPEN_BROWSER_URL}),
             new Dotenv({systemvars: true}),
             new webpack.HotModuleReplacementPlugin(),
             new webpack.IgnorePlugin(/async-local-storage/)

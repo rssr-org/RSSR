@@ -22,7 +22,7 @@ C.PUBLIC_NAME = 'public';
 // style
 C.SCSS_PATH = path.resolve(process.cwd(), './src/setup/style');
 
-// loader
-C.IGNORE_CSS_IN_SERVER = path.resolve('provider/webpack/loader/ignoreCssInServer.js');
+// Development > open browser
+C.OPEN_BROWSER_URL = 'http://localhost:' + process.env.PORT;
 
 module.exports = C
