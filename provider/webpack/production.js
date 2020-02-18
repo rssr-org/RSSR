@@ -1,3 +1,5 @@
+process.env.NODE_ENV = 'production';
+
 require('rssr-env-loader'); // load .env files and define environment varibale before all actions
 
 const webpack = require('webpack');

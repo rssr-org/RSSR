@@ -2,10 +2,10 @@
   "name": "RSSR",
   "version": "0.2.0",
   "scripts": {
-    "dev": "NODE_ENV=development node --max_old_space_size=8000 ./provider/server/development.js",
-    "build": "NODE_ENV=production webpack --config ./provider/webpack/production.js --debug --progress --display-error-details --profile --colors",
-    "start": "NODE_ENV=production node ./provider/server/production.js",
-    "start-pm2": "NODE_ENV=production pm2 start ./provider/server/production.js --name RSSR",
+    "dev": "node --max_old_space_size=8000 ./provider/server/development.js",
+    "build": "webpack --config ./provider/webpack/production.js --debug --progress --display-error-details --profile --colors",
+    "start": "node ./provider/server/production.js",
+    "start-pm2": "pm2 start ./provider/server/production.js --name RSSR",
     "up": "pm2 delete RSSR & npm run start-pm2",
     "lint": "eslint src",
     "test": "echo 'do test'"
