@@ -47,7 +47,7 @@ app.use(webpackHotServerMiddleware(compiler))
 
 
 // run server
-const PORT = process.env.PORT || 4000;
+const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, error => {
     if (error) {
