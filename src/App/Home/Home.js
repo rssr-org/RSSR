@@ -58,7 +58,7 @@ function Home(props) {
                 <Breakpoint from="md">
                     {
                         () => (
-                            <div className="alert alert-info">مثالی برای Breackpoint</div>
+                            <div className="alert alert-info">مثالی برای Breakpoint</div>
                         )
                     }
                 </Breakpoint>
