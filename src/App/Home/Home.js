@@ -4,7 +4,7 @@ import {Link} from "react-router-dom";
 import {api} from "../../setup/api";
 import {route} from "../../setup/route";
 import {fetcher} from "../../Partial/fetcher/fetcher";
-import Breackpoint from "rssr-breackpoint";
+import Breakpoint from "rssr-breakpoint";
 import Namespace from "rssr-namespace";
 import {fetching} from "../../setup/utility/fetching";
 import "./home.scss";
@@ -55,13 +55,13 @@ function Home(props) {
                     }
                 </Carousel>
 
-                <Breackpoint from="md">
+                <Breakpoint from="md">
                     {
                         () => (
                             <div className="alert alert-info">مثالی برای Breackpoint</div>
                         )
                     }
-                </Breackpoint>
+                </Breakpoint>
 
                 <div>
                     {
