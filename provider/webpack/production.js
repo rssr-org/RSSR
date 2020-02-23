@@ -50,8 +50,10 @@ module.exports = [
                         {
                             loader: 'sass-loader',
                             options: {
-                                outputStyle: 'compressed',
-                                includePaths: [SCSS_PATH]
+                                sassOptions: {
+                                    outputStyle: 'compressed',
+                                    includePaths: [SCSS_PATH]
+                                }
                             }
                         },
                         {
