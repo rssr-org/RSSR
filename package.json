@@ -6,7 +6,8 @@
     "build": "webpack --config ./provider/webpack/production.js --debug --progress --display-error-details --profile --colors",
     "start": "node ./provider/server/production.js",
     "start-pm2": "pm2 start ./provider/server/production.js --name RSSR",
-    "up": "pm2 delete RSSR & npm run start-pm2",
+    "up": "pm2 delete RSSR & npm run start-pm2 -- -i max",
+    "up-low": "pm2 delete RSSR & npm run start-pm2",
     "lint": "eslint src",
     "test": "echo 'do test'"
   },
