@@ -1,6 +1,6 @@
 const webpack = require('webpack');
 const Dotenv = require('dotenv-webpack');
-const OpenBrowserPlugin = require('open-browser-webpack-plugin');
+const OpenBrowserPlugin = require('rssr-open-browser');
 const MiniCssExtractPlugin = require('mini-css-extract-plugin');
 const {CLIENT_NAME, DIST_ROUTE, SCSS_PATH, CLIENT_ROUTE, SERVER_ROUTE, SERVER_NAME, OPEN_BROWSER_URL} = require('../setup/constant');
 
@@ -51,7 +51,6 @@ module.exports = [
                             loader: 'sass-loader',
                             options: {
                                 sassOptions: {
-                                    sourceMap: true,
                                     outputStyle: 'compressed',
                                     includePaths: [SCSS_PATH]
                                 }
