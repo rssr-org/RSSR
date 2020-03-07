@@ -36,7 +36,10 @@ if (!window.RSSR_PROCCESS_ERROR) {
                 </HelmetProvider>
             </Router>
         </Provider>
-    );
+    )
 
-    reactDom.render(app, appWrap);
+    // render on client with hydrate() and render() when has not Child Nodes
+    const isMarkupPresent = appWrap.hasChildNodes();
+    const method = isMarkupPresent ? reactDom.hydrate : reactDom.render;
+    method(app, appWrap);
 }
