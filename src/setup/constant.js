@@ -56,5 +56,5 @@ export const regexp = {
     mobileNumber: '(^(\\+98|0)?9\\d{9}$)',
 
     // user password (like: SignInForm)
-    password: '(^.{8,62}$)',
+    password: '(^.{6,64}$)',
 };

@@ -3,6 +3,7 @@ import Home from "../App/Home/Home";
 import Post from "../App/Post/Post";
 import ResetPassword from "../Component/Auth/ResetPassword";
 import {route} from "./route";
+import Sign from "../App/Sign/Sign";
 
 
 export const routeMap = [
@@ -12,12 +13,17 @@ export const routeMap = [
         exact: true
     },
     {
-        path: route.post(),
+        path: route.post( ':postId'),
         component: Post
     },
     {
         path: route.resetPassword(':token'),
         component: ResetPassword
+    },
+
+    {
+        path: route.sign(':type'),
+        component: Sign
     },
 
     // ------- E404 -------

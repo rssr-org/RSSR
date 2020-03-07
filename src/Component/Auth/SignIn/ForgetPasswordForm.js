@@ -11,13 +11,9 @@ import Loading from "rssr-loading";
 
 function ForgetPasswordForm(props) {
 
-    const
-        [isLoading, setIsLoading] = useState(false),
-        [email, setEmail] = useState(''),
-        {localUser, showSignInForm} = props;
-
-
-
+    const [isLoading, setIsLoading] = useState(false)
+    const  [email, setEmail] = useState('')
+    const  {localUser, showSignInForm} = props
 
 
     function submitForgetPassword() {
@@ -33,9 +29,6 @@ function ForgetPasswordForm(props) {
             }
         })
             .then(() => {
-                // close the modal when launched from  modal
-                props.closeModal();
-
                 const message = (
                     <div>
                         ایمیل بازیابی ارسال شد.

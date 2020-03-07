@@ -1,12 +1,14 @@
 import React, {useState} from 'react';
 import {connect} from "trim-redux";
-import {withRouter} from "react-router-dom";
+import {Link, withRouter} from "react-router-dom";
 import {toast} from "react-toastify";
 import {regexp} from "../../setup/constant";
 import axios from "axios";
 import {api} from "../../setup/api";
 import {signingIn} from "./__action/signingIn";
 import Form from "rssr-form";
+import Loading from "rssr-loading";
+import {route} from "../../setup/route";
 
 
 
@@ -80,8 +82,8 @@ function SignUp(props) {
                 <div className="invalid-feedback">ایمیل معتبری درج نشده است!</div>
             </div>
 
-            <div className="form-group">
-                <label>رمز عبور (حداقل ۸ کاراکتر)</label>
+            <div className="form-group mb-5">
+                <label>رمز عبور (حداقل ۶ کاراکتر)</label>
                 <input type="password"
                        name="password"
                        className="form-control ltr-value"
@@ -92,11 +94,13 @@ function SignUp(props) {
                 <div className="invalid-feedback">رمز عبور باید بیش از ۸ کاراکتر باشد.</div>
             </div>
 
-            <button type="submit"
-                    className={`btn btn-block mt-7 ${(isLoading) ? 'loading-effect' : 'btn-primary'} `}
-                    disabled={isLoading || !localUser.updated}>
-                ثبت نام
-            </button>
+            <Loading isLoading={isLoading || !localUser.updated}>
+                <button className="btn btn-block btn-success mb-3" disabled={isLoading || !localUser.updated} type="submit">
+                    ثبت نام
+                </button>
+            </Loading>
+
+            <Link to={route.signIn}>ورود به حساب کاربری</Link>
         </Form>
     );
 }

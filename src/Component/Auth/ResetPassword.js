@@ -13,12 +13,9 @@ import Loading from "rssr-loading";
 
 function ResetPassword(props) {
 
-    const
-        [viewMod, setViewMod] = useState('loading'), // loading || form || error
-        [newpassword, setNewpassword] = useState(''),
-        [repassword, setRepassword] = useState('');
-
-
+    const [viewMod, setViewMod] = useState('loading') // loading || form || error
+    const [newpassword, setNewpassword] = useState('')
+    const [repassword, setRepassword] = useState('')
 
 
 

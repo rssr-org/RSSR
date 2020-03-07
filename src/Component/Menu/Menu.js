@@ -43,10 +43,10 @@ function Menu() {
 
                             <InvalidUser>
                                 <li className="nav-item">
-                                    <a className="nav-link" data-notify="signin-modal">ورود</a>
+                                    <Link to={route.signIn} className="nav-link">ورود</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <a className="nav-link" data-notify="signup-modal">ثبت نام</a>
+                                    <Link to={route.signUp} className="nav-link">ثبت نام</Link>
                                 </li>
                             </InvalidUser>
 

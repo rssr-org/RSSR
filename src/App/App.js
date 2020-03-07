@@ -5,8 +5,6 @@ import {ToastContainer} from 'react-toastify';
 import Router from "../Partial/Router/Router";
 import Menu from "../Component/Menu/Menu";
 import {firstSetup} from "../Component/Auth/__action/firstSetup";
-import SignInModal from "../Component/Auth/SignInModal";
-import SignUpModal from "../Component/Auth/SignUpModal";
 import OverLoading from "../Component/OverLoading/OverLoading";
 import {api} from "../setup/api";
 import {skeleton} from "../Partial/skeleton/skeleton";
@@ -24,8 +22,6 @@ function App() {
             <Menu/>
             <Router/>
             <Helmet defaultTitle="React Server Side Rendering"/>
-            <SignInModal/>
-            <SignUpModal/>
             <ToastContainer rtl={true}/>
         </Fragment>
     )

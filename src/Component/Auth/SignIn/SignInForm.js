@@ -4,21 +4,19 @@ import axios from "axios";
 import {api} from "../../../setup/api";
 import {signingIn} from "../__action/signingIn";
 import {regexp} from "../../../setup/constant";
-import {random} from "../../../setup/utility/random";
 import {connect} from "trim-redux";
 import Form from "rssr-form";
 import Loading from "rssr-loading";
+import {Link} from "react-router-dom";
+import {route} from "../../../setup/route";
 
 function SignInForm(props) {
 
-    const
-        [isLoading, setIsLoading] = useState(false),
-        [userName, setUserName] = useState(''),
-        [rememberMe, setRememberMe] = useState(true),
-        [password, setPassword] = useState(''),
-        {localUser, showForgetPasswordForm} = props,
-        readmeId = "remmber-me-" + random(1000); // fix confilict in Parallel usage
-
+    const [isLoading, setIsLoading] = useState(false)
+    const [userName, setUserName] = useState('')
+    const [rememberMe, setRememberMe] = useState(true)
+    const [password, setPassword] = useState('')
+    const {localUser, showForgetPasswordForm} = props
 
 
     function submitSignIn() {
@@ -30,9 +28,6 @@ function SignInForm(props) {
             data: {email: userName, password: password}
         })
             .then((response) => {
-                // close the modal when launched from  modal
-                props.closeModal();
-
                 // set token to localStorage if remember me checked and get user details
                 signingIn(response.data.token, rememberMe)
                     .then(function () {
@@ -75,16 +70,16 @@ function SignInForm(props) {
                 <div className="invalid-feedback">رمز عبور معتبر نیست! باید بیش از 8 کاراکتر باشد.</div>
             </div>
 
-            <div className="d-flex justify-content-between">
+            <div className="d-flex justify-content-between mb-3">
                 <div className="custom-control custom-checkbox">
                     <input type="checkbox"
                            name="rememberme"
                            className="custom-control-input"
-                           id={readmeId}
+                           id="rememberme-input"
                            checked={rememberMe}
                            onChange={(e) => setRememberMe(e.target.checked)}
                     />
-                    <label className="custom-control-label" htmlFor={readmeId}>مرا به خاطر بسپار</label>
+                    <label className="custom-control-label" htmlFor="rememberme-input">مرا به خاطر بسپار</label>
                 </div>
 
                 <a onClick={showForgetPasswordForm}>
@@ -92,11 +87,14 @@ function SignInForm(props) {
                     <i className="icon-angle-right"></i>
                 </a>
             </div>
+
             <Loading isLoading={isLoading || !localUser.updated}>
-                <button className="btn btn-block btn-primary mt-3" disabled={isLoading || !localUser.updated} type="submit">
-                    ورود
+                <button className="btn btn-block btn-primary mb-3" disabled={isLoading || !localUser.updated} type="submit">
+                    ورود به حساب
                 </button>
             </Loading>
+
+            <Link to={route.signUp}>ایجاد حساب کاربری جدید</Link>
         </Form>
     );
 }
