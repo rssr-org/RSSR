@@ -6,7 +6,7 @@ const Sign = props => {
     const isSignIn = props.match.params.type === 'in';
 
     return (
-        <div className="container-fluid">
+        <div className="container">
             <div className="row">
                 <div className="col-lg-8 offset-lg-8 py-5">
                     {
