@@ -10,7 +10,6 @@ import {fetching} from "../../setup/utility/fetching";
 import "./home.scss";
 import SmartDirection from "rssr-smart-direction";
 import Carousel from "rssr-carousel";
-import SmartLinkTest from "./SmartLinkTest";
 
 
 function Home(props) {
@@ -98,8 +97,6 @@ function Home(props) {
                             )
                     }
                 </div>
-
-                <SmartLinkTest/>
             </div>
         </Namespace>
     )
