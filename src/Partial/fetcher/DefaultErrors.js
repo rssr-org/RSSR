@@ -4,7 +4,8 @@ import Error404 from "../../App/Error404/Error404";
 import {browserHistory} from "../../setup/browserHistory";
 
 
-// use data error of axios
+// use for catch axios error in fetching proccess with fetcher
+// NOTICE: all non0-200 response status catch by this view unless you write catch in fetch function for them
 const DefaultErrors = (props) => {
     const {status, code, data} = props.data;
 
@@ -13,10 +14,10 @@ const DefaultErrors = (props) => {
 
     return (
         <div id="derr" className="container-fluid mb-3">
-            <Helmet title={`خطای ${status}`}/>
+            <Helmet title={`Erorr ${status}`}/>
             <div className="row">
-                <div className="col-24 text-center">
-                    <h4 className="py-5">خطای {status}</h4>
+                <div className="col-12 text-center">
+                    <h4 className="py-5">Error {status}</h4>
                     <pre>{JSON.stringify(data)}</pre>
                     <code>
                         {code ? code : ''}
@@ -24,7 +25,7 @@ const DefaultErrors = (props) => {
                     <hr/>
                     <button className="btn btn-secondary ml-3 mt-4" onClick={() => browserHistory.goBack()}>
                         <i className="fa fa-angle-right font-weight-bold ml-1"></i>
-                        بازگشت
+                        ‌Back
                     </button>
                 </div>
             </div>
