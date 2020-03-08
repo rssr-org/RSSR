@@ -18,10 +18,10 @@ function App() {
 
     return (
         <Fragment>
+            <Helmet defaultTitle="React Server Side Rendering"/>
             <OverLoading/>
             <Menu/>
             <Router/>
-            <Helmet defaultTitle="React Server Side Rendering"/>
             <ToastContainer rtl={true}/>
         </Fragment>
     )
