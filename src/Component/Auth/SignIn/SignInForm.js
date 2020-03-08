@@ -62,7 +62,6 @@ function SignInForm(props) {
                        pattern={regexp.email}
                        value={userName}
                        onChange={(e) => setUserName(e.target.value)}
-                       placeholder="enter acount email"
                        required/>
                 <div className="invalid-feedback">E-mail is not valid. please enter your account email like: sample@gmail.com</div>
             </div>
