@@ -8,7 +8,12 @@ const Sign = props => {
     return (
         <div className="container">
             <div className="row">
-                <div className="col-lg-8 offset-lg-8 py-5">
+                <div className="col-lg-4 offset-lg-4 py-5">
+                    <h1 className="text-center">
+                        {
+                            isSignIn ? 'Login' : 'Register'
+                        }
+                    </h1>
                     {
                         isSignIn ? <SignIn/> : <SignUp/>
                     }

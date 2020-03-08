@@ -70,7 +70,7 @@ function SignUp(props) {
     return (
         <Form onSubmit={submitSignUp} className="signup-form">
             <div className="form-group">
-                <label>ایمیل</label>
+                <label>E-mail</label>
                 <input type="text"
                        className="form-control ltr-value"
                        aria-describedby="emailHelp"
@@ -79,11 +79,11 @@ function SignUp(props) {
                        value={username}
                        onChange={(e) => setUsername(e.target.value)}
                        required/>
-                <div className="invalid-feedback">ایمیل معتبری درج نشده است!</div>
+                <div className="invalid-feedback">E-mail is not valid. please enter your account email like: sample@gmail.com</div>
             </div>
 
-            <div className="form-group mb-5">
-                <label>رمز عبور (حداقل ۶ کاراکتر)</label>
+            <div className="form-group mb-4">
+                <label>Password <sup>More than 6 characters</sup></label>
                 <input type="password"
                        name="password"
                        className="form-control ltr-value"
@@ -91,16 +91,16 @@ function SignUp(props) {
                        value={password}
                        onChange={(e) => setPassword(e.target.value)}
                        required/>
-                <div className="invalid-feedback">رمز عبور باید بیش از ۸ کاراکتر باشد.</div>
+                <div className="invalid-feedback">password is not valid!</div>
             </div>
 
             <Loading isLoading={isLoading || !localUser.updated}>
                 <button className="btn btn-block btn-success mb-3" disabled={isLoading || !localUser.updated} type="submit">
-                    ثبت نام
+                    Sign up
                 </button>
             </Loading>
 
-            <Link to={route.signIn}>ورود به حساب کاربری</Link>
+            <Link to={route.signIn}>Sign in</Link>
         </Form>
     );
 }

@@ -47,19 +47,20 @@ function SignInForm(props) {
     return (
         <Form onSubmit={submitSignIn} className="signin-form">
             <div className="form-group">
-                <label>ایمیل</label>
+                <label>E-mail</label>
                 <input type="text"
                        className="form-control ltr-value"
                        name="username"
                        pattern={regexp.email}
                        value={userName}
                        onChange={(e) => setUserName(e.target.value)}
+                       placeholder="enter acount email"
                        required/>
-                <div className="invalid-feedback">ایمیل معتبری درج نشده است!</div>
+                <div className="invalid-feedback">E-mail is not valid. please enter your account email like: sample@gmail.com</div>
             </div>
 
             <div className="form-group">
-                <label>رمز عبور</label>
+                <label>Password</label>
                 <input type="password"
                        name="password"
                        className="form-control"
@@ -67,7 +68,7 @@ function SignInForm(props) {
                        pattern={regexp.password}
                        onChange={(e) => setPassword(e.target.value)}
                        required/>
-                <div className="invalid-feedback">رمز عبور معتبر نیست! باید بیش از 8 کاراکتر باشد.</div>
+                <div className="invalid-feedback">password is not valid!</div>
             </div>
 
             <div className="d-flex justify-content-between mb-3">
@@ -79,22 +80,22 @@ function SignInForm(props) {
                            checked={rememberMe}
                            onChange={(e) => setRememberMe(e.target.checked)}
                     />
-                    <label className="custom-control-label" htmlFor="rememberme-input">مرا به خاطر بسپار</label>
+                    <label className="custom-control-label" htmlFor="rememberme-input">Remember me</label>
                 </div>
 
-                <a onClick={showForgetPasswordForm}>
-                    <span>فراموشی رمز عبور</span>
+                <button className="btn btn-link p-0" onClick={showForgetPasswordForm}>
+                    <span>Forget password</span>
                     <i className="icon-angle-right"></i>
-                </a>
+                </button>
             </div>
 
             <Loading isLoading={isLoading || !localUser.updated}>
                 <button className="btn btn-block btn-primary mb-3" disabled={isLoading || !localUser.updated} type="submit">
-                    ورود به حساب
+                    Sign in
                 </button>
             </Loading>
 
-            <Link to={route.signUp}>ایجاد حساب کاربری جدید</Link>
+            <Link to={route.signUp}>Sign up</Link>
         </Form>
     );
 }
