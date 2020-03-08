@@ -16,14 +16,13 @@ export const fetchProvider = async function (req) {
 
     debugLog('fetching data', req)
 
-    // pass to fetch() as params ::1::
+    // pass to fetch() as params
     const ftechParams = {
         req: req, // Express js request object
         match: als.get('match'), // match is match object of react-router-dom
         query: req.query //exp: {foo:'bar'} in 'http://www.site.com/post/1?foo=bar'
     }
 
-    // ::2::
     // NOTICE: catch() will be handel on the server.js with failedRes()
     await
         fetch(ftechParams)

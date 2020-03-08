@@ -12,7 +12,7 @@ const versionHash = function () {
 }
 
 
-// define global.FILE_VERSION for dist file version. see render/Index.js template. ::5::
+// define global.FILE_VERSION for dist file version. see render/Index.js template.
 // global.FILE_VERSION  is 'npm' or 'random' or 'disable'
 switch (process.env.FILE_VERSION_TYPE) {
     case 'npm':

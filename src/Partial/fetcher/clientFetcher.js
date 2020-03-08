@@ -53,7 +53,7 @@ export const clientFetcher = function (TheComponent) {
 
 
 
-        // params passed to fetch() on the client ::1::
+        // params passed to fetch() on the client
         setParams() {
             this.ftechParams = {
                 match: this.props.match,
@@ -67,7 +67,7 @@ export const clientFetcher = function (TheComponent) {
 
 
 
-        // fetch data and insert to redux ::2::
+        // fetch data and insert to redux
         fetchProvider() {
             this.debugLog(true);
 

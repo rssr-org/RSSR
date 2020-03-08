@@ -16,7 +16,7 @@ function Index ({renderedView, helmet, error}) {
         if (dataExist)
             dataTransfer = 'RSSR_UPDATED_REDUX_STATES =' + serialize(updatedState);
     } else {
-        dataTransfer = 'RSSR_PROCCESS_ERROR = true'; //::4::
+        dataTransfer = 'RSSR_PROCCESS_ERROR = true';
     }
 
     return (
@@ -30,7 +30,7 @@ function Index ({renderedView, helmet, error}) {
             {helmet.meta.toComponent()}
             {helmet.link.toComponent()}
             <link rel="shortcut icon" href="/app-icon.png" type="image/png"/>
-            <link rel="stylesheet" href={`/dist/styles.css${global.FILE_VERSION /*::5::*/}`}/>
+            <link rel="stylesheet" href={`/dist/styles.css${global.FILE_VERSION}`}/>
         </head>
         <body className="rtl" {...bodyAttrs}>
             <div id="app-root" dangerouslySetInnerHTML={{__html: renderedView}}></div>
@@ -40,7 +40,7 @@ function Index ({renderedView, helmet, error}) {
             {
                 schema ? <script type="application/ld+json" dangerouslySetInnerHTML={{__html: serialize(schema)}}></script> : ''
             }
-            <script src={`/dist/client.js${global.FILE_VERSION /*::5::*/}`}></script>
+            <script src={`/dist/client.js${global.FILE_VERSION}`}></script>
         </body>
         </html>
     );

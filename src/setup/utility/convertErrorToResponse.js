@@ -1,7 +1,7 @@
 import {errorLogger} from "./errorLogger";
 
 /**
- * convert axios error object to valid data object for SSR ::3::
+ * convert axios error object to valid data object for SSR
  * see fetcher/clientFetcher and server/fetchProvider
  *
  * @param error {object}

@@ -4,7 +4,7 @@ import Error404 from "../../App/Error404/Error404";
 import {browserHistory} from "../../setup/browserHistory";
 
 
-// use data error of axios ::3::
+// use data error of axios
 const DefaultErrors = (props) => {
     const {status, code, data} = props.data;
 

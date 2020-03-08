@@ -1,7 +1,7 @@
 import {dataType} from "rssr-data-type";
 
 /**
- * check data type is error or not ::3::
+ * check data type is error or not
  * compatible with convertErrorToResponse()
  * see fetcher/clientFetcher and server/fetchProvider
  *

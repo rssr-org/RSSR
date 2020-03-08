@@ -1,5 +1,5 @@
 /**
- * check data contain valid data and status property ::3::
+ * check data contain valid data and status property
  * see fetcher/clientFetcher and server/fetchProvider
  *
  * @param response
