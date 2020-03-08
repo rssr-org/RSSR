@@ -6,7 +6,7 @@ export const firstSetup = function () {
     const token = cookie.get('localUserToken');
     if (token) {
         // Real user
-        // when token exist mean in the past one user loged in
+        // when token exist mean in the past one user logged-in
         // but does not mean user is a valid user, so token need authentication.
         //
         // when server say token is valid then it's a Real and Valid user, and

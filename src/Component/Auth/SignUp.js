@@ -14,20 +14,10 @@ import {route} from "../../setup/route";
 
 function SignUp(props) {
 
-    const
-        [isLoading, setIsLoading] = useState(false),
-        [username, setUsername] = useState(''),
-        [password, setPassword] = useState(''),
-        {localUser} = props;
-
-
-
-
-
-    function closeModal() {
-        if (props.notify !== undefined)
-            props.notify.$modal.modal('hide');
-    }
+    const [isLoading, setIsLoading] = useState(false)
+    const [username, setUsername] = useState('')
+    const [password, setPassword] = useState('')
+    const {localUser} = props
 
 
 
@@ -45,22 +35,21 @@ function SignUp(props) {
             }
         })
             .then((response) => {
-                // close modal when launched from modal (Notify modal)
-                closeModal();
-
                 // set token to localStorage if remember me checked and get user details
                 signingIn(response.data.token, true)
                     .then(function () {
-                        toast.success('ثبت نام با موفقیت انجام شد و وارد حساب شدید.');
+                        toast.success('signed-up successfully!', {autoClose: 1200});
                     })
                     .catch(function () {
-                        toast.success('ثبت نام موفقیت آمیز بود ولی دریافت مشخصات به خطا خورد. با مشخصاتی که ثبت نام کردید برای ورود به حساب تلاش نمایید!');
+                        toast.success('signed-up successfully but occur an error in fetch user details, try again or tell to support!', {autoClose: false});
                     });
             })
             .catch(() => {
+                toast.error('Server Error,try again or tell to support!');
+            })
+            .finally(() => {
                 setIsLoading(false);
-                toast.error('خطا. مجددا تلاش نمایید و در صورت تکرار با پشتیبانی تماس بگیرید.');
-            });
+            })
     }
 
 

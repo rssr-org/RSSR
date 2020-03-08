@@ -19,6 +19,9 @@ function SignInForm(props) {
     const {localUser, showForgetPasswordForm} = props
 
 
+
+
+
     function submitSignIn() {
         setIsLoading(true);
 
@@ -31,17 +34,22 @@ function SignInForm(props) {
                 // set token to localStorage if remember me checked and get user details
                 signingIn(response.data.token, rememberMe)
                     .then(function () {
-                        toast.success('با موفقیت وارد حساب شدید.');
+                        toast.success('logged-in successfully!', {autoClose: 1200});
                     })
                     .catch(function () {
-                        toast.success('ورود موفقیت آمیز بود ولی دریافت مشخصات به خطا خورد. مجددا برای ورود تلاش نمایید!');
+                        toast.success('logged-in successfully but occur an error in fetch user details, try again or tell to support!', {autoClose: false});
                     });
             })
             .catch(() => {
+                toast.error('Server Error,try again or tell to support!');
+            })
+            .finally(() => {
                 setIsLoading(false);
-                toast.error('نام کاربری یا رمز عبور اشتباه است!');
-            });
+            })
     }
+
+
+
 
 
     return (
