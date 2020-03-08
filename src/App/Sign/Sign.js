@@ -16,7 +16,7 @@ const Sign = props => {
             <div className="row">
                 <div className="col-lg-4 offset-lg-4 py-5">
                     <InvalidUser>
-                        <h1 className="text-center">
+                        <h1 className="text-center pb-5">
                             {
                                 isSignIn ? 'Login' : 'Register'
                             }

@@ -7,13 +7,14 @@ import {regexp} from "../../setup/constant";
 import {browserHistory} from "../../setup/browserHistory";
 import Form from "rssr-form";
 import Loading from "rssr-loading";
+import {badConnectionAlert} from "../../setup/utility/badConnectionAlert";
 
 
 
 
 function ResetPassword(props) {
 
-    const [viewMod, setViewMod] = useState('loading') // loading || form || error
+    const [viewMod, setViewMod] = useState('LOADING') // LOADING || FORM || ERROR
     const [newpassword, setNewpassword] = useState('')
     const [repassword, setRepassword] = useState('')
 
@@ -28,13 +29,13 @@ function ResetPassword(props) {
             }
         })
             .then(() => {
-                setViewMod('form');
+                setViewMod('FORM');
             })
             .catch((e) => {
                 if (e.status === 404)
-                    setViewMod('error');
+                    setViewMod('ERROR');
                 else
-                    toast.error('خطا: ارتباط خود را چک کنید و مجددا امتحان نمایید.');
+                    badConnectionAlert('reset Password trust');
             });
     }, [props.match.params.token]);
 
@@ -52,12 +53,12 @@ function ResetPassword(props) {
             }
         })
             .then(() => {
-                toast.success('پسورد با موفقیت تغییر کرد.');
+                toast.success('Password successfully changed!');
                 browserHistory.replace(route.home);
             })
             .catch(() => {
-                toast.error('خطا: ارتباط خود را چک کنید و مجددا امتحان نمایید.');
-            });
+                badConnectionAlert('reset Password submit');
+            })
     }
 
 
@@ -70,7 +71,7 @@ function ResetPassword(props) {
                 <div className="col-md-10 offset-md-7 pt-5">
                     <h3 className="mb-5">تغییر رمز عبور</h3>
                     {
-                        (viewMod === 'form') ?
+                        (viewMod === 'FORM') ?
                             (
                                 <Form onSubmit={submitForm}>
                                     <div className="form-group">
@@ -102,7 +103,7 @@ function ResetPassword(props) {
                             )
                             :
                             (
-                                viewMod === 'loading' ?
+                                viewMod === 'LOADING' ?
                                     <Loading isLoading={true}>
                                         <strong>اعتبار سنجی. لطفا صبر کنید...</strong>
                                     </Loading>

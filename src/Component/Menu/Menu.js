@@ -7,12 +7,14 @@ import InvalidUser from "../Auth/InvalidUser";
 import LoadingUser from "../Auth/LoadingUser";
 import Namespace from "rssr-namespace";
 import "./menu.scss"
+import {connect} from "trim-redux";
 
 
-function Menu() {
+function Menu({skeleton}) {
+
     return (
         <Namespace namespace="menu">
-            <nav className="navbar navbar-expand-lg navbar-light bg-light">
+            <nav className="navbar navbar-expand-lg navbar-light" style={{"backgroundColor": "#eeeeee"}}>
                 <div className="container">
                     <Link to={route.home} className="navbar-brand">
                         <img src="/asset/img/rssr-logo.png" alt="RSSR"/>
@@ -23,45 +25,44 @@ function Menu() {
                     <div className="collapse navbar-collapse" id="navbarSupportedContent">
                         <ul className="navbar-nav mr-auto">
                             <li className="nav-item">
-                                <Link to={route.home} className="nav-link">خانه</Link>
+                                <Link to={route.home} className="nav-link">Home</Link>
                             </li>
                             <li className="nav-item">
-                                <Link to="/404" className="nav-link">راهنما</Link>
+                                <Link to="/invalid-route" className="nav-link">Erorr 404</Link>
                             </li>
-
                             <ValidUser>
                                 {
                                     (detail) => (
                                         <li className="nav-item">
-                                            <a className="nav-link" onClick={() => window.confirm('می‌خواهید خارج شوید؟') ? signingOut() : ''}>
-                                                سلام {detail.firstName}
+                                            <a className="nav-link" onClick={() => window.confirm('Are you want sign out?') ? signingOut() : ''}>
+                                                Hi {detail.firstName}
                                             </a>
                                         </li>
                                     )
                                 }
                             </ValidUser>
-
                             <InvalidUser>
                                 <li className="nav-item">
-                                    <Link to={route.signIn} className="nav-link">ورود</Link>
+                                    <Link to={route.signIn} className="nav-link">Login</Link>
                                 </li>
                                 <li className="nav-item">
-                                    <Link to={route.signUp} className="nav-link">ثبت نام</Link>
+                                    <Link to={route.signUp} className="nav-link">Register</Link>
                                 </li>
                             </InvalidUser>
-
                             <LoadingUser>
                                 <li className="nav-item">
-                                    <div className="nav-link">در حال اعتبار سنجی ...</div>
+                                    <span className="nav-link">Check Authentication ...</span>
                                 </li>
                             </LoadingUser>
                         </ul>
                     </div>
+                    <span className="navbar-text" title="daily message">
+                        {skeleton.dailyMessage}
+                    </span>
                 </div>
             </nav>
         </Namespace>
     )
 }
 
-
-export default Menu;
+export default connect(state => ({skeleton: state.skeleton}))(Menu);

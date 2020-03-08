@@ -7,6 +7,7 @@ import {route} from "../../../setup/route";
 import {toast} from "react-toastify";
 import Form from "rssr-form";
 import Loading from "rssr-loading";
+import {badConnectionAlert} from "../../../setup/utility/badConnectionAlert";
 
 
 function ForgetPasswordForm(props) {
@@ -31,13 +32,13 @@ function ForgetPasswordForm(props) {
             .then(() => {
                 const message = (
                     <div>
-                        ایمیل بازیابی ارسال شد.
+                        Recovery email sent.
                         <br/>
-                        برای بازیابی بر روی لینک ارسال شده به ایمیل زیر کلیک نمایید.
+                        Please check your email inbox or smap and click on link.
                         <br/>
                         {email}
                         <br/>
-                        در صورت عدم دریافت مجددا درخواست نمایید.
+                        Apply again if you do not receive it.
                     </div>
                 );
                 toast.success(message, {autoClose: false});
@@ -46,9 +47,9 @@ function ForgetPasswordForm(props) {
                 setIsLoading(false);
 
                 if (err.status === 400)
-                    toast.error('ایمیل معتبر نمی‌باشد!');
+                    toast.error('E-mail is not valid');
                 else
-                    toast.error('خطا. مجددا تلاش نمایید و در صورت تکرار با پشتیبانی تماس بگیرید.');
+                    badConnectionAlert('Submit forget password');
             });
     }
 
@@ -59,11 +60,11 @@ function ForgetPasswordForm(props) {
     return (
         <Form onSubmit={submitForgetPassword} className="forget-password-form">
             <div className="d-flex justify-content-between pb-5">
-                <h5>بازیابی رمز عبور</h5>
-                <a className="signin-toggle" onClick={showSignInForm}>بازگشت</a>
+                <h5>Password recovery</h5>
+                <a href="#" className="signin-toggle" onClick={showSignInForm}>Back</a>
             </div>
             <div className="form-group">
-                <label>ایمیل خود را وارد نمایید</label>
+                <label>Account Email</label>
                 <input type="text"
                        className="form-control ltr-value"
                        name="forgetpassword"
@@ -71,11 +72,11 @@ function ForgetPasswordForm(props) {
                        value={email}
                        onChange={(e) => setEmail(e.target.value)}
                        required/>
-                <div className="invalid-feedback">آدرس ایمیل وارد شده معتبر نیست!</div>
+                <div className="invalid-feedback">E-mail is not valid. please enter your account email like: sample@gmail.com</div>
             </div>
             <Loading isLoading={isLoading || !localUser.updated}>
                 <button className="btn btn-block btn-primary" disabled={isLoading || !localUser.updated} type="submit">
-                    بازیابی
+                    Recovery
                 </button>
             </Loading>
         </Form>

@@ -8,12 +8,9 @@ export const badConnectionAlert = function (whereOf) {
     const message = (
         <div>
             <div className="mb-2 font-weight-bold">
-                خطای
-                &nbsp;
-                {whereOf}
+                {whereOf} Error
             </div>
-            اتصال اینترنت خود را بررسی نماید و مجددا تلاش نمایید.
-            در صورت عدم رفع خطا به پشتیبانی اطلاع دهید.
+            Server Error, try again or tell to support!
         </div>
     )
 

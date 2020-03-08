@@ -9,6 +9,7 @@ import Form from "rssr-form";
 import Loading from "rssr-loading";
 import {Link} from "react-router-dom";
 import {route} from "../../../setup/route";
+import {badConnectionAlert} from "../../../setup/utility/badConnectionAlert";
 
 function SignInForm(props) {
 
@@ -41,7 +42,7 @@ function SignInForm(props) {
                     });
             })
             .catch(() => {
-                toast.error('Server Error,try again or tell to support!');
+                badConnectionAlert('Sing in');
             })
             .finally(() => {
                 setIsLoading(false);
