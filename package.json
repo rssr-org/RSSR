@@ -72,8 +72,6 @@
     "react-router-dom": "^5.1.2",
     "react-toastify": "^5.5.0",
     "react-tooltip": "^4.1.0",
-    "rssr-breakpoint": "^0.1.0",
-    "rssr-carousel": "0.0.1",
     "rssr-cookie": "^0.1.0",
     "rssr-data-type": "^0.1.0",
     "rssr-form": "^1.1.0",
