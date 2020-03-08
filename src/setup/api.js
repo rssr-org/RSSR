@@ -8,17 +8,17 @@
  */
 let api = {
     // authentication
-    signin: '5d70abc13300004d0077933f?mocky-delay=600ms',
-    signup: '5d70abc13300004d0077933f',
-    userDetails: '5d70aee23300005a00779357',
-    forgetPassword : '5d288a902c0000e3393edae5',
+    signin: '/signin',
+    signup: '/signup',
+    userDetails: '/userDetails',
+    forgetPassword : '/forgetPassword',
     resetPassword: {
-        trust: '5d288a902c0000e3393edae5',
-        submit: '5d288a902c0000e3393edae5',
+        trust: '/resetPasswordTrust',
+        submit: '/resetPasswordSubmit',
     },
-    skeleton:'5d28ae9e2c00005d693edbc8',
-    posts: '5d2881ef2c00008b633edab0',
-    post: (id) => '5d28ae9e2c00005d693edbc8?mocky-delay=1600ms&&id=' + id,
+    skeleton:'/skeleton',
+    posts: '/posts',
+    post: id => '/posts/' + id,
 }
 
 export {api};
