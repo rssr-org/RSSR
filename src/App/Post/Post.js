@@ -15,7 +15,7 @@ function Post(props) {
 
     return (
         <div className="container">
-            <Helmet title={post !== null ? post.title : 'باگذاری ...'}/>
+            <Helmet title={post !== null ? post.title : 'Loading ...'}/>
             <div className="jumbotron mt-3">
                 {
                     (post !== null) ? (
@@ -28,14 +28,14 @@ function Post(props) {
                         (
                             <Loading isLoading={true}>
                                 <div className="w-100 text-center">
-                                    در حال بار گذاری مطلب
+                                    loading post ...
                                 </div>
                             </Loading>
                         )
                 }
             </div>
             <div className="d-flex justify-content-between pb-5">
-                <Link to={route.post(postId - 1)} className="btn btn-outline-primary">last post</Link>
+                <Link to={route.post(postId - 1)} className="btn btn-outline-primary">previous post</Link>
                 <Link to={route.post(postId + 1)} className="btn btn-outline-primary">next post</Link>
             </div>
         </div>
