@@ -55,7 +55,6 @@
     "eslint-plugin-react": "^7.19.0",
     "eslint-plugin-react-hooks": "^2.5.0",
     "expose-loader": "^0.7.5",
-    "extract-text-webpack-plugin": "^4.0.0-beta.0",
     "flickity": "^2.2.1",
     "flickity-fade": "^1.0.0",
     "history": "^4.10.1",
