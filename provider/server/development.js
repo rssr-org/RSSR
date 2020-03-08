@@ -51,7 +51,7 @@ const PORT = process.env.PORT || 8000;
 
 app.listen(PORT, error => {
     if (error) {
-        return console.error('Error in server.development.js: ', error);
+        return console.error('Error in server/development.js: ', error);
     } else {
         console.log(`development server running at http://localhost:${process.env.PORT}`);
     }

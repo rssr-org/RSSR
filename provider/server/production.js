@@ -47,7 +47,7 @@ const HOST = process.env.HOST || '0.0.0.0'
 
 app.listen(PORT, HOST, error => {
     if (error)
-        return console.error('Error in server.production.js: ', error);
+        return console.error('Error in server/production.js: ', error);
     else
         console.log(`production server running at http://localhost:${process.env.PORT}`);
 })
