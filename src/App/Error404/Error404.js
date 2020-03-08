@@ -1,30 +1,26 @@
 import React from 'react';
-import {connect} from "trim-redux";
 import {Helmet} from "react-helmet-async";
 import {browserHistory} from "../../setup/browserHistory";
+import {Link} from "react-router-dom";
+import {route} from "../../setup/route";
 
-function Error404(props) {
+
+function Error404() {
     return (
         <div className="container mb-3">
-            <Helmet title="متاسفانه صفحه مورد نظر یافت نشد!"/>
+            <Helmet title="page not found"/>
             <div className="row">
-                <div className="col-12 text-center">
-                    <h4 className="py-5">Page Not Found!</h4>
-                    <img src="/asset/img/error-404.png" alt="page not found" width="300"/>
-                    <br/>
-                    <button className="btn btn-secondary ml-3 mt-4" onClick={() => browserHistory.goBack()}>
-                        <i className="fa fa-angle-right font-weight-bold ml-1"></i>
-                        Back
-                    </button>
-                    <div className="mt-3 alert alert-info">
-                        example skeleton data
-                        <br/>
-                        {props.skeleton.title}
+                <div className="col-12 text-center pt-5">
+                    <h3>Oops, page not found!</h3>
+                    <div className="py-3">
+                        <img src="/asset/img/error-404.png" alt="page not found"/>
                     </div>
+                    <button className="btn btn-secondary" onClick={browserHistory.goBack}>Back</button>
+                    <Link to={route.home} className="btn btn-primary ml-3">Home</Link>
                 </div>
             </div>
         </div>
-    );
-};
+    )
+}
 
-export default connect(s => ({skeleton: s.skeleton}))(Error404);
+export default Error404;
