@@ -7,24 +7,22 @@ import {fetcher} from "../../Partial/fetcher/fetcher";
 import Namespace from "rssr-namespace";
 import {fetching} from "../../setup/utility/fetching";
 import "./home.scss";
-import SmartDirection from "rssr-smart-direction";
+
+
+
 
 
 function Home(props) {
     const {homepage} = props;
-    const sampleTextForSmartDirection = ['this is sample LTR text for test smart direction', 'نمونه متن راست چین برای ازمایش چینش هوشمند']
-
 
     return (
         <Namespace namespace="home">
             <div className="container">
-                <Helmet title="صفحه ‌اصلی"/>
+                <Helmet title="RSSR Boilerplate home page"/>
 
                 <div className="jumbotron mt-3 pb-3" id="abc">
                     <h5>RSSR Boilderplate</h5>
                     <p className="lead">
-                        Be happy! Life is too short.
-                        <br/>
                         We are no better than no one,
                         We are not in competition with anyone,
                         We want to be the best version of ourselves.
@@ -34,34 +32,24 @@ function Home(props) {
                     </p>
                 </div>
 
-                <div>
-                    {
-                        sampleTextForSmartDirection.map((txt, index) => (
-                            <SmartDirection text={txt} key={index}>
-                                <div className="alert alert-success">{txt}</div>
-                            </SmartDirection>
-                        ))
-                    }
-                </div>
-
-                <div className="row">
+                <div className="row pb-3">
                     {
                         (homepage.isLoading) ?
                             (
-                                <div className="col-6 text-center">
+                                <div className="col-12 text-center">
                                     <img src="/asset/img/loading.gif" alt="loading"/>
                                     <div> fetching data ...</div>
                                 </div>
                             )
                             :
                             (
-                                homepage.map((item) => (
-                                    <div className="col-md-4 my-2 px-3" key={item.id}>
-                                        <Link to={route.post(item.id)} className="card">
+                                homepage.map((post) => (
+                                    <div className="col-md-4 my-2 px-3" key={post.id}>
+                                        <Link to={route.post(post.id)} className="card">
                                             <div className="card-body">
-                                                <h3 className="card-title text-truncate h6">{item.title}</h3>
-                                                <p className="card-text text-truncate">{item.body}</p>
-                                                <span>See</span>
+                                                <h3 className="card-title text-truncate h6">{post.title}</h3>
+                                                <p className="card-text text-truncate">{post.body}</p>
+                                                <span>See more</span>
                                             </div>
                                         </Link>
                                     </div>
