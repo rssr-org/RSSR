@@ -3,20 +3,27 @@ import reactDom from "react-dom";
 import {Provider} from "trim-redux";
 import {Router} from "react-router-dom";
 import {HelmetProvider} from 'react-helmet-async';
+
+// --- Structures ---//
 import {clientCreateStore} from "../setup/store";
 import {browserHistory} from "../setup/browserHistory";
 import localStorageSetup from "../setup/localStorage";
-import App from "../App/App";
 import "../setup/axiosConfig"
-import "bootstrap";
-import "animate.css";
-import "react-toastify/dist/ReactToastify.min.css";
-import "../setup/style/bootstrap/bootstrap.scss";
-import "../setup/utility/samplejQueryPlugin";
-import "../setup/style/limitedResonsive.scss";
-import "../setup/style/public.scss";
+import App from "../App/App";
 
-// ::4::
+//---- jQuery Plugins ----//
+import "../setup/utility/samplejQueryPlugin";
+
+//---- Public styles ----//
+import "../setup/style/public.scss";
+// react-toastify
+import "react-toastify/dist/ReactToastify.min.css";
+// Bootstrap
+import "bootstrap";
+import "bootstrap/dist/css/bootstrap.min.css";
+
+
+
 if (!window.RSSR_PROCCESS_ERROR) {
     // define public structur and varibales
     localStorageSetup();

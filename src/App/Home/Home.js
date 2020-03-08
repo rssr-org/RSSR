@@ -84,7 +84,7 @@ function Home(props) {
                             :
                             (
                                 homepage.map((item) => (
-                                    <div className="col-md-8 my-2 px-3 animated fadeIn" key={item.id}>
+                                    <div className="col-md-8 my-2 px-3" key={item.id}>
                                         <Link to={route.post(item.id)} className="card">
                                             <div className="card-body">
                                                 <h3 className="card-title text-truncate h6">{item.title}</h3>
