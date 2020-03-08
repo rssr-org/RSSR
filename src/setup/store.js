@@ -16,8 +16,8 @@ export const defaultState = {
     post: null,
     homepage: {isLoading: true},
     skeleton: {
-        // when occur error in both client and server fetchs you can use default data of skeleton
-        title: 'default title value when occur error'
+        // when occur error in both client and server then skeleton contain this data
+        dailyMessage: 'opps! occur error'
     }
 }
 
