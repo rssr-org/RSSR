@@ -276,7 +276,7 @@
         "ignoreCase": true
       }
     ],
-    "react/jsx-no-target-blank": "warn",
+    //"react/jsx-no-target-blank": "warn",
     "react/jsx-no-undef": "error",
     "react/jsx-pascal-case": [
       "warn",
