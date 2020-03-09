@@ -13,7 +13,6 @@
     "homepage": "https://github.com/rssr-org/RSSR#readme",
     "scripts": {
         "dev": "node --max_old_space_size=8000 ./provider/server/development.js",
-        "api": "node ./provider/server/fakeApi.js",
         "build": "webpack --config ./provider/webpack/production.js --debug --progress --display-error-details --profile --colors",
         "start": "node ./provider/server/production.js",
         "start-pm2-low": "pm2 start ./provider/server/production.js --name RSSR",
@@ -45,7 +44,6 @@
         "babel-eslint": "^10.1.0",
         "babel-loader": "^8.0.6",
         "bootstrap": "^4.4.1",
-        "cors": "^2.8.5",
         "css-hot-loader": "^1.4.4",
         "css-loader": "^3.4.2",
         "dotenv-webpack": "^1.7.0",

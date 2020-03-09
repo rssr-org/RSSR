@@ -1,4 +1,4 @@
-module.exports = {
+const fakeApiData = {
     "posts": [
         {
             "id": 0,
@@ -55,4 +55,42 @@ module.exports = {
     "resetPasswordSubmit": {
         "message": "token is valid."
     }
+}
+
+
+
+module.exports = function (app) {
+
+    app.use('/fake-api/:name/:id?', function (req, res) {
+        const {name, id} = req.params;
+
+        let result;
+
+        if (name)
+            result = fakeApiData[name]
+
+        if (id) {
+            if (Array.isArray(result)) {
+                const idResult = result.some(function (item) {
+                    const isEqual = String(item.id) === id;
+
+                    if (isEqual)
+                        result = item
+
+                    return isEqual;
+                })
+
+                if (!idResult)
+                    result = undefined;
+            } else {
+                result = undefined;
+            }
+        }
+
+        if (result)
+            res.status(200).json(result)
+        else
+            res.status(404).send('not found')
+
+    })
 }

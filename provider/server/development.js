@@ -18,8 +18,13 @@ const {DIST_ROUTE, PUBLIC_NAME} = require('../setup/constant')
 
 
 
+
 // express app
 const app = express()
+
+//----- REMOVE THIS PART AND 'fakeApi.js' FILE IN REAL PROJECTS -----//
+require('../setup/fakeApi')(app)
+//-------------------------------------------------------------------//
 
 // cookie
 app.use(cookieParser())
