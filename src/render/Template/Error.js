@@ -6,12 +6,14 @@ import {IS_DEVELOPMENT} from "../../setup/constant";
 function Error(props) {
     return (
         <div className="p-5">
-            <Helmet title="خطای پردازش"/>
+            <Helmet title="Process Error"/>
             {
                 !IS_DEVELOPMENT ?
                     <div className="px-3 pb-3" dir="rtl">
-                        <h2>خطای پردازش</h2>
-                        <p>متاسفانه در طول پردازش خطایی رخ داده است، در صورت امکان به صفحه قبل بازگردید و با پشتیبانی تماس بگیرید.</p>
+                        <h2>Process Error</h2>
+                        <p>
+                            Sorry, an error occurred during processing. if possible, go back to the previous page and contact support.
+                        </p>
                     </div>
                     : ''
             }
