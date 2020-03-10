@@ -1,4 +1,3 @@
-import als from "async-local-storage";
 import {render} from "./render";
 import {fetchProvider} from "./fetchProvider";
 import {initialize} from "./initialize";
@@ -7,29 +6,44 @@ import "../../setup/axiosConfig";
 
 
 export default function serverRenderer() {
-    // start async-local-storage
-    als.enable();
-
     return async (req, res) => {
-        // each request need unique scope to can define and work with variables over the request
-        als.scope();
+
+        // DUCT is a channel to access and pass data between sections
+        // and will be completed in initialize() method
+        const DUCT = {req, res}
+
+
+        //------- Test of Memory usage-----------//
+        //--------------------------------------//
+        const used = process.memoryUsage();
+        let str = '';
+        for (let key in used) {
+            if (key !== 'external')
+                str += ` ${key} ${Math.round(used[key] / 1024 / 1024 * 100) / 100} MB  /  `
+        }
+        console.log(str)
+
+        DUCT.bigArray =Array(1e6).fill("some string");
+        //--------------------------------------//
+        //--------------------------------------//
+
 
         // make response
-        const response = (error) => render(error, req, res);
+        const response = (error) => render(error, DUCT);
 
         try {
             // define basic parameters
-            initialize(req);
+            initialize(DUCT);
 
             // handle skeleton data
-            await skeletonServerProvider(req);
+            await skeletonServerProvider(DUCT);
 
             // call fetch() of component and get data
-            fetchProvider(req)
+            fetchProvider(DUCT)
                 .then(() => response()) // get data successfully
                 .catch((err) => response(err)); // occur error in fetchProvider() or render()
         } catch (err) {
             response(err) // occur error in try
         }
-    };
+    }
 }

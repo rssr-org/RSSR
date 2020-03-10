@@ -14,14 +14,11 @@ import DefaultErrors from "./DefaultErrors";
  * @param TheComponent : React Compoentn
  * @returns {Fecher} : Fetcher HOC of server side
  */
-export const serverFetcher = function (TheComponent) {
-
-    const als = require("async-local-storage");
+export const serverFetcher = function (TheComponent, stateName) {
 
     let Fecher = function (props) {
-        const
-            stateName = als.get('stateName'),
-            data = als.get('updatedState')[stateName];
+
+        const data = props[stateName]
 
         // handle errors
         if (isErrorData(data))
@@ -30,12 +27,12 @@ export const serverFetcher = function (TheComponent) {
         // connect  to redux
         const mstp = state => ({
             [stateName]: state[stateName]
-        });
+        })
 
         TheComponent = connect(mstp)(TheComponent);
 
         return <TheComponent {...props} />;
     }
 
-    return Fecher;
+    return connect(s => ({[stateName]: s[stateName]}))(Fecher);
 }

@@ -1,4 +1,3 @@
-import als from "async-local-storage";
 import {responseValidation} from "../../setup/utility/responseValidation";
 import {errorLogger} from "../../setup/utility/errorLogger";
 import App from "../../App/App";
@@ -14,15 +13,15 @@ let fetchLock = false;
 /**
  * call skeleton fetch and handle errors
  */
-export const skeletonServerProvider = async function (req) {
+export const skeletonServerProvider = async function (DUCT) {
     // skeleton is disable
     if (!App.skeleton)
         return true;
 
     try {
-        await skeletonFetch(req);
+        await skeletonFetch(DUCT);
     } catch (err) {
-        errorLogger('SKELETON >', err, false, req);
+        errorLogger('SKELETON >', err, false, DUCT.req);
     }
 }
 
@@ -32,7 +31,7 @@ export const skeletonServerProvider = async function (req) {
 /**
  * try to read data from cache or get data from API and update cache
  */
-const skeletonFetch = async function (req) {
+const skeletonFetch = async function (DUCT) {
     const skeleton = App.skeleton
 
     // *** reset in develop *** delete global['SKELETON-CACHED-DATA'];
@@ -43,7 +42,7 @@ const skeletonFetch = async function (req) {
         const notExpired = (global['SKELETON-CACHE-EXP'] - Date.now()) > 0;
         if (notExpired) {
             debugLog('READ_FROM_CACHE')
-            pushDataToUpdatedState.success(data)
+            pushDataToUpdatedState.success(DUCT,data)
             return true;
         } else {
             debugLog('CACHE_EXPIRED')
@@ -53,7 +52,7 @@ const skeletonFetch = async function (req) {
 
     if (!fetchLock) {
         fetchLock = true;
-        await skeletonGetDataFromApi(req)
+        await skeletonGetDataFromApi(DUCT)
             .then(function (data) {
                 debugLog('CACHING_DATA')
                 global['SKELETON-CACHED-DATA'] = data
@@ -70,29 +69,29 @@ const skeletonFetch = async function (req) {
  *  1) response vaidation
  *  2) push data to updatedState (redux)
  */
-function skeletonGetDataFromApi(req) {
+function skeletonGetDataFromApi(DUCT) {
     const skeleton = App.skeleton
     debugLog('FETCHING_API')
 
     // pass to skeleton fetch as params
     const ftechParams = {
-        req: req, // Express js request object
-        match: als.get('match'), // match is match object of react-router-dom
-        query: req.query //exp: {foo:'bar'} in 'http://www.site.com/post/1?foo=bar'
+        req: DUCT.req, // Express js request object
+        match: DUCT.match, // match is match object of react-router-dom
+        query: DUCT.req.query //exp: {foo:'bar'} in 'http://www.site.com/post/1?foo=bar'
     }
 
     return new Promise(function (resolve, reject) {
         skeleton(ftechParams)
             .then(function (response) {
                 responseValidation(response)
-                pushDataToUpdatedState.success(response.data)
+                pushDataToUpdatedState.success(DUCT, response.data)
                 debugLog('SUCCESSFULLY_FETCH')
                 resolve(response.data);
             })
             .catch(function (err) {
                 debugLog('SERVER_ERRORED')
                 // push error to updatedState
-                pushDataToUpdatedState.error()
+                pushDataToUpdatedState.error(DUCT)
                 reject(err);
             })
             .finally(function () {
@@ -109,14 +108,14 @@ function skeletonGetDataFromApi(req) {
  * set value of 'skeleton' OR 'skeletonErroredInServer' in 'updatedState'
  */
 const pushDataToUpdatedState = {
-    success: function (data) {
-        const updatedState = als.get('updatedState')
+    success: function (DUCT, data) {
+        const updatedState = DUCT.updatedState
         updatedState['skeleton'] = data
-        als.set('updatedState', updatedState, true)
+        DUCT.updatedState = updatedState;
     },
-    error: function () {
-        const updatedState = als.get('updatedState')
+    error: function (DUCT) {
+        const updatedState = DUCT.updatedState
         updatedState['skeletonErroredInServer'] = true
-        als.set('updatedState', updatedState, true)
+        DUCT.updatedState = updatedState
     }
 }

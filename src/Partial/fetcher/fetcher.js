@@ -24,14 +24,14 @@ import {clientFetcher} from "./clientFetcher";
  * param reduxState : name of redux state <custom>: default is name of TheComponent
  * returns {Fecher}
  */
-export const fetcher = (TheComponent, fetchFn, reduxState) => {
+export const fetcher = (TheComponent, fetchFn, stateName) => {
     let Fecher;
 
-    TheComponent.redux = reduxState;
+    TheComponent.redux = stateName;
     TheComponent.fetch = fetchFn
 
     if (IS_SERVER)
-        Fecher = serverFetcher(TheComponent);
+        Fecher = serverFetcher(TheComponent, stateName);
     else
         Fecher = clientFetcher(TheComponent);
 

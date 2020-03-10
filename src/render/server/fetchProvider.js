@@ -1,39 +1,41 @@
-import als from "async-local-storage";
+// import als from "async-local-storage";
 import {responseValidation} from "../../setup/utility/responseValidation";
 import {convertErrorToResponse} from "../../setup/utility/convertErrorToResponse";
 
 
 
 // fetch data of component from server
-export const fetchProvider = async function (req) {
-    const fetch = als.get('fetch')
+export const fetchProvider = async function (DUCT) {
+    // const fetch = als.get('fetch')
+    const fetch = DUCT.fetch
 
     // when component has not fetch() then fetch is undefined and fetchType is 'WITH_OUT_FETCH'
     if (!fetch) {
-        debugLog('with out FETCH', req)
+        debugLog('with out FETCH', DUCT)
         return true
     }
 
-    debugLog('fetching data', req)
+    debugLog('fetching data', DUCT)
 
     // pass to fetch() as params
     const ftechParams = {
-        req: req, // Express js request object
-        match: als.get('match'), // match is match object of react-router-dom
-        query: req.query //exp: {foo:'bar'} in 'http://www.site.com/post/1?foo=bar'
+        req: DUCT.req, // Express js request object
+        // match: als.get('match'), // match is match object of react-router-dom
+        match: DUCT.match, // match is match object of react-router-dom
+        query: DUCT.req.query //exp: {foo:'bar'} in 'http://www.site.com/post/1?foo=bar'
     }
 
     // NOTICE: catch() will be handel on the server.js with failedRes()
     await
         fetch(ftechParams)
             .then(function (response) {
-                debugLog('fetched SUCCESSFULLY', req)
-                fetchResponsePreparing(response)
+                debugLog('fetched SUCCESSFULLY', DUCT)
+                fetchResponsePreparing(DUCT, response)
             })
             .catch(function (error) {
-                debugLog('ERROR in fetch', req)
-                const response = convertErrorToResponse(error, req)
-                fetchResponsePreparing(response)
+                debugLog('ERROR in fetch', DUCT)
+                const response = convertErrorToResponse(error, DUCT.req)
+                fetchResponsePreparing(DUCT, response)
             })
 }
 
@@ -45,21 +47,26 @@ export const fetchProvider = async function (req) {
  *  2) set response status code
  *  3) push data to updatedState (redux)
  */
-function fetchResponsePreparing(response) {
+function fetchResponsePreparing(DUCT, response) {
     // excute 'throw new Error' if response is not valid
     responseValidation(response)
 
     // set response status code
-    als.set('status', response.status, true)
+    // als.set('status', response.status, true)
+    DUCT.status = response.status
 
-    const stateName = als.get('stateName')
-    const updatedState = als.get('updatedState')
+    // const stateName = als.get('stateName')
+    // const updatedState = als.get('updatedState')
+    const stateName = DUCT.stateName
+    const updatedState = DUCT.updatedState
     updatedState[stateName] = response.data
-    als.set('updatedState', updatedState, true)
+    // als.set('updatedState', updatedState, true)
+    DUCT.updatedState = updatedState
 
     // use for improve SEO
-    if(response.schema)
-        als.set('schema', response.schema, true)
+    if (response.schema)
+        DUCT.schema = response.schema;
+    // als.set('schema', response.schema, true)
 }
 
 
@@ -69,7 +76,7 @@ function fetchResponsePreparing(response) {
 // active switch for debuging logs
 const debug = JSON.parse(process.env.RSSR_FETCHER_DEBUG);
 
-function debugLog(msg, req) {
+function debugLog(msg, DUCT) {
     if (debug)
-        console.info('FETCH > ' + msg + '. route: ', req.originalUrl)
+        console.info('FETCH > ' + msg + '. route: ', DUCT.req.originalUrl)
 }

@@ -1,17 +1,15 @@
-import als from "async-local-storage";
 import {matchPath} from "react-router-dom";
 import {routeMap} from "../../setup/routeMap";
 
 
 
 // define public structur and varibales
-export const initialize = function (req) {
+export const initialize = function (DUCT) {
     /** updatedState **/
     // we use updatedState to set value of RSSR_UPDATED_REDUX_STATES in index template
     // to pass data to the client for syncing reduxes and merge with defaultState
     // of redux to creare store on the server
-    als.set('updatedState', {}, true);
-
+    DUCT.updatedState = {}
 
 
 
@@ -25,10 +23,10 @@ export const initialize = function (req) {
     */
     const matchedRouteMapItem = routeMap.find(route => {
         // is object for matched or null for not matched
-        const match = matchPath(req.path, route);
+        const match = matchPath(DUCT.req.path, route);
 
         if (match)
-            als.set('match', match, true);
+            DUCT.match = match
 
         return match;
     });
@@ -41,10 +39,9 @@ export const initialize = function (req) {
 
 
 
-    const
-        hasComponent = matchedRouteMapItem.hasOwnProperty('component'),
-        hasFetch = hasComponent && matchedRouteMapItem.component.hasOwnProperty('fetch'),
-        hasStateName = hasComponent && matchedRouteMapItem.component.hasOwnProperty('redux');
+    const hasComponent = matchedRouteMapItem.hasOwnProperty('component')
+    const hasFetch = hasComponent && matchedRouteMapItem.component.hasOwnProperty('fetch')
+    const hasStateName = hasComponent && matchedRouteMapItem.component.hasOwnProperty('redux')
 
     if (hasFetch) {
         if (!hasStateName)
@@ -58,8 +55,7 @@ export const initialize = function (req) {
         * when component has not fetch() then fetch is undefined
         * NOTICE: when "fetch" is undefind mean hasFetch is false
         */
-        als.set('fetch', matchedRouteMapItem.component.fetch, true);
-
+        DUCT.fetch = matchedRouteMapItem.component.fetch
 
         /** stateName **/
         /*
@@ -67,7 +63,7 @@ export const initialize = function (req) {
         *
         * stateName is name of redux state and define when fetch type is
         */
-        als.set('stateName', matchedRouteMapItem.component.redux, true);
+        DUCT.stateName = matchedRouteMapItem.component.redux
 
     } else if (hasStateName) {
         throw new Error('⛔ component does not fetch() param. when define "redux" for component, you must define fetch() param.');
@@ -89,7 +85,7 @@ export const initialize = function (req) {
     *          first --> get status prop of matchedRouteMapItem if exist (item of routeMap)
     *          second -> if matchedRouteMapItem has not status then status is 200 (default value)
     *          third --> if hasFetch is true then get fetch status in fetchProvider()
-    *          fourth -> status is 500 when als.get('status') is undefined (defined in render() - send response place)
+    *          fourth -> status is 500 when DUCT.status is undefined (defined in render() - send response place)
     *
     *   ERROR (defined in failedRequest() - occur an error in proccess)
     *          only -> status is 500
@@ -99,5 +95,5 @@ export const initialize = function (req) {
     if (typeof status !== 'number')
         throw new Error('⛔ status of routeMap is NOT number. status must be number like 404. status is ' + status);
 
-    als.set('status', status, true);
+    DUCT.status = status
 }

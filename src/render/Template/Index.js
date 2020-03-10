@@ -1,17 +1,16 @@
 import React from 'react';
 import serialize from "serialize-javascript";
-import als from "async-local-storage";
 
 
-function Index ({renderedView, helmet, error}) {
+function Index({renderedView, helmet, error, DUCT}) {
     const htmlAttrs = helmet.htmlAttributes.toComponent()
     const bodyAttrs = helmet.bodyAttributes.toComponent()
-    const schema = als.get('schema')
+    const schema = DUCT.schema
 
     // transfer data from server to client
     let dataTransfer;
     if (!error) {
-        const updatedState = als.get('updatedState');
+        const updatedState = DUCT.updatedState
         const dataExist = Object.getOwnPropertyNames(updatedState).length;
         if (dataExist)
             dataTransfer = 'RSSR_UPDATED_REDUX_STATES =' + serialize(updatedState);
