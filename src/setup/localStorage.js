@@ -1,44 +1,50 @@
-import {storage} from "rssr-storage";
-
-
+import storage from "local-storage";
 
 
 export default function () {
-    // check browser support
-    if (typeof Storage === 'undefined') {
-        console.error("browser does not support local storage!");
-        return;
-    }
-
-
-
-
     /**
      * version
+     *
+     *  we set static version for each important release to can remove some value of some version.
+     *  first version is 1 and add one in each time.
      */
-        // we set static version for each important release to can remove some value of some version.
-        // first version is 1 and add one in each time.
     const version = 1;
 
     // define version for first time
-    storage.init('version', version);
+    if (storage('version') === null)
+        storage('version', version);
 
     // available version in localstorage (sometime meaning previous version)
-    const nowVersion = storage.get('version');
+    const nowVersion = storage('version');
 
 
 
 
 
     /**
-     * update
+     * UPDATE
+     *
+     * you can access to last value by version number for remove or edit
      */
     if (nowVersion !== version) {
-        // sample of remove value
+        // UPDATE sample:
         // if (nowVersion < 5 && nowVersion > 2) {
         //     localStorage.removeItem('sampleValue');
 
         // update available vesion
-        storage.set('version', version);
+        storage('version', version);
     }
+
+
+
+
+
+    /**
+     * DEFAULT
+     *
+     * define default value
+     */
+    // DEFAULT sample:
+    // storage('sampleValue', 'SAMPLE_DEFAULT_VALUE');
+
 }
