@@ -15,15 +15,15 @@ export default function serverRenderer() {
 
         //------- Test of Memory usage-----------//
         //--------------------------------------//
-        const used = process.memoryUsage();
-        let str = '';
-        for (let key in used) {
-            if (key !== 'external')
-                str += ` ${key} ${Math.round(used[key] / 1024 / 1024 * 100) / 100} MB  /  `
-        }
-        console.log(str)
-
-        DUCT.bigArray =Array(1e6).fill("some string");
+        // const used = process.memoryUsage();
+        // let str = '';
+        // for (let key in used) {
+        //     if (key !== 'external')
+        //         str += ` ${key} ${Math.round(used[key] / 1024 / 1024 * 100) / 100} MB  /  `
+        // }
+        // console.log(str)
+        //
+        // DUCT.bigArray =Array(1e6).fill("some string");
         //--------------------------------------//
         //--------------------------------------//
 
