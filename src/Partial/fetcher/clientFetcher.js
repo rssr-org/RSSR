@@ -87,7 +87,7 @@ export const clientFetcher = function (TheComponent) {
                     const response = convertErrorToResponse(err);
                     setStore(stateName, response.data);
                 })
-                .finally(() => {
+                .then(() => {
                     delete this.cancelRequest;
                 })
         }

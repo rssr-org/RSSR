@@ -47,7 +47,7 @@ function SignUp(props) {
             .catch(() => {
                 toast.error('Server Error,try again or tell to support!');
             })
-            .finally(() => {
+            .then(() => {
                 setIsLoading(false);
             })
     }

@@ -44,7 +44,7 @@ function SignInForm(props) {
             .catch(() => {
                 badConnectionAlert('Sing in');
             })
-            .finally(() => {
+            .then(() => {
                 setIsLoading(false);
             })
     }

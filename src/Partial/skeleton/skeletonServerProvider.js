@@ -94,7 +94,7 @@ function skeletonGetDataFromApi(DUCT) {
                 pushDataToUpdatedState.error(DUCT)
                 reject(err);
             })
-            .finally(function () {
+            .then(function () {
                 fetchLock = false;
             })
     })
