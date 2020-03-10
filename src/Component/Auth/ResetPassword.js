@@ -5,7 +5,6 @@ import {api} from "../../setup/api";
 import {route} from "../../setup/route";
 import {regexp} from "../../setup/constant";
 import {browserHistory} from "../../setup/browserHistory";
-import Loading from "rssr-loading";
 import {badConnectionAlert} from "../../setup/utility/badConnectionAlert";
 
 
@@ -101,9 +100,7 @@ function ResetPassword(props) {
                             :
                             (
                                 viewMod === 'LOADING' ?
-                                    <Loading isLoading={true}>
-                                        <strong>User Validation, please wait...</strong>
-                                    </Loading>
+                                    <strong>User Validation, please wait...</strong>
                                     :
                                     <strong>User Token is not valid!</strong>
                             )

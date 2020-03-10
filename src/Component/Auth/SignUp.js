@@ -6,7 +6,6 @@ import {regexp} from "../../setup/constant";
 import axios from "axios";
 import {api} from "../../setup/api";
 import {signingIn} from "./__action/signingIn";
-import Loading from "rssr-loading";
 import {route} from "../../setup/route";
 
 
@@ -81,11 +80,9 @@ function SignUp(props) {
                 <div className="invalid-feedback">password is not valid!</div>
             </div>
 
-            <Loading isLoading={isLoading || !localUser.updated}>
-                <button className="btn btn-block btn-success mb-3" disabled={isLoading || !localUser.updated} type="submit">
-                    Sign up
-                </button>
-            </Loading>
+            <button className="btn btn-block btn-success mb-3" disabled={isLoading || !localUser.updated} type="submit">
+                Sign up
+            </button>
 
             <Link to={route.signIn}>Sign in</Link>
         </form>

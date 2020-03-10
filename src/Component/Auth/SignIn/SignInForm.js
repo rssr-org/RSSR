@@ -5,7 +5,6 @@ import {api} from "../../../setup/api";
 import {signingIn} from "../__action/signingIn";
 import {regexp} from "../../../setup/constant";
 import {connect} from "trim-redux";
-import Loading from "rssr-loading";
 import {Link} from "react-router-dom";
 import {route} from "../../../setup/route";
 import {badConnectionAlert} from "../../../setup/utility/badConnectionAlert";
@@ -94,11 +93,9 @@ function SignInForm(props) {
                 </button>
             </div>
 
-            <Loading isLoading={isLoading || !localUser.updated}>
-                <button className="btn btn-block btn-primary mb-3" disabled={isLoading || !localUser.updated} type="submit">
-                    Sign in
-                </button>
-            </Loading>
+            <button className="btn btn-block btn-primary mb-3" disabled={isLoading || !localUser.updated} type="submit">
+                Sign in
+            </button>
 
             <Link to={route.signUp}>Sign up</Link>
         </form>

@@ -5,15 +5,13 @@ import axios from "axios";
 import {api} from "../../../setup/api";
 import {route} from "../../../setup/route";
 import {toast} from "react-toastify";
-import Loading from "rssr-loading";
 import {badConnectionAlert} from "../../../setup/utility/badConnectionAlert";
 
 
 function ForgetPasswordForm(props) {
-
     const [isLoading, setIsLoading] = useState(false)
-    const  [email, setEmail] = useState('')
-    const  {localUser, showSignInForm} = props
+    const [email, setEmail] = useState('')
+    const {localUser, showSignInForm} = props
 
 
     function submitForgetPassword() {
@@ -73,11 +71,9 @@ function ForgetPasswordForm(props) {
                        required/>
                 <div className="invalid-feedback">E-mail is not valid. please enter your account email like: sample@gmail.com</div>
             </div>
-            <Loading isLoading={isLoading || !localUser.updated}>
-                <button className="btn btn-block btn-primary" disabled={isLoading || !localUser.updated} type="submit">
-                    Recovery
-                </button>
-            </Loading>
+            <button className="btn btn-block btn-primary" disabled={isLoading || !localUser.updated} type="submit">
+                Recovery
+            </button>
         </form>
     )
 }

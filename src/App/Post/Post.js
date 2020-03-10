@@ -6,7 +6,6 @@ import {route} from "../../setup/route";
 import {fetcher} from "../../Partial/fetcher/fetcher";
 import {fetching} from "../../setup/utility/fetching";
 import {tokenToHeaders} from "../../setup/utility/tokenToHeaders";
-import Loading from "rssr-loading";
 
 
 function Post(props) {
@@ -26,11 +25,9 @@ function Post(props) {
                         )
                         :
                         (
-                            <Loading isLoading={true}>
-                                <div className="w-100 text-center">
-                                    loading post ...
-                                </div>
-                            </Loading>
+                            <div className="w-100 text-center">
+                                loading post ...
+                            </div>
                         )
                 }
             </div>
