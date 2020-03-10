@@ -1,5 +1,3 @@
-import {dataType} from "rssr-data-type";
-
 /**
  * check data type is error or not
  * compatible with convertErrorToResponse()
@@ -8,4 +6,4 @@ import {dataType} from "rssr-data-type";
  * @param data {*}
  * @returns {boolean|*}
  */
-export const isErrorData = (data) => dataType(data) === 'object' && data.isErrorData
+export const isErrorData = (data) => data && data.isErrorData
