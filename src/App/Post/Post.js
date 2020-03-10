@@ -34,9 +34,9 @@ function Post(props) {
                         )
                 }
             </div>
-            <div className="d-flex justify-content-between pb-5">
-                <Link to={route.post(postId - 1)} className="btn btn-outline-primary">previous post</Link>
-                <Link to={route.post(postId + 1)} className="btn btn-outline-primary">next post</Link>
+            <div className="pb-3">
+                <Link to={route.post(postId - 1)} className="btn btn-link">&lt; previous</Link>
+                <Link to={route.post(postId + 1)} className="btn btn-link">next &gt;</Link>
             </div>
         </div>
     );
@@ -45,7 +45,7 @@ function Post(props) {
 
 const fetch = ({match, req}) => {
     return fetching({
-        url: api.post(match.params.postId),
+        url: api.post(match.params.postId + '?delay=800'),
         headers: tokenToHeaders({}, undefined, req)
     });
 }

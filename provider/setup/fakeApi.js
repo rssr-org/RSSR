@@ -63,7 +63,7 @@ module.exports = function (app) {
 
     app.use('/fake-api/:name/:id?', function (req, res) {
         const {name, id} = req.params;
-
+        const delay = req.query.delay || 1
         let result;
 
         if (name)
@@ -88,7 +88,9 @@ module.exports = function (app) {
         }
 
         if (result)
-            res.status(200).json(result)
+            setTimeout(function () {
+                res.status(200).json(result)
+            },delay)
         else
             res.status(404).send('not found')
 
