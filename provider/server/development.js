@@ -1,8 +1,5 @@
 process.env.NODE_ENV = 'development';
-
-// load .env files and define environment varibale before all actions
-require('rssr-env-loader')
-// define global.FILE_VERSION for dist file version. see render/Index.js template.
+require('../setup/envLoader')
 require('../setup/fileVersion')
 
 const cookieParser = require('cookie-parser')

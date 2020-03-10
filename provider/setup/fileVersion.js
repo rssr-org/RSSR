@@ -1,3 +1,4 @@
+// define global.FILE_VERSION for dist file version. see render/Index.js template.
 const version = require("../../package").version;
 
 // generate random string like: VL8fcfzQ84xBCJqoJCf4nR2u
