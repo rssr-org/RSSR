@@ -27,7 +27,7 @@ import {clientFetcher} from "./clientFetcher";
 export const fetcher = (TheComponent, fetchFn, stateName) => {
     let Fecher;
 
-    TheComponent.redux = stateName;
+    TheComponent.stateName = stateName;
     TheComponent.fetch = fetchFn
 
     if (IS_SERVER)

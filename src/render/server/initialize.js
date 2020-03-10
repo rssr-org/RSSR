@@ -8,7 +8,7 @@ export const initialize = function (DUCT) {
     /** updatedState **/
     // we use updatedState to set value of RSSR_UPDATED_REDUX_STATES in index template
     // to pass data to the client for syncing reduxes and merge with defaultState
-    // of redux to creare store on the server
+    // of 'stateName' to creare store on the server
     DUCT.updatedState = {}
 
 
@@ -41,11 +41,11 @@ export const initialize = function (DUCT) {
 
     const hasComponent = matchedRouteMapItem.hasOwnProperty('component')
     const hasFetch = hasComponent && matchedRouteMapItem.component.hasOwnProperty('fetch')
-    const hasStateName = hasComponent && matchedRouteMapItem.component.hasOwnProperty('redux')
+    const hasStateName = hasComponent && matchedRouteMapItem.component.hasOwnProperty('stateName')
 
     if (hasFetch) {
         if (!hasStateName)
-            throw new Error('⛔ component does not redux param. when define fetch() for component, you must define "redux" param.');
+            throw new Error('⛔ component does not "stateName" param. when define fetch() for component, you must define "stateName" param.');
 
         /** fetch **/
         /*
@@ -61,12 +61,12 @@ export const initialize = function (DUCT) {
         /*
         * CONSTATN {string}
         *
-        * stateName is name of redux state and define when fetch type is
+        * stateName is name of 'stateName' state and define when fetch type is
         */
-        DUCT.stateName = matchedRouteMapItem.component.redux
+        DUCT.stateName = matchedRouteMapItem.component.stateName
 
     } else if (hasStateName) {
-        throw new Error('⛔ component does not fetch() param. when define "redux" for component, you must define fetch() param.');
+        throw new Error('⛔ component does not fetch() param. when define "stateName" for component, you must define fetch() param.');
     }
 
 

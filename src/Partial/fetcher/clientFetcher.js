@@ -21,7 +21,7 @@ import axios from "axios";
  */
 export const clientFetcher = function (TheComponent) {
 
-    const stateName = TheComponent.redux;
+    const stateName = TheComponent.stateName;
 
     class Fecher extends Component {
         constructor(props) {
@@ -67,7 +67,7 @@ export const clientFetcher = function (TheComponent) {
 
 
 
-        // fetch data and insert to redux
+        // fetch data and insert to 'stateName'
         fetchProvider() {
             this.debugLog(true);
 
