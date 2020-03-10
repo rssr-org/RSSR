@@ -1,9 +1,9 @@
 import {setLocalUserAsGuest} from "./setLocalUserAsGuest";
 import {authentication} from "./authentication";
-import {cookie} from "rssr-cookie";
+import Cookies from "js-cookie";
 
 export const firstSetup = function () {
-    const token = cookie.get('localUserToken');
+    const token = Cookies.get('localUserToken');
     if (token) {
         // Real user
         // when token exist mean in the past one user logged-in

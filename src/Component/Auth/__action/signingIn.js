@@ -1,5 +1,5 @@
 import {authentication} from "./authentication";
-import {cookie} from "rssr-cookie";
+import Cookies from "js-cookie";
 
 /**
  * signing in user
@@ -12,7 +12,7 @@ import {cookie} from "rssr-cookie";
 export const signingIn = (token, rememberMe) => {
     // set local User Token when rememberMe
     if (rememberMe)
-        cookie.set('localUserToken', token)
+        Cookies.set('localUserToken', token)
 
     // token validation and get user detail
     return authentication(token)

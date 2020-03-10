@@ -1,5 +1,5 @@
 import {setLocalUserAsGuest} from "./setLocalUserAsGuest";
-import {cookie} from "rssr-cookie";
+import Cookies from "js-cookie";
 
 
 /**
@@ -11,7 +11,7 @@ export const signingOut = () => {
     setLocalUserAsGuest();
 
     // clear user token cookie
-    cookie.remove('localUserToken')
+    Cookies.remove('localUserToken')
 
     /**
      * @@@ Clear_USER_Cart

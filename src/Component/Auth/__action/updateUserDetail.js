@@ -1,8 +1,8 @@
 import {authentication} from "./authentication";
-import {cookie} from "rssr-cookie";
+import Cookies from "js-cookie";
 
 // refetch user details
 export const updateUserDetail = () => {
-    const token = cookie.get('localUserToken');
+    const token = Cookies.get('localUserToken');
     return authentication(token);
 }
