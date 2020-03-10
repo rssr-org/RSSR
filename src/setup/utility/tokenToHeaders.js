@@ -11,10 +11,8 @@ export const tokenToHeaders = function (headers = {}, token, req) {
             token = getStore('localUser').token;
     }
 
-    if (!token) {
-        console.log('🚩 tokenToHeaders > user is invalid. IF authentication is required check user validation before call API and tokenToHeaders() ELSE ignore this message.');
+    if (!token)
         return headers;
-    }
 
     headers.Authorization = "Bearer " + token;
     return headers;
