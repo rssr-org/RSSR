@@ -69,13 +69,13 @@ function ResetPassword(props) {
         <div className="container-fluid">
             <div className="row">
                 <div className="col-md-10 offset-md-7 pt-5">
-                    <h3 className="mb-5">تغییر رمز عبور</h3>
+                    <h3 className="mb-5">Change password</h3>
                     {
                         (viewMod === 'FORM') ?
                             (
                                 <Form onSubmit={submitForm}>
                                     <div className="form-group">
-                                        <label>رمز عبور جدید</label>
+                                        <label>New password</label>
                                         <input name="newPassword"
                                                className="form-control"
                                                type='password'
@@ -83,11 +83,11 @@ function ResetPassword(props) {
                                                value={newpassword}
                                                onChange={(e) => setNewpassword(e.target.value)}
                                                required/>
-                                        <div className="invalid-feedback">رمز عبور باید حداقل 8 کاراکتر باشد.</div>
+                                        <div className="invalid-feedback">password is not valid!</div>
                                     </div>
 
                                     <div className="form-group">
-                                        <label>تکرار رمز عبور جدید</label>
+                                        <label>Confirm password</label>
                                         <input name="renewPassword"
                                                className="form-control"
                                                type='password'
@@ -95,20 +95,20 @@ function ResetPassword(props) {
                                                value={repassword}
                                                onChange={(e) => setRepassword(e.target.value)}
                                                required/>
-                                        <div className="invalid-feedback">تکرار رمز عبور باید مشابه رمز عبور باشد.</div>
+                                        <div className="invalid-feedback">The password must be the same as the new password.</div>
                                     </div>
 
-                                    <button className="btn btn-primary mt-4" type="submit">ثبت</button>
+                                    <button className="btn btn-primary mt-4" type="submit">Submit</button>
                                 </Form>
                             )
                             :
                             (
                                 viewMod === 'LOADING' ?
                                     <Loading isLoading={true}>
-                                        <strong>اعتبار سنجی. لطفا صبر کنید...</strong>
+                                        <strong>User Validation, please wait...</strong>
                                     </Loading>
                                     :
-                                    <strong>توکن معتبر نیست!</strong>
+                                    <strong>User Token is not valid!</strong>
                             )
                     }
                 </div>
