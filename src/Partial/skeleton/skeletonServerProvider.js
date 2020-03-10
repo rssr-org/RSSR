@@ -42,7 +42,7 @@ const skeletonFetch = async function (DUCT) {
         const notExpired = (global['SKELETON-CACHE-EXP'] - Date.now()) > 0;
         if (notExpired) {
             debugLog('READ_FROM_CACHE')
-            pushDataToUpdatedState.success(DUCT,data)
+            pushDataToUpdatedState.success(DUCT, data)
             return true;
         } else {
             debugLog('CACHE_EXPIRED')
@@ -109,13 +109,9 @@ function skeletonGetDataFromApi(DUCT) {
  */
 const pushDataToUpdatedState = {
     success: function (DUCT, data) {
-        const updatedState = DUCT.updatedState
-        updatedState['skeleton'] = data
-        DUCT.updatedState = updatedState;
+        DUCT.updatedState['skeleton'] = data
     },
     error: function (DUCT) {
-        const updatedState = DUCT.updatedState
-        updatedState['skeletonErroredInServer'] = true
-        DUCT.updatedState = updatedState
+        DUCT.updatedState['skeleton'] = {isErrorData: true}
     }
 }
