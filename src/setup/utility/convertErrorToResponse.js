@@ -23,12 +23,12 @@ export const convertErrorToResponse = function (error, req) {
     // handel request time out error
     else if (error.code === 'ECONNABORTED') {
         response.status = 504;
-        response.data.data = 'عدم پاسخ دهی API در زمان تعیین شده!\n' + error.message;
+        response.data.data = 'Time Out!\n' + error.message;
     }
     // handel internet not found error
     else if (error.code === 'ENOTFOUND') {
         response.status = 502;
-        response.data.data = 'قطع اتصال اینترنت!\n' + error.message;
+        response.data.data = 'ERROR) your network connection is faulty or the hostname is just invalid or your DNS server is faulty or the DNS server that handles "mysite.com" is faulty.\n' + error.message;
     }
 
     if (response.status !== null) {
