@@ -10,13 +10,13 @@ const DefaultErrors = (props) => {
     const {status, code, data} = props.data;
 
     if (status === 404)
-        return <Error404/>;
+        return <Error404/>
 
     return (
         <div id="derr" className="container-fluid mb-3">
             <Helmet title={`Erorr ${status}`}/>
             <div className="row">
-                <div className="col-12 text-center">
+                <div className="col-lg-8 offset-lg-2 text-center">
                     <h4 className="py-5">Error {status}</h4>
                     <pre>{JSON.stringify(data)}</pre>
                     <code>
