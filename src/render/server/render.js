@@ -21,9 +21,8 @@ export const render = function (error, DUCT) {
 
     if (!error) {
         // normal views
-        const fetch = DUCT.fetch
         const updatedState = DUCT.updatedState
-        const dataExist = !!fetch && Object.getOwnPropertyNames(updatedState).length;
+        const dataExist = Object.getOwnPropertyNames(updatedState).length;
         const states = dataExist ? {...defaultState, ...updatedState} : undefined; // when passed states is undefined then createStore use defaultState
         const store = createStore(states);
 
