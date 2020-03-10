@@ -60,7 +60,6 @@ export const render = function (error, DUCT) {
         response = '<!DOCTYPE html>' + response;
 
         DUCT.res.status(status).send(response);
-        console.log('DN')
     } else {
         // when <Redirect> rendered
         DUCT.res.redirect(301, routerContext.url);
