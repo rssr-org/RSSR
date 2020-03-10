@@ -35,8 +35,11 @@ export const fetcher = (TheComponent, fetchFn, stateName) => {
     else
         Fecher = clientFetcher(TheComponent);
 
-    Fecher.stateName = stateName;
-    Fecher.fetch = fetchFn
+    // clone static props
+    Object.getOwnPropertyNames(TheComponent).forEach(function (key) {
+        if (!Fecher.hasOwnProperty(key) && key !== 'caller' && key !== 'arguments')
+            Fecher[key] = TheComponent[key];
+    })
 
     return Fecher;
 }
