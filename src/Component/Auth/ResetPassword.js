@@ -5,7 +5,6 @@ import {api} from "../../setup/api";
 import {route} from "../../setup/route";
 import {regexp} from "../../setup/constant";
 import {browserHistory} from "../../setup/browserHistory";
-import Form from "rssr-form";
 import Loading from "rssr-loading";
 import {badConnectionAlert} from "../../setup/utility/badConnectionAlert";
 
@@ -73,7 +72,7 @@ function ResetPassword(props) {
                     {
                         (viewMod === 'FORM') ?
                             (
-                                <Form onSubmit={submitForm}>
+                                <form onSubmit={submitForm}>
                                     <div className="form-group">
                                         <label>New password</label>
                                         <input name="newPassword"
@@ -83,7 +82,6 @@ function ResetPassword(props) {
                                                value={newpassword}
                                                onChange={(e) => setNewpassword(e.target.value)}
                                                required/>
-                                        <div className="invalid-feedback">password is not valid!</div>
                                     </div>
 
                                     <div className="form-group">
@@ -95,11 +93,10 @@ function ResetPassword(props) {
                                                value={repassword}
                                                onChange={(e) => setRepassword(e.target.value)}
                                                required/>
-                                        <div className="invalid-feedback">The password must be the same as the new password.</div>
                                     </div>
 
                                     <button className="btn btn-primary mt-4" type="submit">Submit</button>
-                                </Form>
+                                </form>
                             )
                             :
                             (

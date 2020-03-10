@@ -75,7 +75,6 @@
         "react-toastify": "^5.5.0",
         "react-tooltip": "^4.1.0",
         "rssr-cookie": "^0.1.0",
-        "rssr-form": "^1.1.1",
         "rssr-loading": "^0.1.0",
         "rssr-namespace": "^1.0.1",
         "rssr-open-browser": "^1.0.0",

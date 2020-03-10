@@ -6,7 +6,6 @@ import {regexp} from "../../setup/constant";
 import axios from "axios";
 import {api} from "../../setup/api";
 import {signingIn} from "./__action/signingIn";
-import Form from "rssr-form";
 import Loading from "rssr-loading";
 import {route} from "../../setup/route";
 
@@ -57,7 +56,7 @@ function SignUp(props) {
 
 
     return (
-        <Form onSubmit={submitSignUp} className="signup-form">
+        <form onSubmit={submitSignUp} className="signup-form">
             <div className="form-group">
                 <label>E-mail</label>
                 <input type="text"
@@ -68,7 +67,6 @@ function SignUp(props) {
                        value={username}
                        onChange={(e) => setUsername(e.target.value)}
                        required/>
-                <div className="invalid-feedback">E-mail is not valid. please enter your account email like: sample@gmail.com</div>
             </div>
 
             <div className="form-group mb-4">
@@ -90,7 +88,7 @@ function SignUp(props) {
             </Loading>
 
             <Link to={route.signIn}>Sign in</Link>
-        </Form>
+        </form>
     );
 }
 

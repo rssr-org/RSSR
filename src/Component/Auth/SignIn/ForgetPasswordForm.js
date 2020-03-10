@@ -5,7 +5,6 @@ import axios from "axios";
 import {api} from "../../../setup/api";
 import {route} from "../../../setup/route";
 import {toast} from "react-toastify";
-import Form from "rssr-form";
 import Loading from "rssr-loading";
 import {badConnectionAlert} from "../../../setup/utility/badConnectionAlert";
 
@@ -58,7 +57,7 @@ function ForgetPasswordForm(props) {
 
 
     return (
-        <Form onSubmit={submitForgetPassword} className="forget-password-form">
+        <form onSubmit={submitForgetPassword} className="forget-password-form">
             <div className="d-flex justify-content-between pb-5">
                 <h5>Password recovery</h5>
                 <a href="#" className="signin-toggle" onClick={showSignInForm}>Back</a>
@@ -79,7 +78,7 @@ function ForgetPasswordForm(props) {
                     Recovery
                 </button>
             </Loading>
-        </Form>
+        </form>
     )
 }
 

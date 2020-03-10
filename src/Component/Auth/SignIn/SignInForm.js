@@ -5,7 +5,6 @@ import {api} from "../../../setup/api";
 import {signingIn} from "../__action/signingIn";
 import {regexp} from "../../../setup/constant";
 import {connect} from "trim-redux";
-import Form from "rssr-form";
 import Loading from "rssr-loading";
 import {Link} from "react-router-dom";
 import {route} from "../../../setup/route";
@@ -54,7 +53,7 @@ function SignInForm(props) {
 
 
     return (
-        <Form onSubmit={submitSignIn} className="signin-form">
+        <form onSubmit={submitSignIn} className="signin-form">
             <div className="form-group">
                 <label>E-mail</label>
                 <input type="text"
@@ -64,7 +63,6 @@ function SignInForm(props) {
                        value={userName}
                        onChange={(e) => setUserName(e.target.value)}
                        required/>
-                <div className="invalid-feedback">E-mail is not valid. please enter your account email like: sample@gmail.com</div>
             </div>
 
             <div className="form-group">
@@ -76,7 +74,6 @@ function SignInForm(props) {
                        pattern={regexp.password}
                        onChange={(e) => setPassword(e.target.value)}
                        required/>
-                <div className="invalid-feedback">password is not valid!</div>
             </div>
 
             <div className="d-flex justify-content-between mb-3">
@@ -104,7 +101,7 @@ function SignInForm(props) {
             </Loading>
 
             <Link to={route.signUp}>Sign up</Link>
-        </Form>
+        </form>
     );
 }
 
