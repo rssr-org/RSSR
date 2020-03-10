@@ -12,7 +12,7 @@
     },
     "homepage": "https://github.com/rssr-org/RSSR#readme",
     "scripts": {
-        "dev": "node --max_old_space_size=8000 ./provider/server/development.js",
+        "dev": "node ./provider/server/development.js",
         "build": "webpack --config ./provider/webpack/production.js --debug --progress --display-error-details --profile --colors",
         "start": "node ./provider/server/production.js",
         "start-pm2-low": "pm2 start ./provider/server/production.js --name RSSR",
