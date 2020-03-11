@@ -17,7 +17,7 @@ RSSR is a SSR boilerplate for React js and contian:
 - and more …
 
 ## Documentation
-see [Documentation](documentation) in github.
+see [Documentation](https://github.com/rssr-org/RSSR-Documentation) in github.
 
 you can see also videos of RSSR team in [aparat](https://www.aparat.com/user/video/user_list/userid/722589/usercat/413997) and [youtube](https://www.youtube.com/channel/UCNkuorlYEWReSMglMp25yCw), .
 
