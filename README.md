@@ -5,6 +5,8 @@
 </div>
 
 # RSSR Boilerplate
+"We are no better than no one, We are not in competition with anyone, We want to be the best version of ourselves."
+
 welcome to RSSR. Being here is a sign of your professionalism.
 
 RSSR is a SSR boilerplate for React js and contian:
