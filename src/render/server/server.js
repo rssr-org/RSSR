@@ -41,9 +41,9 @@ export default function serverRenderer() {
             // call fetch() of component and get data
             fetchProvider(DUCT)
                 .then(() => response()) // get data successfully
-                .catch((err) => response(err)); // occur error in fetchProvider() or render()
+                .catch((err) => response(err)); // return error if any occured in fetchProvider() or render()
         } catch (err) {
-            response(err) // occur error in try
+            response(err) // return error occurance in try
         }
     }
 }
