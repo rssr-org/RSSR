@@ -9,7 +9,7 @@ export const fetchProvider = async function (DUCT) {
     // const fetch = als.get('fetch')
     const fetch = DUCT.fetch
 
-    // when component has not fetch() then fetch is undefined and fetchType is 'WITH_OUT_FETCH'
+    // when component does not have fetch() then fetch is undefined and fetchType is 'WITH_OUT_FETCH'
     if (!fetch) {
         debugLog('with out FETCH', DUCT)
         return true
@@ -25,7 +25,7 @@ export const fetchProvider = async function (DUCT) {
         query: DUCT.req.query //exp: {foo:'bar'} in 'http://www.site.com/post/1?foo=bar'
     }
 
-    // NOTICE: catch() will be handel on the server.js with failedRes()
+    // NOTICE: catch() will be handled on the server.js with failedRes()
     await
         fetch(ftechParams)
             .then(function (response) {
@@ -43,12 +43,12 @@ export const fetchProvider = async function (DUCT) {
 
 
 /**
- *  1) response vaidation
+ *  1) response validation
  *  2) set response status code
  *  3) push data to updatedState (redux)
  */
 function fetchResponsePreparing(DUCT, response) {
-    // excute 'throw new Error' if response is not valid
+    // execute 'throw new Error' if response is not valid
     responseValidation(response)
 
     // set response status code
@@ -63,7 +63,7 @@ function fetchResponsePreparing(DUCT, response) {
     // als.set('updatedState', updatedState, true)
     DUCT.updatedState = updatedState
 
-    // use for improve SEO
+    // use for improving SEO
     if (response.schema)
         DUCT.schema = response.schema;
     // als.set('schema', response.schema, true)
@@ -73,7 +73,7 @@ function fetchResponsePreparing(DUCT, response) {
 
 
 
-// active switch for debuging logs
+// active switch for debugging logs
 const debug = JSON.parse(process.env.RSSR_FETCHER_DEBUG);
 
 function debugLog(msg, DUCT) {
