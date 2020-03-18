@@ -18,7 +18,7 @@ export const initialize = function (DUCT) {
     /*
     * CONSTANT {undefined || object}
     *
-    * match is match object of react-router-dom
+    * match is the match object of react-router-dom
     * match of "site.com/post/1" is { path: '/post/:postId', url: '/post/1', isExact: true, params: {postId: '1'} }
     */
     const matchedRouteMapItem = routeMap.find(route => {
@@ -59,7 +59,7 @@ export const initialize = function (DUCT) {
 
         /** stateName **/
         /*
-        * CONSTATN {string}
+        * CONSTANT {string}
         *
         * stateName is name of 'stateName' state and define when fetch type is
         */
