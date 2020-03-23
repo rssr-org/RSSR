@@ -2,9 +2,9 @@ import {setStore} from "trim-redux";
 
 
 /**
- * set "updated: true" to stop loading of need Authentication Components and
- * set "token: null" becuse user is invalid (is guest)
- * NOTICE: localUser of guest user does not "detail" property.
+ * set "updated: true" when the user authentication is done by server and the user information is updated and final
+ * set "token: null" when user is invalid (is guest)
+ * NOTICE: The localUser object of guest user does not have "detail" property.
  */
 export const setLocalUserAsGuest = function () {
     setStore({localUser: {updated: true, token: null}});
