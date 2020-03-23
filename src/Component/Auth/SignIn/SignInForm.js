@@ -30,7 +30,7 @@ function SignInForm(props) {
             data: {email: userName, password: password}
         })
             .then((response) => {
-                // set token to localStorage if remember me checked and get user details
+                // set token to localStorage if remember me is checked and get user details
                 signingIn(response.data.token, rememberMe)
                     .then(function () {
                         toast.success('logged-in successfully!', {autoClose: 1200});
