@@ -22,7 +22,7 @@ function ForgetPasswordForm(props) {
             // method: 'POST',
             data: {
                 "email": email,
-                // server most be add token number to end of url and redirect to it
+                // server must add token number to end of url and redirect to it
                 "callback": window.location.origin + route.resetPassword('')
             }
         })
@@ -31,11 +31,11 @@ function ForgetPasswordForm(props) {
                     <div>
                         Recovery email sent.
                         <br/>
-                        Please check your email inbox or smap and click on link.
+                        Please check your email inbox or spam and click on link.
                         <br/>
                         {email}
                         <br/>
-                        Apply again if you do not receive it.
+                        Apply again if you did not receive it.
                     </div>
                 );
                 toast.success(message, {autoClose: false});
@@ -69,7 +69,7 @@ function ForgetPasswordForm(props) {
                        value={email}
                        onChange={(e) => setEmail(e.target.value)}
                        required/>
-                <div className="invalid-feedback">E-mail is not valid. please enter your account email like: sample@gmail.com</div>
+                <div className="invalid-feedback">E-mail is not valid. please enter your email account like: sample@gmail.com</div>
             </div>
             <button className="btn btn-block btn-primary" disabled={isLoading || !localUser.updated} type="submit">
                 Recovery
