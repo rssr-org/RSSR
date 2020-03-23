@@ -23,7 +23,7 @@ function Home(props) {
                 <div className="jumbotron mt-3 pb-3" id="abc">
                     <h5>RSSR Boilderplate</h5>
                     <p className="lead">
-                        We are no better than no one,
+                        We are no better than anyone else,
                         We are not in competition with anyone,
                         We want to be the best version of ourselves.
                         <br/>
