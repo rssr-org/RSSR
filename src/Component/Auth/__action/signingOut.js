@@ -4,7 +4,7 @@ import Cookies from "js-cookie";
 
 /**
  * signing out user
- * clear localUser data in redux and set Gust User value to it.
+ * clear localUser data in redux and set Guest User value to it.
  */
 export const signingOut = () => {
     // clear user detail from redux
