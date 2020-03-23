@@ -6,12 +6,12 @@ export const firstSetup = function () {
     const token = Cookies.get('localUserToken');
     if (token) {
         // Real user
-        // when token exist mean in the past one user logged-in
-        // but does not mean user is a valid user, so token need authentication.
+        // when token exists it means that one user has logged-in before
+        // but it does not mean that the user is valid, so token needs authentication.
         //
-        // when server say token is valid then it's a Real and Valid user, and
-        // when server say is NOT valid then runing signingOut() method and
-        // set user as Guest user and remove token from localstorage.
+        // when the server says the token is valid, then it's a real and valid user, and
+        // when  the server says it is NOT valid then signingOut() method will run and
+        // we set user as a Guest user and remove token from localstorage.
         authentication(token)
             .then(() => {
                 /**
