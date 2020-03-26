@@ -12,7 +12,7 @@ import Error from "../Template/Error";
 
 
 /**
- * render view on the server and send response as HTML to client
+ *  to render view on the server and send response as HTML to client
  */
 export const render = function (error, DUCT) {
     let view;
@@ -36,7 +36,7 @@ export const render = function (error, DUCT) {
             </Provider>
         );
     } else {
-        // when occer error during fetch and proccess
+        // when error occured during fetch and process
         errorLogger('SERVER >', error, false, DUCT.req);
         view = (
             <HelmetProvider context={helmetContext}>

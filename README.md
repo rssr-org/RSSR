@@ -7,9 +7,9 @@
 # RSSR Boilerplate
 "We are not better than anyone, We are not in competition with anyone, We want to be the best version of ourselves."
 
-welcome to RSSR. Being here is a sign of your professionalism.
+Welcome to RSSR. Being here is a sign of your professionalism.
 
-RSSR is a SSR boilerplate for React js and contian:
+RSSR is a SSR boilerplate for React js and contains:
 - SSR (Server Side Rendering)
 - User Authentication Structure
 - SEO optimization utilities
@@ -17,21 +17,21 @@ RSSR is a SSR boilerplate for React js and contian:
 - and more …
 
 ## Documentation
-see [Documentation](https://github.com/rssr-org/RSSR-Documentation) in github.
+See [Documentation](https://github.com/rssr-org/RSSR-Documentation) in github.
 
-you can see also videos of RSSR team in [aparat](https://www.aparat.com/user/video/user_list/userid/722589/usercat/413997) and [youtube](https://www.youtube.com/channel/UCNkuorlYEWReSMglMp25yCw), .
+You can also watch videos of RSSR team at [aparat](https://www.aparat.com/user/video/user_list/userid/722589/usercat/413997) and [youtube](https://www.youtube.com/channel/UCNkuorlYEWReSMglMp25yCw), .
 
 ## Usage Notice
-core of RSSR is stable but need some changes to be released publicly. you can fork, review and star it but until the final release DONT USE it for your enterprise projects!
+The core of RSSR is stable but needs some changes before it can be released publicly. You can fork, review and star it but  DO NOT USE it for your enterprise projects until the final release!
 
-To be informed, track here or [Telegram channel](https://t.me/rssr_org).
+For more information, follow us at : [Telegram channel](https://t.me/rssr_org).
 
 
 ## Know more
 
 #### what is SSR?
 Server Side Rendering is a popular technique for rendering a normally 
-client-side only single page app (SPA) on the server and then sending
+client-side single page app (SPA) on the server and then sending
  a fully rendered page to the client. The client’s JavaScript bundle 
  can then take over and the SPA can operate as normal. One major 
  benefit of using SSR is in having an app that can be crawled 

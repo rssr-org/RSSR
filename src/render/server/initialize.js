@@ -3,12 +3,12 @@ import {routeMap} from "../../setup/routeMap";
 
 
 
-// define public structur and varibales
+// define public structure and variables
 export const initialize = function (DUCT) {
     /** updatedState **/
     // we use updatedState to set value of RSSR_UPDATED_REDUX_STATES in index template
-    // to pass data to the client for syncing reduxes and merge with defaultState
-    // of 'stateName' to creare store on the server
+    // to pass data to the client for syncing redux and merge with defaultState
+    // of 'stateName' to create store on the server
     DUCT.updatedState = {}
 
 
@@ -16,9 +16,9 @@ export const initialize = function (DUCT) {
 
     /** match **/
     /*
-    * CONSTATN {undefined || object}
+    * CONSTANT {undefined || object}
     *
-    * match is match object of react-router-dom
+    * match is the match object of react-router-dom
     * match of "site.com/post/1" is { path: '/post/:postId', url: '/post/1', isExact: true, params: {postId: '1'} }
     */
     const matchedRouteMapItem = routeMap.find(route => {
@@ -33,7 +33,7 @@ export const initialize = function (DUCT) {
 
     // can not match to any route map item
     if (matchedRouteMapItem === undefined)
-        throw new Error('⛔ can not match to any route map item! define "*" path for not matched routes to can handle e-404, page not found errors.');
+        throw new Error('⛔ can not match to any route map item! define "*" path for not matched routes to be able to handle e-404, page not found errors.');
 
 
 
@@ -49,7 +49,7 @@ export const initialize = function (DUCT) {
 
         /** fetch **/
         /*
-        * CONSTATN {function || undefinded}
+        * CONSTANT {function || undefinded}
         *
         * fetch() method of component of matched route item
         * when component has not fetch() then fetch is undefined
@@ -59,7 +59,7 @@ export const initialize = function (DUCT) {
 
         /** stateName **/
         /*
-        * CONSTATN {string}
+        * CONSTANT {string}
         *
         * stateName is name of 'stateName' state and define when fetch type is
         */
