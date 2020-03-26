@@ -5,16 +5,16 @@ export default function () {
     /**
      * version
      *
-     *  we set static version for each important release to can remove some value of some version.
+     *  we set static version for each important release to be able to remove some values in some versions.
      *  first version is 1 and add one in each time.
      */
     const version = 1;
 
-    // define version for first time
+    // define version for the first time
     if (storage('version') === null)
         storage('version', version);
 
-    // available version in localstorage (sometime meaning previous version)
+    // available version in localstorage (sometimes meaning previous version)
     const nowVersion = storage('version');
 
 
@@ -24,7 +24,7 @@ export default function () {
     /**
      * UPDATE
      *
-     * you can access to last value by version number for remove or edit
+     * you can access to last value by version number for removing or editing
      */
     if (nowVersion !== version) {
         // UPDATE sample:
