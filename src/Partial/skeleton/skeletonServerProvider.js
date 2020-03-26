@@ -14,7 +14,7 @@ let fetchLock = false;
  * call skeleton fetch and handle errors
  */
 export const skeletonServerProvider = async function (DUCT) {
-    // skeleton is disable
+    // skeleton is disabled
     if (!App.skeleton)
         return true;
 
@@ -66,7 +66,7 @@ const skeletonFetch = async function (DUCT) {
 
 
 /**
- *  1) response vaidation
+ *  1) response validation
  *  2) push data to updatedState (redux)
  */
 function skeletonGetDataFromApi(DUCT) {
