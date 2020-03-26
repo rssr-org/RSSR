@@ -8,6 +8,6 @@ export const route = {
 }
 
 
-// for improve DX
+// for improving DX
 route.signIn = route.sign('in')
 route.signUp = route.sign('up')
