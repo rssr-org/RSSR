@@ -1,5 +1,5 @@
 /**
- * check data type is error or not
+ * check data type if it is error or not
  * compatible with convertErrorToResponse()
  * see fetcher/clientFetcher and server/fetchProvider
  *
