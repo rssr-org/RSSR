@@ -25,7 +25,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 
 
 if (!window.RSSR_PROCCESS_ERROR) {
-    // define public structur and varibales
+    // define public structure and variables
     localStorageSetup();
 
     // create redux store with posted value from "RSSR_UPDATED_REDUX_STATES"
@@ -34,7 +34,7 @@ if (!window.RSSR_PROCCESS_ERROR) {
     // root element of application
     const appWrap = document.getElementById('app-root');
 
-    // clinet app
+    // client app
     const app = (
         <Provider store={store}>
             <Router history={browserHistory}>
@@ -45,7 +45,7 @@ if (!window.RSSR_PROCCESS_ERROR) {
         </Provider>
     )
 
-    // render on client with hydrate() and render() when has not Child Nodes
+    // render on client with hydrate() and render() when does not have Child Nodes
     const isMarkupPresent = appWrap.hasChildNodes();
     const method = isMarkupPresent ? reactDom.hydrate : reactDom.render;
     method(app, appWrap);
