@@ -32,7 +32,7 @@ app.use(express.static(PUBLIC_NAME))
 // create webpack compiler
 const compiler = webpack(config)
 
-// make bundled project source files accessable from memory
+// make bundled project source files accessible from memory
 app.use(webpackDevMiddleware(compiler, {
     publicPath: DIST_ROUTE,
     serverSideRender: true

@@ -3,7 +3,7 @@ import {API_DOMAIN} from "./constant";
 
 // set Global axios defaults
 axios.defaults.baseURL = API_DOMAIN;
-axios.defaults.timeout = 58000; // fix uncontroled server 502 Error
+axios.defaults.timeout = 58000; // fix uncontrolled server 502 Error
 
 /************************* AXIOS template *************************
  axios({

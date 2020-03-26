@@ -19,7 +19,7 @@ const app = express()
 // cookie
 app.use(cookieParser())
 
-// make bundled final project source files accessable
+// make bundled final project source files accessible
 app.use(DIST_ROUTE, express.static(DIST_PATH))
 
 // load static files

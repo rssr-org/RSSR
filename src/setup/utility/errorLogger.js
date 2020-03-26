@@ -1,8 +1,8 @@
 /**
- * log axios error to console
+ * log axios errors to console
  */
 export const errorLogger = (title, error, ignoreMessage, req) => {
-    // get uesr IP if exist
+    // get uesr IP if exists 
     let ip = '', url = '';
     if (req !== undefined) {
         url = req.originalUrl;
@@ -16,7 +16,7 @@ export const errorLogger = (title, error, ignoreMessage, req) => {
     if (error.response) {
         // errorMessage = error.response.data; // commented for clean console
         errorMessage = ''
-        type = "RES";// response error - server find error and tell to front like status 402
+        type = "RES";// response error - server finds error and returns a status like 402 to front
     } else if (error.request) {
         errorMessage = error.message;
         type = "REQ"; // request error - like error 500 or request timeouted

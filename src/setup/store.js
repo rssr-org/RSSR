@@ -8,15 +8,15 @@ import {IS_BROWSER} from "./constant";
 /**
  * Redux states
  *
- * each item in this list is a one state in redux store
- * and value of this is default value
+ * each item in this list is one state in redux store
+ * and value of this is the default value
  */
 export const defaultState = {
     localUser: {updated: false, token: null, detail: null},
     post: null,
     homepage: {isLoading: true},
     skeleton: {
-        // when occur error in both client and server then skeleton contain this data
+        // when error occurs in both client and server then skeleton contains this data
         dailyMessage: 'opps! occur error'
     }
 }
@@ -44,10 +44,11 @@ if (JSON.parse(process.env.RSSR_REDUX_DEV_TOOLS) && IS_BROWSER)
 /**
  * create Redux Store
  *
- * cearte store with defaultState
- * but in server rendering each state changed (exp: data of home page fetched in server and set to home state)
- * then store create with changed state (in top exp, home state has real data but other state have default data or empty)
- *
+ * create store with defaultState
+ * in server rendering, we do not have to make the store only by defining default state. In case of any state changes, we can 
+ * replace defaultState with the changed state and rewrite them.
+ * (exp: in home page we have a data fetch, so we replace it with defaultState. In this example, home state has real data 
+ * but other states have default data or remain empty
  * @param state <object>: object of states with default value
  * @returns {any} : redux store object
  */
@@ -58,7 +59,7 @@ export const createStore = (state = {...defaultState}) => createStoreProvider(st
 
 
 /**
- * create store with combine server feched data and default store states
+ * create store by combining server feched data and default store states
  * @returns {any} : redux store object
  */
 export const clientCreateStore = function () {

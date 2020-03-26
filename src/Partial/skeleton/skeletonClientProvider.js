@@ -7,7 +7,7 @@ import {debugLog} from "./debugLog";
 
 
 export const skeletonClientProvider = function (fetchFn) {
-    // when server fetch data successfully
+    // when server fetches data successfully
     const skeleton = getStore('skeleton');
     if (skeleton && !skeleton.isErrorData) {
         debugLog('WENT_WELL')

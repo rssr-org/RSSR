@@ -1,6 +1,6 @@
 import axios from "axios";
 
-// extended verion of axios (contain cancel token)
+// extended verion of axios (contains cancel token)
 export const fetching = function (options, thenHandler, catchHandler) {
     const {token, cancel} = axios.CancelToken.source();
     options.cancelToken = token;

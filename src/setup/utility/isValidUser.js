@@ -1,9 +1,9 @@
 import {getStore} from "trim-redux";
 
 /**
- * check user in the past logged-in or not and token is valid or not
+ * check if the user has logged-in before or not and token is valid or not
  *
- * @param updateIsRequired {boolean} : if set it false then user is valid just when has token
+ * @param updateIsRequired {boolean} : if it is set to false then user is valid just when has token
  * @returns {boolean}
  */
 export const isValidUser = (updateIsRequired = true) => {
