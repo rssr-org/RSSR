@@ -5,7 +5,7 @@
 </div>
 
 # RSSR Boilerplate
-"We are no better than no one, We are not in competition with anyone, We want to be the best version of ourselves."
+"We are not better than anyone, We are not in competition with anyone, We want to be the best version of ourselves."
 
 welcome to RSSR. Being here is a sign of your professionalism.
 
