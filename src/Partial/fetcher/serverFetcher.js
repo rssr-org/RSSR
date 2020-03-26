@@ -6,12 +6,10 @@ import DefaultErrors from "./DefaultErrors";
 /**
  *  provider Fetcher HOC of server side
  *
- * Fetcher HOC in server just an interface
- * to pass duct to 'TheComponent' when type of fetch is props base
- * an in redux base is an empty component
- * (need empty component to avoid React 'compoenet not found' error)
+ * Fetcher HOC in server is just an interface which passes the fetched data in 
+ * redux state to 'TheComponent' 
  *
- * @param TheComponent : React Compoentn
+ * @param TheComponent : React Component
  * @returns {Fecher} : Fetcher HOC of server side
  */
 export const serverFetcher = function (TheComponent, stateName) {
