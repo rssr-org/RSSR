@@ -4,8 +4,8 @@ import Error404 from "../../App/Error404/Error404";
 import {browserHistory} from "../../setup/browserHistory";
 
 
-// use for catch axios error in fetching proccess with fetcher
-// NOTICE: all non0-200 response status catch by this view unless you write catch in fetch function for them
+// use for catching axios error during the fetching process with fetcher
+// NOTICE: all non0-200 response status will be catched by this view unless you write catch in fetch function for them
 const DefaultErrors = (props) => {
     const {status, code, data} = props.data;
 
