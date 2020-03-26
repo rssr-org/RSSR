@@ -23,7 +23,7 @@ switch (process.env.FILE_VERSION_TYPE) {
         global.FILE_VERSION = '?v=' + versionHash(); // random 24 char string
         break;
     case 'disable':
-        global.FILE_VERSION = ''; // with out version
+        global.FILE_VERSION = ''; // without version
         break;
     default:
         console.error('env.FILE_VERSION is not valid!',  global.FILE_VERSION)
