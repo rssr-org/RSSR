@@ -11,7 +11,7 @@ export const skeleton = function (TheComponent, fetchFn, cache) {
     }
 
     const Skeleton = function (props) {
-        // refetch skeleton on client when server fetch skeleton error
+        // refetch skeleton in client when server fetch skeleton encounters an error
         if (typeof window !== 'undefined')
             skeletonClientProvider(fetchFn)
 
