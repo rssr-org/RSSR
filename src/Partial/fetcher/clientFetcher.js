@@ -12,11 +12,11 @@ import axios from "axios";
 /**
  *  provider Fetcher HOC of client side
  *
- * Fetcher is a HOC and wrap 'TheComponent'
- * to can handel fetching data actions of 'TheComponent'.
- * Fetcher in client contian all fetch actions.
+ * Fetcher is a HOC which wraps 'TheComponent'
+ * in order to handle fetching data actions of 'TheComponent'.
+ * Fetcher in client contians all fetch actions.
  *
- * @param TheComponent : React Compoentn
+ * @param TheComponent : React Component
  * @returns {Fecher} : Fetcher HOC of client side
  */
 export const clientFetcher = function (TheComponent) {
@@ -110,7 +110,7 @@ export const clientFetcher = function (TheComponent) {
             const defaultValue = defaultState[stateName];
             setStore(stateName, defaultValue);
 
-            // when try to fetch but last equal fetch was not complited
+            // when try to fetch but the last equal fetch was not completed
             if (this.cancelRequest) {
                 this.cancelRequest();
                 delete this.cancelRequest;
@@ -129,8 +129,8 @@ export const clientFetcher = function (TheComponent) {
 
 
 
-        //  update when route update. for example click on like '/post/2' in mounted component with path '/post/1'
-        //  needFetch() need for switch between 2 route path with equal component
+        //  update when route updates. For example click on '/post/2' in mounted component with path '/post/1'
+        //  needFetch() needs switching between 2 route paths with equal component
         componentDidUpdate(prevProps) {
             if (this.props.location.key === prevProps.location.key && !this.needFetch())
                 return;
