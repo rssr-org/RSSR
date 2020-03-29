@@ -1,4 +1,4 @@
-// limit request numbet
+// limit request number
 const rateLimit = require("express-rate-limit");
 
 /**
@@ -14,9 +14,9 @@ module.exports = function (app) {
 
     const limiter = rateLimit({
         windowMs: 60 * 1000, // 1 minutes
-        max: 20 // 20 request in each 1 minutes
+        max: 20 // 20 requests in each 1 minute
     });
 
-    //  apply to all requests with out load static file (becuse defined in above)
+    //  apply to all requests without loading static file (because defined in above)
     app.use(limiter);
 }
