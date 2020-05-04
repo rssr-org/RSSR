@@ -2,6 +2,7 @@ import React from 'react';
 import {Route, Switch} from "react-router-dom";
 import {routeMap} from "../../setup/routeMap";
 import {jumpScrollToTop} from "../../setup/utility/jumpScrollToTop";
+import {IS_PRODUCTION} from "../../setup/constant";
 
 
 function Router() {
@@ -13,7 +14,7 @@ function Router() {
                 })
             }
             {
-                jumpScrollToTop()
+                IS_PRODUCTION ? jumpScrollToTop() : ''
             }
         </Switch>
     );
