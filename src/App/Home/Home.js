@@ -20,9 +20,9 @@ function Home(props) {
             <div className="container">
                 <Helmet title="RSSR Boilerplate home page"/>
 
-                <div className="jumbotron mt-3 pb-3" id="abc">
+                <div className="jumbotron mt-3 pb-3">
                     <h5>RSSR Boilderplate</h5>
-                    <p className="lead">
+                    <p>
                         We are no better than anyone else,
                         We are not in competition with anyone,
                         We want to be the best version of ourselves.
