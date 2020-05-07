@@ -14,7 +14,18 @@ function ForgetPasswordForm(props) {
     const {localUser, showSignInForm} = props
 
 
-    function submitForgetPassword() {
+    function submitForgetPassword(e) {
+        //-------------------------------------------//
+        e.preventDefault()
+        e.stopPropagation()
+        const form = e.target
+        if (form.checkValidity() === false) {
+            form.classList.add('was-validated')
+            return false;
+        }
+        form.className.replace(" was-validated", "")
+        //-------------------------------------------//
+
         setIsLoading(true);
 
         axios({
@@ -55,7 +66,7 @@ function ForgetPasswordForm(props) {
 
 
     return (
-        <form onSubmit={submitForgetPassword} className="forget-password-form">
+        <form onSubmit={submitForgetPassword} className="forget-password-form" noValidate={true}>
             <div className="d-flex justify-content-between pb-5">
                 <h5>Password recovery</h5>
                 <a href="#" className="signin-toggle" onClick={showSignInForm}>Back</a>

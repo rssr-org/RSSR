@@ -41,7 +41,18 @@ function ResetPassword(props) {
 
 
 
-    function submitForm() {
+    function submitForm(e) {
+        //-------------------------------------------//
+        e.preventDefault()
+        e.stopPropagation()
+        const form = e.target
+        if (form.checkValidity() === false) {
+            form.classList.add('was-validated')
+            return false;
+        }
+        form.className.replace(" was-validated", "")
+        //-------------------------------------------//
+
         axios({
             url: api.resetPassword.submit,
             method: 'POST',
@@ -71,7 +82,7 @@ function ResetPassword(props) {
                     {
                         (viewMod === 'FORM') ?
                             (
-                                <form onSubmit={submitForm}>
+                                <form onSubmit={submitForm} noValidate={true}>
                                     <div className="form-group">
                                         <label>New password</label>
                                         <input name="newPassword"

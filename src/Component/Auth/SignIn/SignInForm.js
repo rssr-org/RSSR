@@ -21,7 +21,18 @@ function SignInForm(props) {
 
 
 
-    function submitSignIn() {
+    function submitSignIn(e) {
+        //-------------------------------------------//
+        e.preventDefault()
+        e.stopPropagation()
+        const form = e.target
+        if (form.checkValidity() === false) {
+            form.classList.add('was-validated')
+            return false;
+        }
+        form.className.replace(" was-validated", "")
+        //-------------------------------------------//
+
         setIsLoading(true);
 
         axios({
@@ -52,7 +63,7 @@ function SignInForm(props) {
 
 
     return (
-        <form onSubmit={submitSignIn} className="signin-form">
+        <form onSubmit={submitSignIn} className="signin-form" noValidate={true}>
             <div className="form-group">
                 <label>E-mail</label>
                 <input type="text"
