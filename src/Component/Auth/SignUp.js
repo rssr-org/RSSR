@@ -38,10 +38,7 @@ function SignUp(props) {
         axios({
             url: api.signup,
             method: 'POST',
-            data: {
-                email: username,
-                password: password
-            }
+            data: {username, password}
         })
             .then((response) => {
                 // set token to localStorage if remember me checked and get user details

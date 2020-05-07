@@ -12,7 +12,7 @@ import {badConnectionAlert} from "../../../setup/utility/badConnectionAlert";
 function SignInForm(props) {
 
     const [isLoading, setIsLoading] = useState(false)
-    const [userName, setUserName] = useState('')
+    const [username, setUsername] = useState('')
     const [rememberMe, setRememberMe] = useState(true)
     const [password, setPassword] = useState('')
     const {localUser, showForgetPasswordForm} = props
@@ -38,7 +38,7 @@ function SignInForm(props) {
         axios({
             url: api.signin,
             method: 'POST',
-            data: {email: userName, password: password}
+            data: {username, password}
         })
             .then((response) => {
                 // set token to localStorage if remember me is checked and get user details
@@ -70,8 +70,8 @@ function SignInForm(props) {
                        className="form-control ltr-value"
                        name="username"
                        pattern={regexp.email}
-                       value={userName}
-                       onChange={(e) => setUserName(e.target.value)}
+                       value={username}
+                       onChange={(e) => setUsername(e.target.value)}
                        required/>
             </div>
 
