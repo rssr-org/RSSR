@@ -16,7 +16,7 @@ import {tokenToHeaders} from "../../../setup/utility/tokenToHeaders";
 export const authentication = (token) => {
     return axios({
         url: api.userDetails,
-        token: tokenToHeaders({}, token)
+        headers: tokenToHeaders({}, token)
     })
         .then((response) => {
             // token is valid and user details ready to use
