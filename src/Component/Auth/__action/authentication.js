@@ -1,9 +1,8 @@
-import axios from "axios";
-import {api} from "../../../setup/api";
-import {setStore} from "trim-redux";
-import {toast} from "react-toastify";
-import {signingOut} from "./signingOut";
-import {tokenToHeaders} from "../../../setup/utility/tokenToHeaders";
+import axios            from "axios";
+import {api}            from "../../../setup/api";
+import {setStore}       from "trim-redux";
+import {toast}          from "react-toastify";
+import {signingOut}     from "./signingOut";
 
 
 /**
@@ -14,17 +13,14 @@ import {tokenToHeaders} from "../../../setup/utility/tokenToHeaders";
  * @returns {Promise<any>}: when user is valid do then and when invalid do catch
  */
 export const authentication = (token) => {
-    return axios({
-        url: api.userDetails,
-        headers: tokenToHeaders({}, token)
-    })
+    return axios({url: api.userDetails})
         .then((response) => {
             // token is valid and user details ready to use
             setStore({
                 user: {
                     updated: true,
-                    token: token,
-                    detail: response.data
+                    token  : token,
+                    detail : response.data
                 }
             });
         })

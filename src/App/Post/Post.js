@@ -5,7 +5,6 @@ import {api} from "../../setup/api";
 import {route} from "../../setup/route";
 import {fetcher} from "../../Partial/fetcher/fetcher";
 import {fetching} from "../../setup/utility/fetching";
-import {tokenToHeaders} from "../../setup/utility/tokenToHeaders";
 
 
 function Post(props) {
@@ -42,8 +41,7 @@ function Post(props) {
 
 const fetch = ({match, req}) => {
     return fetching({
-        url: api.post(match.params.postId + '?delay=800'),
-        headers: tokenToHeaders({}, undefined, req)
+        url: api.post(match.params.postId + '?delay=800')
     });
 }
 
