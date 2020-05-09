@@ -1,7 +1,6 @@
 import {connect} from "trim-redux";
 import {isValidUser} from "../../setup/utility/isValidUser";
 
-// updated with not null token
 const ValidUser = props => {
     const result = () => {
         if (typeof props.children === "function")

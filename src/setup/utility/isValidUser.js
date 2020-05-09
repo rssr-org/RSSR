@@ -1,4 +1,6 @@
 import {getStore} from "trim-redux";
+import Cookies    from "js-cookie";
+
 
 /**
  * check if the user has logged-in before or not and token is valid or not
@@ -13,8 +15,8 @@ export const isValidUser = (updateIsRequired = true) => {
         console.error('❗ user not exist in store!')
         return false;
     }
-
-    if (user.token === null)
+    
+    if (Cookies.get('token'))
         return false;
 
     if (updateIsRequired)

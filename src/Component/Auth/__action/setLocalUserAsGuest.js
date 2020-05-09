@@ -7,5 +7,5 @@ import {setStore} from "trim-redux";
  * NOTICE: The user object of guest user does not have "detail" property.
  */
 export const setLocalUserAsGuest = function () {
-    setStore({user: {updated: true, token: null}});
+    setStore({user: {updated: true}});
 }

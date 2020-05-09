@@ -12,14 +12,13 @@ import {signingOut}     from "./signingOut";
  * @param token <string>: user authentication key. like "eyJ0eXAiOiJKV1QiLCJhbGciOiJ...."
  * @returns {Promise<any>}: when user is valid do then and when invalid do catch
  */
-export const authentication = (token) => {
+export const authentication = () => {
     return axios({url: api.userDetails})
         .then((response) => {
             // token is valid and user details ready to use
             setStore({
                 user: {
                     updated: true,
-                    token  : token,
                     detail : response.data
                 }
             });

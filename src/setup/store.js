@@ -12,7 +12,7 @@ import {IS_BROWSER} from "./constant";
  * and value of this is the default value
  */
 export const defaultState = {
-    user: {updated: false, token: null, detail: null},
+    user: {updated: false, detail: null},
     post: null,
     homepage: {isLoading: true},
     skeleton: {

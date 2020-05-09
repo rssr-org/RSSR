@@ -12,7 +12,7 @@ export const firstSetup = function () {
         // when the server says the token is valid, then it's a real and valid user, and
         // when  the server says it is NOT valid then signingOut() method will run and
         // we set user as a Guest user and remove token from localstorage.
-        authentication(token)
+        authentication()
             .then(() => {
                 /**
                  * @@@ GET_USER_CART
