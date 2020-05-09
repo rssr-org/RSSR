@@ -16,7 +16,7 @@ export const isValidUser = (updateIsRequired = true) => {
         return false;
     }
     
-    if (Cookies.get('token'))
+    if (!Cookies.get('token'))
         return false;
 
     if (updateIsRequired)
