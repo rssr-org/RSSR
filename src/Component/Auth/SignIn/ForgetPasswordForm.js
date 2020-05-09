@@ -11,7 +11,7 @@ import {badConnectionAlert} from "../../../setup/utility/badConnectionAlert";
 function ForgetPasswordForm(props) {
     const [isLoading, setIsLoading] = useState(false)
     const [email, setEmail] = useState('')
-    const {localUser, showSignInForm} = props
+    const {user, showSignInForm} = props
 
 
     function submitForgetPassword(e) {
@@ -82,11 +82,11 @@ function ForgetPasswordForm(props) {
                        required/>
                 <div className="invalid-feedback">E-mail is not valid. please enter your email account like: sample@gmail.com</div>
             </div>
-            <button className="btn btn-block btn-primary" disabled={isLoading || !localUser.updated} type="submit">
+            <button className="btn btn-block btn-primary" disabled={isLoading || !user.updated} type="submit">
                 Recovery
             </button>
         </form>
     )
 }
 
-export default connect(s => ({localUser: s.localUser}))(ForgetPasswordForm);
+export default connect(s => ({user: s.user}))(ForgetPasswordForm);

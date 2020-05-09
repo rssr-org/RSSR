@@ -15,7 +15,7 @@ function SignInForm(props) {
     const [username, setUsername] = useState('')
     const [rememberMe, setRememberMe] = useState(true)
     const [password, setPassword] = useState('')
-    const {localUser, showForgetPasswordForm} = props
+    const {user, showForgetPasswordForm} = props
 
 
 
@@ -104,7 +104,7 @@ function SignInForm(props) {
                 </button>
             </div>
 
-            <button className="btn btn-block btn-primary mb-3" disabled={isLoading || !localUser.updated} type="submit">
+            <button className="btn btn-block btn-primary mb-3" disabled={isLoading || !user.updated} type="submit">
                 Sign in
             </button>
 
@@ -113,4 +113,4 @@ function SignInForm(props) {
     );
 }
 
-export default connect(s => ({localUser: s.localUser}))(SignInForm);
+export default connect(s => ({user: s.user}))(SignInForm);

@@ -3,6 +3,6 @@ import Cookies from "js-cookie";
 
 // refetch user details
 export const updateUserDetail = () => {
-    const token = Cookies.get('localUserToken');
+    const token = Cookies.get('token');
     return authentication(token);
 }

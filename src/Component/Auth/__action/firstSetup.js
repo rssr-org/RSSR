@@ -3,7 +3,7 @@ import {authentication} from "./authentication";
 import Cookies from "js-cookie";
 
 export const firstSetup = function () {
-    const token = Cookies.get('localUserToken');
+    const token = Cookies.get('token');
     if (token) {
         // Real user
         // when token exists it means that one user has logged-in before

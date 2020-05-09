@@ -6,9 +6,9 @@ export const tokenToHeaders = function (headers = {}, token, req) {
 
     if (!token) {
         if (IS_SERVER)
-            token = req ? req.cookies.localUserToken : undefined;
+            token = req ? req.cookies.token : undefined;
         else
-            token = getStore('localUser').token;
+            token = getStore('user').token;
     }
 
     if (!token)

@@ -12,7 +12,7 @@ import Cookies from "js-cookie";
 export const signingIn = (token, rememberMe) => {
     // set local user token when rememberMe is checked
     if (rememberMe)
-        Cookies.set('localUserToken', token)
+        Cookies.set('token', token)
 
     // token validation and get user detail
     return authentication(token)

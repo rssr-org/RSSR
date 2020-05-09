@@ -21,7 +21,7 @@ export const authentication = (token) => {
         .then((response) => {
             // token is valid and user details ready to use
             setStore({
-                localUser: {
+                user: {
                     updated: true,
                     token: token,
                     detail: response.data

@@ -15,7 +15,7 @@ function SignUp(props) {
     const [isLoading, setIsLoading] = useState(false)
     const [username, setUsername] = useState('')
     const [password, setPassword] = useState('')
-    const {localUser} = props
+    const {user} = props
 
 
 
@@ -88,7 +88,7 @@ function SignUp(props) {
                 <div className="invalid-feedback">password is not valid!</div>
             </div>
 
-            <button className="btn btn-block btn-success mb-3" disabled={isLoading || !localUser.updated} type="submit">
+            <button className="btn btn-block btn-success mb-3" disabled={isLoading || !user.updated} type="submit">
                 Sign up
             </button>
 
@@ -98,4 +98,4 @@ function SignUp(props) {
 }
 
 
-export default withRouter(connect(s => ({localUser: s.localUser}))(SignUp));
+export default withRouter(connect(s => ({user: s.user}))(SignUp));

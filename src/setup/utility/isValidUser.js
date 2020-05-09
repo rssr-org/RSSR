@@ -7,18 +7,18 @@ import {getStore} from "trim-redux";
  * @returns {boolean}
  */
 export const isValidUser = (updateIsRequired = true) => {
-    const localUser = getStore('localUser');
+    const user = getStore('user');
 
-    if (localUser === undefined) {
-        console.error('❗ localUser not exist in store!')
+    if (user === undefined) {
+        console.error('❗ user not exist in store!')
         return false;
     }
 
-    if (localUser.token === null)
+    if (user.token === null)
         return false;
 
     if (updateIsRequired)
-        return localUser.updated;
+        return user.updated;
     else
         return true;
 }

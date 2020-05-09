@@ -1,5 +1,5 @@
 import {connect} from "trim-redux";
 
-const UpdatedUser = props => props.localUser.updated ? props.children : '';
+const UpdatedUser = props => props.user.updated ? props.children : '';
 
-export default connect(s => ({localUser: s.localUser}))(UpdatedUser);
+export default connect(s => ({user: s.user}))(UpdatedUser);

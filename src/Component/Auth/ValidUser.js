@@ -5,7 +5,7 @@ import {isValidUser} from "../../setup/utility/isValidUser";
 const ValidUser = props => {
     const result = () => {
         if (typeof props.children === "function")
-            return props.children(props.localUser.detail)
+            return props.children(props.user.detail)
         else
             return props.children;
     };
@@ -13,4 +13,4 @@ const ValidUser = props => {
     return isValidUser() ? result() : ''
 };
 
-export default connect(s => ({localUser: s.localUser}))(ValidUser);
+export default connect(s => ({user: s.user}))(ValidUser);
