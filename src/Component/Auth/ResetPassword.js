@@ -29,8 +29,8 @@ function ResetPassword(props) {
             .then(() => {
                 setResult('FORM');
             })
-            .catch((e) => {
-                if (e.status === 404)
+            .catch((err) => {
+                if (err.response && err.response.status === 400)
                     setResult('ERROR');
                 else
                     badConnectionAlert('reset Password trust');
