@@ -1,4 +1,4 @@
-import {setUserIsGuest} from "./setLocalUserAsGuest";
+import {setUserIsGuest} from "./setUserIsGuest";
 import {authentication} from "./authentication";
 import Cookies from "js-cookie";
 
