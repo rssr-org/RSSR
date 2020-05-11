@@ -1,4 +1,4 @@
-import {setLocalUserAsGuest} from "./setLocalUserAsGuest";
+import {setUserIsGuest} from "./setLocalUserAsGuest";
 import {authentication} from "./authentication";
 import Cookies from "js-cookie";
 
@@ -25,6 +25,6 @@ export const firstSetup = function () {
             })
     } else {
         // Guest user
-        setLocalUserAsGuest()
+        setUserIsGuest()
     }
 }

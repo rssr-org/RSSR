@@ -6,6 +6,6 @@ import {setStore} from "trim-redux";
  * set "token: null" when user is invalid (is guest)
  * NOTICE: The user object of guest user does not have "detail" property.
  */
-export const setLocalUserAsGuest = function () {
+export const setUserIsGuest = function () {
     setStore({user: {updated: true}});
 }

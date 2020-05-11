@@ -1,4 +1,4 @@
-import {setLocalUserAsGuest} from "./setLocalUserAsGuest";
+import {setUserIsGuest} from "./setLocalUserAsGuest";
 import Cookies from "js-cookie";
 
 
@@ -8,7 +8,7 @@ import Cookies from "js-cookie";
  */
 export const signingOut = () => {
     // clear user detail from redux
-    setLocalUserAsGuest();
+    setUserIsGuest();
 
     // clear user token cookie
     Cookies.remove('token')
