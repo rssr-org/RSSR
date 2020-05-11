@@ -12,7 +12,7 @@ import {badConnectionAlert} from "../../setup/utility/badConnectionAlert";
 
 function ResetPassword(props) {
 
-    const [viewMod, setViewMod] = useState('LOADING') // LOADING || FORM || ERROR
+    const [result, setResult] = useState('LOADING') // LOADING || FORM || ERROR
     const [newpassword, setNewpassword] = useState('')
     const [repassword, setRepassword] = useState('')
 
@@ -27,11 +27,11 @@ function ResetPassword(props) {
             }
         })
             .then(() => {
-                setViewMod('FORM');
+                setResult('FORM');
             })
             .catch((e) => {
                 if (e.status === 404)
-                    setViewMod('ERROR');
+                    setResult('ERROR');
                 else
                     badConnectionAlert('reset Password trust');
             });
@@ -80,7 +80,7 @@ function ResetPassword(props) {
                 <div className="col-md-10 offset-md-7 pt-5">
                     <h3 className="mb-5">Change password</h3>
                     {
-                        (viewMod === 'FORM') ?
+                        (result === 'FORM') ?
                             (
                                 <form onSubmit={submitForm} noValidate={true}>
                                     <div className="form-group">
@@ -110,7 +110,7 @@ function ResetPassword(props) {
                             )
                             :
                             (
-                                viewMod === 'LOADING' ?
+                                result === 'LOADING' ?
                                     <strong>User Validation, please wait...</strong>
                                     :
                                     <strong>User Token is not valid!</strong>
