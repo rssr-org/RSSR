@@ -1,9 +1,8 @@
-import {connect} from "trim-redux";
-import Cookies   from "js-cookie";
+import {connect}     from "trim-redux";
+import {isValidUser} from "../../setup/utility/isValidUser";
 
 const InvalidUser = props => {
-    const token = Cookies.get('token')
-    return !token && props.user.updated ? props.children : '';
+    return !isValidUser() ? props.children : '';
 }
 
 export default connect(s => ({user: s.user}))(InvalidUser);
