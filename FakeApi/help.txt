@@ -1,0 +1,15 @@
+::: FAKE API :::
+We connected the Fake-API to the RSSR so you can see how it actually works.
+
+>>> HOW CAN RUN IT
+with 'npm run fake' you can launch it.
+
+>>> HOW CAN USE IT in code
+we imported fake api in sever files, so you can assess from 'http://localhost:8000/fake-api' in development and port 3000 for production.
+
+
+>>> HOW TO REMOVE IT:
+step1: remove ~/FakeApi directory.
+step2: change API_HOST_IN_CLIENT and API_HOST_IN_SERVER in ~/.env.development and ~/.env.production files to your real API address.
+step3: go to ~/server/development and ~/server/production files and remve fake api require (Marked with a symbol).
+step4: go to ~/src/setup/api.js and set your real routes. NOTICE: before remove or change this routes please find 'api.[ROUTE-NAME]' like 'api.forgetPassword' and do the necessary work.

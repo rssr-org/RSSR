@@ -20,7 +20,7 @@ const {DIST_ROUTE, PUBLIC_NAME} = require('../setup/constant')
 const app = express()
 
 //----- REMOVE THIS PART AND 'fakeApi.js' FILE IN REAL PROJECTS -----//
-require('../setup/fakeApi')(app)
+require('../../FakeApi/fakeApi')(app)
 //-------------------------------------------------------------------//
 
 // cookie
@@ -55,6 +55,6 @@ app.listen(PORT, error => {
     if (error) {
         return console.error('Error in server/development.js: ', error);
     } else {
-        console.log(`development server running at http://localhost:${process.env.PORT}`);
+        console.log(`development server running at http://localhost:${PORT}`);
     }
 })

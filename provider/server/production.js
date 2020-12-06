@@ -16,6 +16,10 @@ const serverRenderer = require(SERVER_DIST_PATH).default
 // express app
 const app = express()
 
+//----- REMOVE THIS PART AND 'fakeApi.js' FILE IN REAL PROJECTS -----//
+require('../../FakeApi/fakeApi')(app)
+//-------------------------------------------------------------------//
+
 // cookie
 app.use(cookieParser())
 
@@ -46,5 +50,5 @@ app.listen(PORT, HOST, error => {
     if (error)
         return console.error('Error in server/production.js: ', error);
     else
-        console.log(`production server running at http://localhost:${process.env.PORT}`);
+        console.log(`production server running at http://localhost:${PORT} and ${HOST} host.`);
 })
