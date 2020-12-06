@@ -45,8 +45,8 @@ if (!window.RSSR_PROCCESS_ERROR) {
         </Provider>
     )
 
+
     // render on client with hydrate() and render() when does not have Child Nodes
-    const isMarkupPresent = appWrap.hasChildNodes();
-    const method = isMarkupPresent ? reactDom.hydrate : reactDom.render;
+    const method = module.hot ? reactDom.render : reactDom.hydrate;
     method(app, appWrap);
 }
