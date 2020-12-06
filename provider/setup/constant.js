@@ -23,6 +23,6 @@ C.PUBLIC_NAME = 'public';
 C.SCSS_PATH = path.resolve(process.cwd(), './src/setup/style');
 
 // Development > open browser
-C.OPEN_BROWSER_URL = 'http://localhost:' + process.env.PORT;
+C.OPEN_BROWSER_URL = 'http://localhost:' + process.env.PORT || 8000;
 
 module.exports = C
