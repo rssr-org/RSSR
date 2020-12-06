@@ -29,7 +29,7 @@
         "express": "^4.17.1",
         "express-rate-limit": "^5.1.3",
         "rssr-seo-optimization": "0.0.1",
-        "serialize-javascript": "^2.1.2"
+        "serialize-javascript": "^5.0.1"
     },
     "devDependencies": {
         "@babel/core": "^7.9.6",
@@ -66,8 +66,8 @@
         "popper.js": "^1.16.1",
         "prop-types": "^15.7.2",
         "querystringify": "^2.1.1",
-        "react": "^16.13.1",
-        "react-dom": "16.12.0",
+        "react": "^17.0.0",
+        "react-dom": "^17.0.0",
         "react-helmet-async": "^1.0.6",
         "react-lazy-load-image-component": "^1.4.3",
         "react-router-dom": "^5.1.2",
