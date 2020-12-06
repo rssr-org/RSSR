@@ -5,7 +5,7 @@
 </div>
 
 # RSSR Boilerplate
-Welcome to RSSR(React-JS Sever Side Rendering). Being here is a sign of your professionalism.
+Welcome to RSSR(React-JS Server Side Rendering). Being here is a sign of your professionalism.
 
 RSSR is a SSR boilerplate for React js and contains:
 - SSR (Server Side Rendering)
