@@ -5,9 +5,7 @@
 </div>
 
 # RSSR Boilerplate
-"We are not better than anyone, We are not in competition with anyone, We want to be the best version of ourselves."
-
-Welcome to RSSR. Being here is a sign of your professionalism.
+Welcome to RSSR(React-JS Sever Side Rendering). Being here is a sign of your professionalism.
 
 RSSR is a SSR boilerplate for React js and contains:
 - SSR (Server Side Rendering)
@@ -15,6 +13,29 @@ RSSR is a SSR boilerplate for React js and contains:
 - SEO optimization utilities
 - SCSS Style Namespace
 - and more …
+
+## contain
+:: Base
+- React 17.0.1 (react-dom 17.0.1)
+- express 4.17.1
+- webpack 4.43.0
+- eslint 6.8.0
+- axios 0.21.0 
+- history 4.10.1
+
+:: Useful side 
+- node-sass 4.14.1 (support scss)
+- rssr-seo-optimization 0.0.1 (improve SEO)
+- dotenv 8.2.0 (support .env files)
+- cookie-parser 1.4.5 (support cookie in server mode)
+- express-rate-limit 5.1.3 (limit and filer requests in server)
+- local-storage 2.0.0 (good structuer for local storage)
+- trim-redux 2.3.0 (Redax simplification)
+- rssr-namespace 1.0.1 (set name space for SCSS (style) files.)
+
+:: utility (there is no force, You can simply delete)
+- bootstrap 4.5.3
+- jquery 3.5.1
 
 ## Documentation
 See [Documentation](https://github.com/rssr-org/RSSR-Documentation) in github.
