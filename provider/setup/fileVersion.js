@@ -1,30 +1,23 @@
-// define global.FILE_VERSION for dist file version. see render/Index.js template.
-const version = require("../../package").version;
-
-// generate random string like: VL8fcfzQ84xBCJqoJCf4nR2u
-const versionHash = function () {
-    let text = "";
-    const possible = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789";
-
-    for (let i = 0; i < 24; i++)
-        text += possible.charAt(Math.floor(Math.random() * possible.length));
-
-    return text;
-}
-
 
 // define global.FILE_VERSION for dist file version. see render/Index.js template.
 // global.FILE_VERSION  is 'npm' or 'random' or 'disable'
 switch (process.env.FILE_VERSION_TYPE) {
     case 'npm':
-        global.FILE_VERSION = '?v=' + version; // value of npm package.js verion property
+        // define global.FILE_VERSION for dist file version. see render/Index.js template.
+        const npmVersion = require("../../package").version;
+        // value of npm package.js verion property
+        global.FILE_VERSION = '?v=' + npmVersion;
         break;
-    case 'random':
-        global.FILE_VERSION = '?v=' + versionHash(); // random 24 char string
+    case 'time':
+        // time stamp of now
+        const timeStampVersion = new Date().getTime();
+        // random 24 char string
+        global.FILE_VERSION = '?v=' + timeStampVersion;
         break;
     case 'disable':
-        global.FILE_VERSION = ''; // without version
+        // without version
+        global.FILE_VERSION = '';
         break;
     default:
-        console.error('env.FILE_VERSION is not valid!',  global.FILE_VERSION)
+        console.error('process.env.FILE_VERSION is not valid!',  global.FILE_VERSION)
 }
