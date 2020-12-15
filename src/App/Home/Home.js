@@ -28,7 +28,7 @@ function Home(props) {
                         We want to be the best version of ourselves.
                         <br/>
                         <br/>
-                        see <a href="https://github.com/rssr-org/RSSR-Documentation" target="_blank">Documentation</a>
+                        see <a href="https://github.com/rssr-org/RSSR-Documentation" target="_blank" rel="noreferrer">Documentation</a>
                     </p>
                 </div>
 

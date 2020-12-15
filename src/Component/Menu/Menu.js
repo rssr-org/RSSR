@@ -34,9 +34,9 @@ function Menu({skeleton}) {
                                 {
                                     (detail) => (
                                         <li className="nav-item">
-                                            <a className="nav-link" onClick={() => window.confirm('Are you want sign out?') ? signingOut() : ''}>
+                                            <button className="btn btn-link nav-link" onClick={() => window.confirm('Are you want sign out?') ? signingOut() : ''}>
                                                 Hi {detail.firstName}
-                                            </a>
+                                            </button>
                                         </li>
                                     )
                                 }

@@ -9,11 +9,11 @@ import {badConnectionAlert} from "../../../setup/utility/badConnectionAlert";
 
 
 function ForgetPasswordForm(props) {
-    const [isLoading, setIsLoading] = useState(false)
-    const [email, setEmail] = useState('')
+    const [ isLoading, setIsLoading ] = useState(false)
+    const [ email, setEmail ] = useState('')
     const {user, showSignInForm} = props
-
-
+    
+    
     function submitForgetPassword(e) {
         //-------------------------------------------//
         e.preventDefault()
@@ -29,10 +29,10 @@ function ForgetPasswordForm(props) {
         setIsLoading(true);
 
         axios({
-            url: api.forgetPassword,
+            url:  api.forgetPassword,
             // method: 'POST',
             data: {
-                "email": email,
+                "email":    email,
                 // server must add token number to end of url and redirect to it
                 "callback": window.location.origin + route.resetPassword('')
             }
@@ -69,7 +69,7 @@ function ForgetPasswordForm(props) {
         <form onSubmit={submitForgetPassword} className="forget-password-form" noValidate={true}>
             <div className="d-flex justify-content-between pb-5">
                 <h5>Password recovery</h5>
-                <a href="#" className="signin-toggle" onClick={showSignInForm}>Back</a>
+                <button className="btn btn btn-link signin-toggle" onClick={showSignInForm}>Back</button>
             </div>
             <div className="form-group">
                 <label>Account Email</label>

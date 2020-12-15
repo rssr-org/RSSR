@@ -37,7 +37,7 @@ const Sign = props => {
                                     <br/>
                                     or
                                     <br/>
-                                    <a href="#" onClick={signingOut}>log out</a>
+                                    <button className="btn btn-link" onClick={signingOut}>log out</button>
                                 </div>
                             )
                         }
