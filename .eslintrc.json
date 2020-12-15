@@ -1,0 +1,10 @@
+{
+    "extends": "react-app",
+    "globals": {
+        "$": true,
+        "jQuery": true
+    },
+    "rules": {
+        "default-case": "off"
+    }
+}
