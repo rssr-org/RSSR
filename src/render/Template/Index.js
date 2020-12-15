@@ -1,11 +1,13 @@
 import React from 'react';
 import serialize from "serialize-javascript";
+import {IS_PRODUCTION, SITE_SCHEMA} from "../../setup/constant";
 
 
 function Index({renderedView, helmet, error, DUCT}) {
     const htmlAttrs = helmet.htmlAttributes.toComponent()
     const bodyAttrs = helmet.bodyAttributes.toComponent()
     const schema = DUCT.schema
+    const {FILE_VERSION} = global;
 
     // transfer data from server to client
     let dataTransfer;
@@ -29,7 +31,13 @@ function Index({renderedView, helmet, error, DUCT}) {
             {helmet.meta.toComponent()}
             {helmet.link.toComponent()}
             <link rel="shortcut icon" href="/app-icon.png" type="image/png"/>
-            <link rel="stylesheet" href={`/dist/styles.css${global.FILE_VERSION}`}/>
+            <link rel="stylesheet" href={`/dist/styles.css${FILE_VERSION}`}/>
+            {
+                IS_PRODUCTION ?
+                    <script src={`/sub-scripts.js${FILE_VERSION}\`}`}/>
+                    :
+                    ''
+            }
         </head>
         <body className="rtl" {...bodyAttrs}>
             <div id="app-root" dangerouslySetInnerHTML={{__html: renderedView}}></div>
@@ -39,7 +47,8 @@ function Index({renderedView, helmet, error, DUCT}) {
             {
                 schema ? <script type="application/ld+json" dangerouslySetInnerHTML={{__html: serialize(schema)}}></script> : ''
             }
-            <script src={`/dist/client.js${global.FILE_VERSION}`}></script>
+            <script type="application/ld+json" dangerouslySetInnerHTML={{__html: SITE_SCHEMA}}></script>
+            <script src={`/dist/client.js${FILE_VERSION}`}></script>
         </body>
         </html>
     );

@@ -1,3 +1,5 @@
+import serialize from "serialize-javascript";
+
 /**
  *  IS_BROWSER in client is 'true' and in server is 'false' and IS_SERVER is reversed
  */
@@ -58,3 +60,45 @@ export const regexp = {
     // user password (like: SignInForm)
     password: '(^.{6,64}$)',
 };
+
+
+
+// used in <Index/> for optimize SEO
+export const SITE_SCHEMA = serialize({
+    "@context":                  "http://schema.org",
+    "@type":                     "LocalBusiness",
+    "name":                      "your site title",
+    "@id":                       "https://www.your-site-domain.com",
+    "url":                       "https://your-site-domain.com",
+    "image":                     "https://your-site-domain.com/app-logo.png",
+    "logo":                      "https://your-site-domain.com/app-logo.png",
+    "telephone":                 "+989199624169",
+    "geo":                       {
+        "@type":     "GeoCoordinates",
+        "latitude":  35.8439292, // your location
+        "longitude": 50.9544032 // your location
+    },
+    "contactPoint":              [
+        {
+            "@type":       "ContactPoint",
+            "telephone":   "your phone number",
+            "contactType": "customer service"
+        }
+    ],
+    "openingHoursSpecification": {
+        "@type":     "OpeningHoursSpecification",
+        "dayOfWeek": [
+            "Monday",
+            "Tuesday",
+            "Wednesday",
+            "Thursday",
+            "Saturday",
+            "Sunday"
+        ],
+        "opens":     "08:00",
+        "closes":    "23:00"
+    },
+    "sameAs":                    [
+        "https://www.instagram.com/your-social-media-account"
+    ]
+})
