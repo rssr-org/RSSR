@@ -7,7 +7,7 @@ import {HelmetProvider} from 'react-helmet-async';
 // --- Structures ---//
 import {clientCreateStore} from "../setup/store";
 import {browserHistory} from "../setup/browserHistory";
-import localStorageSetup from "../setup/localStorage";
+import {localStorageSetup} from "../setup/localStorage";
 import "../setup/axiosConfig"
 import App from "../App/App";
 

@@ -1,7 +1,7 @@
 import storage from "local-storage";
 
 
-export default function () {
+export const localStorageSetup = function () {
     /**
      * version
      *
